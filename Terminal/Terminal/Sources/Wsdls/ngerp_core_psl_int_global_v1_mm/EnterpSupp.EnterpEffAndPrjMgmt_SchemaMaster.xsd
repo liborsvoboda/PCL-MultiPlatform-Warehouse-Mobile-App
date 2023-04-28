@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+	<include schemaLocation="DT_MaterialDocumentId.xsd"/>
+	<include schemaLocation="DT_MaterialDistributionData.xsd"/>  
+	<include schemaLocation="DT_PurchaseDocumentDistributionData.xsd"/>
+	<include schemaLocation="DT_MaterialDocumentCreationRequest.xsd"/>
+	<include schemaLocation="DT_MaterialDocumentGetByFilterRequest.xsd"/>
+	<include schemaLocation="DT_MaterialDocumentGetByFilterResponse.xsd"/>
+	<include schemaLocation="DT_MaterialDocumentHeader.xsd"/>
+	<include schemaLocation="DT_MaterialDocumentItem.xsd"/>
+	<include schemaLocation="DT_MaterialDocumentDistributionData.xsd"/>
+	<include schemaLocation="ServicePackageItem.xsd"/>
+	<include schemaLocation="MaterialCheckAvailabilityRequest.xsd"/>
+	<include schemaLocation="MaterialCheckAvailabilityResponse.xsd"/>
+	<include schemaLocation="MaterialGetByFilterRequest.xsd"/>
+	<include schemaLocation="MaterialGetByFilterResponse.xsd"/>
+	<include schemaLocation="ReservationItemId.xsd"/>
+	<include schemaLocation="MaterialDocumentSerialNumber.xsd"/>
+	<include schemaLocation="PurchaseOrder.xsd"/>
+	<include schemaLocation="PurchaseOrderCreateOrChangeRequest.xsd"/>
+	<include schemaLocation="PurchaseOrderChangeDto.xsd"/>
+	<include schemaLocation="PurchaseDocumentDto.xsd"/>
+	<include schemaLocation="PurchaseDocumentFilterDto.xsd"/>	
+	<include schemaLocation="ServicePackageItem2Dto.xsd"/>
+	<include schemaLocation="ServicePackageItemChangeDto.xsd"/>
+	<include schemaLocation="MaterialDto.xsd"/>
+	<include schemaLocation="MaterialFilterDto.xsd"/>
+	<include schemaLocation="MaterialDocumentDto.xsd"/>
+	<include schemaLocation="MaterialDocumentCancellationDto.xsd"/>
+	<include schemaLocation="MaterialDocumentChangeDto.xsd"/>
+	<include schemaLocation="MaterialDocumentFilterDto.xsd"/>
+	<include schemaLocation="ReservationItemId2Dto.xsd"/>
+	<include schemaLocation="TypeDeclarations.xsd"/>
+	<include schemaLocation="PurchaseRequisitionChangeDto.xsd"/>
+	<include schemaLocation="PurchaseRequisitionDto.xsd"/>
+	<include schemaLocation="PurchaseRequisitionFilterDto.xsd"/>
+</schema>

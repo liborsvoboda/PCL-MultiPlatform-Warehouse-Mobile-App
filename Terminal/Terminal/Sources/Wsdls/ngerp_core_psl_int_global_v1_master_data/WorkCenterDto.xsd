@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:complexType name="WorkCenterDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Work center</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+				<xsd:annotation>
+					<xsd:documentation>Action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ObjectResourceType">
+				<xsd:annotation>
+					<xsd:documentation>Object resource type. Part of key.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="2"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ObjectResourceId">
+				<xsd:annotation>
+					<xsd:documentation>Id.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="8"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Header" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Header</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ValidFrom" type="xsd:date" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Valid from</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ValidTo" type="xsd:date" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Valid to</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="PlantId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Plant id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="WorkCenterCode" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Work center code</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="8"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="DescriptionsAll" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shows that node contains all descriptions of work center</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Descriptions" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Texts</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Language">
+										<xsd:annotation>
+											<xsd:documentation>2-letter language according to ISO 639-1</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Text" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Text</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="40"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ResponsiblePersonCode" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Responsible person</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CostCenterAssignmentsAll" type="xsd:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Shows that node contains all cost center assignments</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CostCenterAssignments" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+							<xsd:annotation>
+								<xsd:documentation>Action</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ActivityTypeSet" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Key field (+ object resource type, object resource id) . Activity type set</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ValidTo" type="xsd:date" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Key field (+ object resource type, object resource id)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ActivityTypeNumberInSet" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Key field (+ object resource type, object resource id). Activity type number within set</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ValidFrom" type="xsd:date" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Valid from</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ControllingAreaId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Controlling area</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="CostCenterCode" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Cost center</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ActivityTypeCode" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Activity type</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

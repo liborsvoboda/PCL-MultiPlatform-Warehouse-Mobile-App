@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ServiceDistribute" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceDistribute_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceDistribute_v01.00">
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-10" isLogicalService="true">
+      <doc:description>
+Updated on 01.06.2017 10:45:52, UTC
+14117	01.06.2017 10:04:33	Version fix. MOM deleted
+
+Updated on 10.05.2017 08:59:12, UTC
+13855	10.05.2017 08:58:13	Corrections for CSDG validator
+
+Updated on 09.09.2015 17:21:37, UTC
+6080	09.09.2015 17:21:05	Occurrence changed from 0..1 to 1..1 for base xsd types. Pattern \d+ removed
+
+Updated on 27.05.2015 18:36:13, UTC
+5442	20.05.2015 16:01:55	Byte order mark deleted. utf-8 -&gt; UTF-8
+5437	20.05.2015 09:35:37	Version updated for wsdls for 15C
+4989	06.03.2015 11:40:13	
+4984	06.03.2015 11:23:36	
+4909	27.02.2015 08:42:25	
+4903	26.02.2015 11:55:26	
+4881	24.02.2015 10:17:46	Fixing errors.
+4877	23.02.2015 16:05:19	
+4870	19.02.2015 13:01:41	
+3693	24.09.2014 15:13:12	SoaBP wsdls
+
+				-------------------------- @TODO:DESCRIBE_ME - Service "ServiceDistribute" -----------------------------
+			</doc:description>
+      <doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+      <doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2014-10-20" doc:lang="en">14117</doc:change>
+    </doc:service>
+  </documentation>
+  <types>
+    <xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceDistribute_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceDistribute_v01.00/types">
+      <!-- ****************************************************************** -->
+      <xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+      <xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceDistribute_v01.00/types" schemaLocation="ServiceDistribute_v01.00.xsd" />
+      <!-- ****************************************************************** -->
+      <xsd:element name="distributeChangesAsync" type="types:DistributeChangesAsyncType" />
+    </xsd:schema>
+  </types>
+  <!-- ****************************************************************** -->
+  <!-- Messages : -->
+  <!-- ****************************************************************** -->
+  <message name="DistributeChangesAsync">
+    <part name="parameters" element="tns:distributeChangesAsync" />
+  </message>
+  <message name="EmptyTechnicalResponse">
+    <part name="parameters" element="csdg:empty" />
+  </message>
+  <message name="TechnicalFault">
+    <part name="parameters" element="csdg:technicalFault" />
+  </message>
+  <!-- ****************************************************************** -->
+  <!-- PortTypes : -->
+  <!-- ****************************************************************** -->
+  <!-- Consumer : -->
+  <portType name="ServiceDistributeConsumer">
+    <operation name="distributeChangesAsync">
+      <documentation>
+        <doc:operation mep="Notification" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "distributeChangesAsync" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:DistributeChangesAsync" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+</definitions>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:include schemaLocation="DT_Address.xsd"></xsd:include>
+  <xsd:complexType name="DT_AddressDistributionData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Address distribution data</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CreatedOrUpdated" minOccurs="0" maxOccurs="unbounded" type="DT_Address">
+        <xsd:annotation>
+          <xsd:documentation>Created or updated addresses</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

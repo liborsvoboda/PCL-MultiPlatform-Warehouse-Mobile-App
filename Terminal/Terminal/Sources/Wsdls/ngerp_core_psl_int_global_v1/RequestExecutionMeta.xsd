@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="RequestExecutionMeta">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Request execution meta</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Mode" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Execution mode: Read -> read data by async token id, Sync -> sync execution, Async -> async execution, Notification -> async execution without callback</xsd:documentation>
+				</xsd:annotation>       
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

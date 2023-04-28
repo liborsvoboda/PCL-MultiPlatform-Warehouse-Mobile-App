@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+            xmlns:bomtypesMM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" >
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:include schemaLocation="MaterialCompatibility.xsd" />
+  <xsd:complexType name="MaterialGetByFilterResponse">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Response to reading materials orders by filter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Processing messages</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Materials" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Found materials</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Id">
+              <xsd:annotation>
+                <xsd:documentation>Material id</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="18"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Compatibility" type="bomtypesMM:MaterialCompatibility" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Header data</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>UIRequiredDeviceCapabilities</key>
+  <dict>
+    <key>front-facing-camera</key>
+    <true/>
+    <key>camera-flash</key>
+    <true/>
+    <key>auto-focus-camera</key>
+    <true/>
+    <key>video-camera</key>
+    <true/>
+    <key>still-camera</key>
+    <true/>
+  </dict>
+	<key>bundleDisplayName</key>
+	<string>TMH Terminal</string>
+	<key>bundleShortVersionString</key>
+	<string>1.5.1</string>
+	<key>bundleVersion</key>
+	<string>1.5.1</string>
+	<key>drmVersionNumber</key>
+	<integer>0</integer>
+	<key>fileExtension</key>
+	<string>.app</string>
+	<key>itemName</key>
+	<string>TMH Terminal</string>
+	<key>kind</key>
+	<string>software</string>
+	<key>playlistName</key>
+	<string>TMH Terminal</string>
+	<key>releaseDate</key>
+  <string>2021-04-28T03:23:10Z</string>
+	<key>s</key>
+	<integer>143441</integer>
+	<key>softwareIconNeedsShine</key>
+	<false/>
+	<key>softwareSupportedDeviceIds</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+		<integer>4</integer>
+		<integer>9</integer>
+	</array>
+	<key>Bundle name</key>
+	<string>Terminal</string>
+	<key>softwareVersionBundleId</key>
+	<string>com.expedis.Terminal.iOS</string>
+	<key>playlistArtistName</key>
+	<string>PJ EXPEDIS spol. s r.o.</string>
+	<key>artistName</key>
+	<string>PJ EXPEDIS spol. s r.o.</string>
+	<key>copyright</key>
+	<string>� 2021 PJ EXPEDIS spol. s r.o.</string>
+</dict>
+</plist>

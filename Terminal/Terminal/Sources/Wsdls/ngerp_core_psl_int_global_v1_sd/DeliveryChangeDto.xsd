@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			      xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD">
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:complexType name="DeliveryChangeDto">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Delivery change dto</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Action" type="bomtypesCommon:DT_Action">
+        <xsd:annotation>
+          <xsd:documentation>Action</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Id" >
+        <xsd:annotation>
+          <xsd:documentation>Delivery Id</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Header" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Delivery header</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ShippingConditionId" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Shipping condition</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="2"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ExternalNumber" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>External number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="35"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

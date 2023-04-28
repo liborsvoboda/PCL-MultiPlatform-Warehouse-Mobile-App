@@ -1,0 +1,200 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;Ad-Hoc</Configurations>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Novell.Directory.Ldap.NETStandard2_0" Version="3.1.0" />
+    <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Plugin.RoundedBorderControls" Version="1.0.0" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.QrCode" Version="0.3.2" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    <PackageReference Include="SocketLite.PCL" Version="5.1.1" />
+    <PackageReference Include="Splat" Version="13.1.30" />
+    <PackageReference Include="System.Net.Primitives" Version="4.3.1" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.4" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.4" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.4" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.4" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xam.Plugin.Printing" Version="0.0.13.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Languages\LangResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LangResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DefaultLabel.xaml.cs">
+      <DependentUpon>DefaultLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Details\WaitingPage.xaml.cs">
+      <DependentUpon>WaitingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Details\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Menu\MenuItemsPage.xaml.cs">
+      <DependentUpon>MenuItemsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Menu\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\SapSettings.xaml.cs">
+      <DependentUpon>SapSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\ServerAddress.xaml.cs">
+      <DependentUpon>ServerAddress.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\LanguagePage.xaml.cs">
+      <DependentUpon>LanguagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\FastGoodsInfoPage.xaml.cs">
+      <DependentUpon>FastGoodsInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\DataTransferPage.xaml.cs">
+      <DependentUpon>DataTransferPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\StockTakingPage.xaml.cs">
+      <DependentUpon>StockTakingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\GoodReceiptFromPOPage.xaml.cs">
+      <DependentUpon>GoodReceiptFromPOPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\GoodsReceiptPage.xaml.cs">
+      <DependentUpon>GoodsReceiptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\FaultReportPrintPage.xaml.cs">
+      <DependentUpon>FaultReportPrintPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\ReportLocationPage.xaml.cs">
+      <DependentUpon>ReportLocationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\TransferReceiptPage.xaml.cs">
+      <DependentUpon>TransferReceiptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\TransferReleasePage.xaml.cs">
+      <DependentUpon>TransferReleasePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\ReportSitePage.xaml.cs">
+      <DependentUpon>ReportSitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\GoodsIssuePage.xaml.cs">
+      <DependentUpon>GoodsIssuePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WSLXampPages\LabelPrintPage.xaml.cs">
+      <DependentUpon>LabelPrintPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Languages\LangResources.en.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\LangResources.cs.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\LangResources.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LangResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\LangResources.sk.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Reports\example\Report.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Styles\DynamicStylesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Details\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Styles\DynamicStylesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Details\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Details\ItemDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Details\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Details\NewItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Menu\ItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Menu\MenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Menu\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Settings\LanguagePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Settings\ServerAddress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v8.1\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadXFormsNugetUpgradeInfoBarTerminalHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+</Project>

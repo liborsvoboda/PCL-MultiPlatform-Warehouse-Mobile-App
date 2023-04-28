@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+	<include schemaLocation="DT_DeliveryHeader.xsd"/>
+	<include schemaLocation="DT_DeliveryItem.xsd"/>
+	<include schemaLocation="DT_HandlingUnitHeader.xsd"/>
+	<include schemaLocation="DT_HandlingUnitItem.xsd"/>
+	<include schemaLocation="DT_HandlingUnit.xsd"/>
+	<include schemaLocation="Delivery2Dto.xsd"/>
+	<include schemaLocation="DeliveryChange2Dto.xsd"/>
+	<include schemaLocation="DeliveryFilter2Dto.xsd"/>
+	<include schemaLocation="TypeDeclarations.xsd"/>
+</schema>

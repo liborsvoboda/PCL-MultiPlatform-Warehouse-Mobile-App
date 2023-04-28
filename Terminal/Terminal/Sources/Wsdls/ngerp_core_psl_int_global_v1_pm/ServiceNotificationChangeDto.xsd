@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" 
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:include schemaLocation="TypeDeclarations.xsd"/>
+	<xsd:complexType name="ServiceNotificationChangeDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Service notification change</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+				<xsd:annotation>
+					<xsd:documentation>Action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Id</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="12"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Header" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Header</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TypeId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Notification type</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="2"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="OrderId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Order id.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="TOrderId">
+										<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Date" type="xsd:dateTime" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Notification date and time</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Description" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Description</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="DescriptionLong" type="xsd:string" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Long Text</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="CodingCodeGroup" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Code Group - Coding</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="8"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Coding" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Coding</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="StatusesAll" minOccurs="0" type="xsd:boolean">
+							<xsd:annotation>
+								<xsd:documentation>All statuses provided</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Statuses" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Statused</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action for status</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Value" type="bomtypesCommon:DT_Status">
+										<xsd:annotation>
+											<xsd:documentation>Status</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

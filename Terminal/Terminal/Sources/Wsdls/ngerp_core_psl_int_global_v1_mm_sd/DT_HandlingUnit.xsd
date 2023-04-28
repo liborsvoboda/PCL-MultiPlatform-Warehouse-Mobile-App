@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD">
+  <xsd:include schemaLocation="DT_HandlingUnitHeader.xsd"/>
+  <xsd:include schemaLocation="DT_HandlingUnitItem.xsd"/>
+  <xsd:complexType name="DT_HandlingUnit">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Handling unit document</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Id">
+        <xsd:annotation>
+          <xsd:documentation>Id</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Header" type="DT_HandlingUnitHeader">
+        <xsd:annotation>
+          <xsd:documentation>Header</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Items" type="DT_HandlingUnitItem" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Items</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

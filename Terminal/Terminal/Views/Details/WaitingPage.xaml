@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.Views.WaitingPage"
+             xmlns:local="clr-namespace:Terminal.Singleton"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             xmlns:images="clr-namespace:Terminal.Images"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             Title="" BackgroundColor="Transparent">
+    <StackLayout>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid x:Name="activityIndicator" HeightRequest="48" IsVisible="true" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,0.5,1,Autosize">
+                <ActivityIndicator x:Name="defaultActivityIndicator" IsRunning="true" Color="{ StaticResource AppPrimaryColor}"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Fill" />
+            </Grid>
+        </AbsoluteLayout>
+    </StackLayout>
+</ContentPage>

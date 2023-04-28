@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             x:Class="Terminal.SKReports.DefaultLabelPage" 
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             Title="">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="Label" BackgroundColor="White" HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="180"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="70" />
+            </Grid.ColumnDefinitions>
+            <skia:SKCanvasView x:Name="canvasView" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" WidthRequest="450" HeightRequest="300"
+                     PaintSurface="OnCanvasViewPaintSurface" />
+
+            <zxing:ZXingBarcodeImageView x:Name="barCodeResult" Margin="0" Grid.Row="1" Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BarcodeValue="0" BarcodeFormat="PDF_417" >
+                <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                    <zxcm:EncodingOptions Margin="0" PureBarcode="True" />
+                </zxing:ZXingBarcodeImageView.BarcodeOptions>
+            </zxing:ZXingBarcodeImageView>
+        </Grid>
+        
+        
+        <Grid x:Name="requestButtons" HeightRequest="48" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource ButtonBackground}" Clicked="Cancel_Clicked" Text="{x:Static language:LangResources.Back}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+            <Button x:Name="PrintBtn" Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="Print_Clicked" Text="{x:Static language:LangResources.Print}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>  

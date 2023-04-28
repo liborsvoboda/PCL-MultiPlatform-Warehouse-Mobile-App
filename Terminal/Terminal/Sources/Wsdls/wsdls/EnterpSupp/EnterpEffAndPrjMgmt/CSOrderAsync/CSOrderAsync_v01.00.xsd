@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderAsync_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderAsync_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+  xmlns:bomtypesPM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+  xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+		contains datatype-definitions specific for the CSOrder-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<!-- Place your imports here, if required -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" schemaLocation="../../../../ngerp_core_psl_int_global_v1_pm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../../../../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<!-- ****************************************************************** -->
+	<complexType name="GetByFilterAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filter" type="bomtypesPM:CSOrderFilterDto" minOccurs="0" maxOccurs="1">
+							<xsd:annotation>
+								<xsd:documentation>Filter.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetByFilterAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CSOrders" type="bomtypesPM:CSOrderDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>CS orders.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>    
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetByFilterAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="CreateOrChangeAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CSOrderChanges" type="bomtypesPM:CSOrderChangeDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>CS order changes</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="CreateOrChangeAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data" type="bomtypesCommon:DT_Response"/>   
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="CreateOrChangeAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetChangesAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filters" type="bomtypesCommon:ObjectChangeFilterDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Filters.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetChangesAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CSOrders" type="bomtypesPM:CSOrderDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>CS orders.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetChangesAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

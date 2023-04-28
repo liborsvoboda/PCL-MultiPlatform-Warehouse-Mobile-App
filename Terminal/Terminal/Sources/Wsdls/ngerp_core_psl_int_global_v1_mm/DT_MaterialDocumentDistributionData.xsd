@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+	<xsd:include schemaLocation="DT_MaterialDocumentId.xsd"/>
+	<xsd:include schemaLocation="DT_MaterialDocumentItem.xsd"/>
+	<xsd:include schemaLocation="DT_MaterialDocumentHeader.xsd"/>
+	<xsd:include schemaLocation="MaterialDocumentSerialNumber.xsd"/>  
+	<xsd:complexType name="DT_MaterialDocumentDistributionData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Material document changes</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Created" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Created or updated materials</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Id" type="DT_MaterialDocumentId">
+							<xsd:annotation>
+								<xsd:documentation>Id</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Header" type="DT_MaterialDocumentHeader">
+							<xsd:annotation>
+								<xsd:documentation>Header</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Items" maxOccurs="unbounded" type="DT_MaterialDocumentItem">
+							<xsd:annotation>
+								<xsd:documentation>Document items.</xsd:documentation>
+							</xsd:annotation>              
+						</xsd:element>
+						<xsd:element name="SerialNumbers" minOccurs="0" maxOccurs="unbounded" >
+							<xsd:annotation>
+								<xsd:documentation>Serial numbers.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ItemNumber">
+										<xsd:annotation>
+											<xsd:documentation>Material document item number</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="SerialNumber">
+										<xsd:annotation>
+											<xsd:documentation>SAP serial number</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="18"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="UniqueItemId">
+										<xsd:annotation>
+											<xsd:documentation>Unique item identifier. UII</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="72"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<!-- <xsd:element name="PhysicalInventoryFeature">
+										<xsd:annotation>
+											<xsd:documentation>Physical inventory feature</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="1"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element> -->
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

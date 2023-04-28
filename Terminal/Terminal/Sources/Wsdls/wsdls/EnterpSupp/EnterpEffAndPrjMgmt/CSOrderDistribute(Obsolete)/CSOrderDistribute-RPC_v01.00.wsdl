@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CSOrderDistribute" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderDistribute_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderDistribute_v01.00">
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-10" isLogicalService="true">
+      <doc:description>
+Updated on 24.07.2017 07:33:31, UTC
+14701	17.07.2017 11:15:25	DT_TaskList type was changed for 17C in non backward compatible way.
+So now this type is embedded in 16C interfaces for backward compatibility.
+
+Updated on 01.06.2017 10:45:52, UTC
+14117	01.06.2017 10:04:33	Version fix. MOM deleted
+13980	23.05.2017 08:08:18	Transporatation zone
+
+Updated on 10.05.2017 08:59:11, UTC
+13855	10.05.2017 08:58:13	Corrections for CSDG validator
+13580	10.04.2017 14:28:19	Task list id fix
+
+Updated on 30.03.2017 09:32:06, UTC
+13481	30.03.2017 09:29:10	Transportation zone field added to address
+
+Updated on 04.10.2016 12:34:07, UTC
+10868	04.10.2016 12:32:22	Defect 2060107585
+Changed type for "Earliest schedule start/end" 
+
+
+Updated on 31.05.2016 08:51:14, UTC
+8902	31.05.2016 08:50:47	Equipment field added
+
+Updated on 30.05.2016 08:54:11, UTC
+8885	30.05.2016 08:29:05	Partner address added
+
+Updated on 04.03.2016 09:06:52, UTC
+7741	03.03.2016 15:11:04	Component serial numbers removed
+7524	29.02.2016 13:24:20	StreetSupplimentary and Location fields in address
+6624	19.01.2016 16:50:27	Changes for LTTI
+
+Updated on 09.09.2015 17:21:36, UTC
+6080	09.09.2015 17:21:05	Occurrence changed from 0..1 to 1..1 for base xsd types. Pattern \d+ removed
+5883	29.07.2015 13:07:56	
+
+Updated on 27.05.2015 18:36:12, UTC
+5442	20.05.2015 16:01:55	Byte order mark deleted. utf-8 -&gt; UTF-8
+5437	20.05.2015 09:35:37	Version updated for wsdls for 15C
+5372	11.05.2015 13:47:22	Serial numbers
+5305	20.04.2015 12:24:46	Errors fixed
+5303	20.04.2015 12:17:57	
+5167	23.03.2015 10:01:27	
+5166	23.03.2015 09:53:31	
+5149	17.03.2015 11:07:12	Typos corrected
+5147	17.03.2015 09:32:14	PurchaseDocument-&gt;Contract
+5125	12.03.2015 16:42:45	Changes
+TD 1065, TD 1061. Fields added:
+	Operations\StratAtConstraintType
+	Operations\FinishAtConstraintType
+	Operations\StartAtConstraint
+	Operations\FinishAtConstraint
+	Operations\EarliestScheduledExecutionStartAt
+	Operations\EarliestScheduledExecutionFinishAt
+TD 1004. Fields added:
+	Operations\StratAtConstraintType
+	Operations\FinishAtConstraintType
+	Operations\StartAtConstraint
+	Operations\StartAtConstraintIsNull
+	Operations\FinishAtConstraint
+	Operations\FinishAtConstraintIsNull
+
+5084	11.03.2015 18:57:32	Minor correction
+5081	11.03.2015 18:43:19	Changes according to remarks from Poland and MT
+5069	11.03.2015 15:17:36	Remarks
+5068	11.03.2015 15:13:22	
+5067	11.03.2015 14:56:19	
+5041	11.03.2015 08:25:36	
+5031	10.03.2015 16:06:32	
+4995	06.03.2015 14:11:58	Minor changes
+4976	05.03.2015 20:01:42	Changes for Poland and Hungary
+4968	05.03.2015 18:43:43	
+4966	05.03.2015 18:11:11	ServicesSpecified
+4964	05.03.2015 17:55:56	
+4962	05.03.2015 17:42:45	Addresses and floc
+4958	05.03.2015 16:45:31	Reference fixes
+4957	05.03.2015 16:12:00	
+4953	05.03.2015 15:25:02	ServicePackageItem.xsd and services
+4773	04.02.2015 14:20:52	Material distribution interfaces.
+	Elements added: "Header\TypeId", "Valuation"
+	Fixed attributed for "BatchNumber".
+WorkCenter distribution
+	Element added - "PersonResponsible"
+Function location create or change
+	Element added - "AddressNumber"
+CS order get by filter, CS order distribute, CS order create or change. Following elements added:
+	Components\PurchaseDocumentId 
+	Components\PurchaseDocumentItemNumber
+	Components\TrackingNumber
+	Operations\TrackingNumber
+
+4413	25.11.2014 11:59:17	CSDG. One operation = one service.
+4355	20.11.2014 16:07:07	Changes in wsdl and updating TDs to CSDG
+4316	17.11.2014 17:19:16	Changes for csdg
+4232	08.11.2014 21:06:45	New Wsdls
+4150	05.11.2014 18:30:49	New wsdls
+4111	31.10.2014 08:45:00	Minor changes
+4108	30.10.2014 17:36:14	Multioperation services
+4098	30.10.2014 12:33:20	Different tries to be csdg compliant.
+3961	16.10.2014 16:05:56	Moving toward csdg compliance
+3956	16.10.2014 11:20:18	Fixed according to validator
+3693	24.09.2014 15:13:12	SoaBP wsdls
+
+				-------------------------- @TODO:DESCRIBE_ME - Service "CSOrderDistribute" -----------------------------
+			</doc:description>
+      <doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+      <doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2014-10-20" doc:lang="en">14701</doc:change>
+    </doc:service>
+  </documentation>
+  <types>
+    <xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderDistribute_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderDistribute_v01.00/types">
+      <!-- ****************************************************************** -->
+      <xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+      <xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/CSOrderDistribute_v01.00/types" schemaLocation="CSOrderDistribute_v01.00.xsd" />
+      <!-- ****************************************************************** -->
+      <xsd:element name="distributeChangesAsync" type="types:DistributeChangesAsyncType" />
+    </xsd:schema>
+  </types>
+  <!-- ****************************************************************** -->
+  <!-- Messages : -->
+  <!-- ****************************************************************** -->
+  <message name="DistributeChangesAsync">
+    <part name="parameters" element="tns:distributeChangesAsync" />
+  </message>
+  <message name="EmptyTechnicalResponse">
+    <part name="parameters" element="csdg:empty" />
+  </message>
+  <message name="TechnicalFault">
+    <part name="parameters" element="csdg:technicalFault" />
+  </message>
+  <!-- ****************************************************************** -->
+  <!-- PortTypes : -->
+  <!-- ****************************************************************** -->
+  <!-- Consumer : -->
+  <portType name="CSOrderDistributeConsumer">
+    <operation name="distributeChangesAsync">
+      <documentation>
+        <doc:operation mep="Notification" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "distributeChangesAsync" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:DistributeChangesAsync" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+</definitions>

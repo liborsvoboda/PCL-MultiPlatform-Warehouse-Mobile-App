@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="UtcDateTime">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">UTC date and time.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:dateTime">
+      <xsd:pattern value="\w*Z"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" 
+		xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" 
+		xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:include schemaLocation="TypeDeclarations.xsd"/>
+	<xsd:complexType name="ReservationItemId2Dto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Reservation item id</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="HeaderId">
+				<xsd:annotation>
+					<xsd:documentation>Reservation header id.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="TReservationHeaderId">
+							<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ItemNumber">
+				<xsd:annotation>
+					<xsd:documentation>Reservation item number.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="TReservationItemNumber">
+							<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RecordType">
+				<xsd:annotation>
+					<xsd:documentation>Reservation record type.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="TReservationRecordType">
+							<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>	
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

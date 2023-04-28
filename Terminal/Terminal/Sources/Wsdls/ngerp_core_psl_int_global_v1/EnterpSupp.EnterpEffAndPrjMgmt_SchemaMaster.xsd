@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="DT_ExternalSurrogateId.xsd"/>
+  <include schemaLocation="DT_Action.xsd"/>
+  <include schemaLocation="DT_Response.xsd"/>
+  <include schemaLocation="DT_Status.xsd"/>
+  <include schemaLocation="DT_ClassificationValue.xsd"/>
+  <include schemaLocation="UtcDateTime.xsd"/>
+  <include schemaLocation="NullableDate.xsd"/>
+  <include schemaLocation="NullableDateTime.xsd"/>
+  <include schemaLocation="SapScriptText.xsd"/>
+  <include schemaLocation="SapScriptTextDto.xsd"/>  
+  <include schemaLocation="SapScriptTextChangeDto.xsd"/>
+  <include schemaLocation="ObjectChangeFilterDto.xsd"/>
+  <include schemaLocation="ObjectChangeMarkerDto.xsd"/>
+  <include schemaLocation="ClassificationDto.xsd"/>
+  <include schemaLocation="ClassificationChangeDto.xsd"/>
+  <include schemaLocation="IdMappingChangeDto.xsd"/>
+  <include schemaLocation="IdMappingDto.xsd"/>
+  <include schemaLocation="ObjectAttachmentChangeDto.xsd"/>
+  <include schemaLocation="TVariableAttribute.xsd"/>
+  <include schemaLocation="RequestExecutionMeta.xsd"/>
+  <include schemaLocation="ResponseExecutionMeta.xsd"/>
+  <include schemaLocation="GenericResult.xsd"/>
+  <include schemaLocation="ObjectChangeMarker2Dto.xsd"/>
+  <include schemaLocation="ObjectChangeFilter2Dto.xsd"/>
+</schema>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ActionQueueAsync" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ActionQueueAsync_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ActionQueueAsync_v01.00">
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-17" isLogicalService="true">
+      <doc:description></doc:description>
+      <doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+      <doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2014-11-25" doc:lang="en">15486</doc:change>
+    </doc:service>
+  </documentation>
+  <types>
+    <xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ActionQueueAsync_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ActionQueueAsync_v01.00/types">
+      <!-- ****************************************************************** -->
+      <xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+      <xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ActionQueueAsync_v01.00/types" schemaLocation="ActionQueueAsync_v01.00.xsd" />
+      <!-- ****************************************************************** -->
+      <xsd:element name="createOrChangeAsync" type="types:CreateOrChangeAsyncRequestType" />
+      <xsd:element name="createOrChangeAsyncCallback" type="types:CreateOrChangeAsyncResponseType" />
+      <xsd:element name="createOrChangeAsyncFault" type="types:CreateOrChangeAsyncFaultType" />
+    </xsd:schema>
+  </types>
+  <!-- ****************************************************************** -->
+  <!-- Messages : -->
+  <!-- ****************************************************************** -->
+  <message name="CreateOrChangeAsyncRequest">
+    <part name="parameters" element="tns:createOrChangeAsync" />
+  </message>
+  <message name="CreateOrChangeAsyncResponse">
+    <part name="parameters" element="tns:createOrChangeAsyncCallback" />
+  </message>
+  <message name="CreateOrChangeAsyncFault">
+    <part name="parameters" element="tns:createOrChangeAsyncFault" />
+  </message>
+  <message name="EmptyTechnicalResponse">
+    <part name="parameters" element="csdg:empty" />
+  </message>
+  <message name="TechnicalFault">
+    <part name="parameters" element="csdg:technicalFault" />
+  </message>
+  <!-- ****************************************************************** -->
+  <!-- PortTypes : -->
+  <!-- ****************************************************************** -->
+  <!-- Provider: -->
+  <portType name="ActionQueueAsync">
+    <operation name="createOrChangeAsync">
+      <documentation>
+        <doc:operation mep="RequestCallback" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "createOrChangeAsync" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:CreateOrChangeAsyncRequest" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+  <!-- ****************************************************************** -->
+  <!-- Consumer : -->
+  <portType name="ActionQueueAsyncConsumer">
+    <operation name="createOrChangeAsyncCallback">
+      <input message="tns:CreateOrChangeAsyncResponse" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+    <operation name="createOrChangeAsyncFault">
+      <input message="tns:CreateOrChangeAsyncFault" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+</definitions>

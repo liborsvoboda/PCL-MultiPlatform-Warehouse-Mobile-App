@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">  
+	<xsd:include schemaLocation="DT_Action.xsd"/>
+	<xsd:complexType name="ObjectAttachmentChangeDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Object attachament</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Action" type="DT_Action">
+				<xsd:annotation>
+					<xsd:documentation>Action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Temp id to reference particular document in response</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ArchiveDate" minOccurs="0" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>Archive date</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AttachmentTypeId" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+                        Attachment type
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="16"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>						
+			<xsd:element name="Description" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+                        Description for attachment
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="60"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ReferenceObjects" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Reference objects.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TypeId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Object type</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Locator" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Locator(ususally object id )</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="128"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Data" minOccurs="0" type="xsd:base64Binary">
+				<xsd:annotation>
+					<xsd:documentation>Document bindary data</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

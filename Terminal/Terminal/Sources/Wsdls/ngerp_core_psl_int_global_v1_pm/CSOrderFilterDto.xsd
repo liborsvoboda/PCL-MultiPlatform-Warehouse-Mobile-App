@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+			xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:complexType name="CSOrderFilterDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Filter for CS orders</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Criterions" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Search criterions.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Ids" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Ids.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="12"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="WbsElementIds"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Wbs element ids</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="24"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="FunctionalLocationIds" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Funcational location ids</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="30"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>			
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReturnData" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Which parts of order data to return. If not provided - return everything</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Header" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return header data</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Partners" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return partners</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Components" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return components</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Operations" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return operations</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="MaterialDocumentIds" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return material document ids</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Services" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return operation procurement data</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="FinancialOverview" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return financial overview</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Classifications" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return classifications.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	xmlns:tns="http://schemas.telekom.net/csdg-service-documentation_v01.01"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://schemas.telekom.net/csdg-service-documentation_v01.01"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.01.002">
+	<!--
+		!! @AUTHORS:
+		- CHANGES HERE WILL POSSIBLY BREAK A LOT OF AGREEMENTS
+		- INCREMENT VERSION NUMBER AFTER CHANGES
+		!!
+	-->
+	<annotation>
+		<documentation>
+			contains data type definitions used in all wsdl-files to document elements
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<attribute name="lang">
+		<simpleType>
+			<restriction base="string">
+				<enumeration value="en"/>
+				<enumeration value="nat"/> <!-- for any "nat"ional language -->
+			</restriction>
+		</simpleType>
+	</attribute>
+	<!-- ****************************************************************** -->
+	<simpleType name="KindOfCreation"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				Defines how the wsdl is created.
+				A wsdl marked with "GENERATED" can be overwritten safely by new generation-runs.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="GENERATED"/>
+			<enumeration value="ManuallyCreated"/>
+			<enumeration value="GeneratedAndManuallyAdapted"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="MEP"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The message exchange patterns.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="RequestResponse"/>
+			<enumeration value="RequestCallback"/>
+			<enumeration value="OneWay"/>
+			<enumeration value="Notification"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="PortTypeType"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The type of the portType.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="provider"/>
+			<enumeration value="consumer"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="OperationAccessCategory"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The access-category of the operation (read or write). This may have influence on the middleware concerning automatic repeatability.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="ReadOnly">
+				<annotation>
+					<documentation>
+						This access-category should just be set in cases where no writing to a persistent store containing business-data is made.
+						(operations having this access-category may be called repeatedly without *any* risk of data inconsistencies for business-data)
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Write">
+				<annotation>
+					<documentation>
+						This access-category should be set in cases where writing (with the same request-data) to a
+						persistent store containing business-data is the intent of the operation.
+						(operations having this access-category may or may not be called repeatedly depending on the provider's implementation)
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="WriteRepeatabilityEnsured">
+				<annotation>
+					<documentation>
+						This access-category should just be set in cases where writing repeatedly (with the same request-data) to a
+						persistent store containing business-data is possible.
+						(operations having this access-category may be called repeatedly because the provider's implementation allows this to do)
+						So this is a higher access-catgory than "Write".
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Unknown"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="Text">
+		<simpleContent>
+			<extension base="string">
+				<attribute ref="tns:lang" use="optional" default="en"/>
+				<attribute name="isHtml" use="optional" default="false"/> <!-- true means text contains html-tags -->
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="Description"> <!--  final="#all" -->
+		<simpleContent>
+			<restriction base="tns:Text">
+				<minLength value="50"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<simpleType name="Contact"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The contact data. Should be an e-mail URI like "mailto:mduerst@ifi.unizh.ch"
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="5"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="Change"> <!--  final="#all" -->
+		<simpleContent>
+			<extension base="tns:Text">
+				<attribute name="by" type="tns:Contact"/>
+				<attribute name="date" type="date" use="required"/>
+				<attribute name="predecessorVersion" type="tns:FullVersion"/> <!-- empty or same as "version" means initial -->
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="Comment"> <!--  final="#all" -->
+		<simpleContent>
+			<extension base="tns:Text">
+				<attribute name="by" type="tns:Contact"/>
+				<attribute name="date" type="date" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<simpleType name="GroupDomain"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The GDM (Group Domain Model) domain
+				Must be same value (case ignored) than in service namespace.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="3"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="GroupFunctionalComponent"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The GDM (Group Domain Model) functional component
+				Must be same value (case ignored) than in service namespace.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="3"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="GDMVersion"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The version - string of the gdm this services "domain" and "functional-component" is based on.
+				For example "1.3", "2.0". This attribute may be used by validators to check if the "domain" and "functional-component" exist in the version of the gdm.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="3"/>
+			<maxLength value="10"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="SoaGovernanceArea"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The soa governance area as specified in CSDG-document and the common service repository activities.
+				Must be same value (case ignored) than in service namespace.
+				currently defined "ghs" and "td" (for T-Deutschland)
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="2"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="Version"> <!--  final="#all" -->
+		<restriction base="string">
+			<pattern value="[0-9][0-9]\.[0-9][0-9]"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="FullVersion"> <!--  final="#all" -->
+		<restriction base="string">
+			<pattern value="[0-9][0-9]\.[0-9][0-9]\.[0-9][0-9][0-9]"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="Property"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				A (named) documentation-property.
+				Used to create lists of additional documentation values in a more formalized way than simple strings.
+				Please consider building the name by means of "." - separator to create namespaces (Don't use spaces within name)
+				The following property-prefixes are currently reserved:
+				"ghs."
+				"td."
+				"soabp."
+			</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="string">
+			  	<attribute name="name" type="string" use="required" />
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<group name="DocumentationCoreDescriptionInfoElements">
+		<annotation>
+			<documentation>
+				The main documentation-elements
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="description" type="tns:Description" nillable="false" minOccurs="1" maxOccurs="2">
+				<annotation>
+					<documentation>
+						The descriptions - first entry mandatory in english (lang="en").
+						The second (optional) in the national language
+						The description must contain the string "@TODO:DESCRIBE_ME" in case the description cannot be filled for some reason
+						to be able to filter out undescribed elements.
+					</documentation>
+				</annotation>
+			</element>
+			<element name="usage-preconditions" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						Any important and non obvious preconditions to be able to use the service.
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<!-- ****************************************************************** -->
+	<attributeGroup name="DocumentationResponsibiltyInfoAttributes">
+		<annotation>
+			<documentation>
+				The documentation-elements describing the responsibilty.
+			</documentation>
+		</annotation>
+		<attribute name="gdm-version" type="tns:GDMVersion" use="optional"/>
+		<attribute name="governance-area" type="tns:SoaGovernanceArea" use="required"/>
+		<attribute name="domain" type="tns:GroupDomain" use="required"/>
+		<attribute name="functional-component" type="tns:GroupFunctionalComponent" use="required"/>
+	</attributeGroup>
+	<!-- ****************************************************************** -->
+	<attributeGroup name="DocumentationVersionAttributes">
+			<attribute name="version" type="tns:FullVersion" use="required"/>
+			<attribute name="version-date" type="date" use="optional">
+				<annotation>
+					<documentation>
+						The date this version of the wsdl is created manually or by generation.
+					</documentation>
+				</annotation>
+			</attribute>
+	</attributeGroup>
+	<!-- ****************************************************************** -->
+	<group name="DocumentationSubsidiaryInfoElements">
+		<annotation>
+			<documentation>
+				The secondary documentation-elements
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="change" type="tns:Change" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="comment" type="tns:Comment" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="property" type="tns:Property" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="further-info" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="documentation-link" type="anyURI" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>
+						Any external documentation-references.
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<!-- ****************************************************************** -->
+	<group name="DocumentationFileInfoElements">
+		<annotation>
+			<documentation>
+				The core documentation-elements for files
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="kind-of-creation" type="tns:KindOfCreation" minOccurs="1" maxOccurs="1">
+				<annotation>
+					<documentation>
+						Must be set to "GENERATED" in case the wsdl is completely generated AND NOT manually adapted.
+						Must be set to "ManuallyCreated" or "GeneratedAndManuallyAdapted" in case of manual creation or manual adaption after creation !
+						In case "kind-of-creation" is "GENERATED" "generator" and "generator-version" should be set too.
+					</documentation>
+				</annotation>
+			</element>
+			<!--
+			The intention of following elements is basically to have traceability-links to the tools this wsdl is based on in case
+			"kind-of-creation" is "GENERATED" or "GeneratedAndManuallyAdapted".
+			-->
+			<element name="generator-application" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						A string indentifying the generator tool. May be same than "model-application".
+						For example "CEISeR" or "Innovator"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="generator-version" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						A string indentifying the generator-tool's version. May be same than "model-application-version".
+					</documentation>
+				</annotation>
+			</element>
+			<element name="model-application" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						A string indentifying the modelling-tool. May be same than "generator-application".
+						For example "CEISeR" or "Innovator"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="model-application-version" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						A string indentifying the modelling-tool's version. May be same than "generator-version".
+					</documentation>
+				</annotation>
+			</element>
+			<element name="model-reference" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						A string referencing the model this wsdl is based on.
+						In case of "CEISeR" this may be the CEISeR portTypes fully qalified name; in case of "Innovator" it may be an
+						URL pointing to the service-model.
+					</documentation>
+				</annotation>
+			</element>
+			<element name="model-version" type="string" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						A string indentifying the version of the model this wsdl is based on.
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</group>
+	<!-- ****************************************************************** -->
+	<complexType name="AbstractDocumentation"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The type to be used for documentation of the whole service in the abstract wsdl.
+			</documentation>
+		</annotation>
+		<sequence>
+			<group ref="tns:DocumentationCoreDescriptionInfoElements"/>
+			<element name="based-on-logical-service" minOccurs="0" maxOccurs="unbounded">
+					<annotation>
+						<documentation>
+							The reference to the logical service if and only if service-repositories for logical- and application- services are considered and
+							the described service is an application-service (a service which is really implemented).
+						</documentation>
+					</annotation>
+			</element>
+			<element name="designer" type="tns:Contact" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>
+						The contact data of the responsible service-designer(s).
+					</documentation>
+				</annotation>
+			</element>
+			<group ref="tns:DocumentationFileInfoElements"/>
+			<group ref="tns:DocumentationSubsidiaryInfoElements"/>
+			<element name="source" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="keywords" type="string" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>
+							comma or space separated list of essential keywords for this service.
+						</documentation>
+					</annotation>
+			</element>
+		</sequence>
+		<attributeGroup ref="tns:DocumentationVersionAttributes"/>
+		<attributeGroup ref="tns:DocumentationResponsibiltyInfoAttributes"/>
+		<attribute name="isLogicalService" type="boolean" use="optional" default="false">
+			<annotation>
+				<documentation>
+					The attribute is just required if service-repositories for logical- and application- services are considered.
+				</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+	<element name="service" type="tns:AbstractDocumentation"/>
+	<!-- ****************************************************************** -->
+	<complexType name="PortTypeDocumentation"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The type to be used for documentation of the portTypes of the wsdl.
+			</documentation>
+		</annotation>
+		<sequence>
+			<group ref="tns:DocumentationCoreDescriptionInfoElements"/>
+			<group ref="tns:DocumentationSubsidiaryInfoElements"/>
+			<element name="source" type="string" minOccurs="0" maxOccurs="1"/>
+		</sequence>
+		<attribute name="type" type="tns:PortTypeType" use="optional"/>
+		<attribute name="extendsPortType" type="string" use="optional">
+			<annotation>
+				<documentation>
+					This attribute must be set to the name of a portType this portType is derived from.
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="extendsPortTypeNamespace" type="anyURI" use="optional">
+			<annotation>
+				<documentation>
+					This attribute must be set to the targetNamespace the "extendsPortType" - portType belongs to.
+					If the attribute is NOT set it defaults to targetNamespace of the wsdl.
+				</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+	<element name="porttype" type="tns:PortTypeDocumentation"/>
+	<!-- ****************************************************************** -->
+	<complexType name="ConcreteDocumentation"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The type for documentations in the concrete wsdl.
+			</documentation>
+		</annotation>
+		<sequence>
+			<group ref="tns:DocumentationFileInfoElements"/>
+			<group ref="tns:DocumentationSubsidiaryInfoElements"/>
+		</sequence>
+		<attributeGroup ref="tns:DocumentationVersionAttributes"/>
+	</complexType>
+	<element name="transport" type="tns:ConcreteDocumentation"/>
+	<!-- ****************************************************************** -->
+	<complexType name="OperationDocumentation"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The type for documentations of operations in the abstract wsdl.
+			</documentation>
+		</annotation>
+		<sequence>
+			<group ref="tns:DocumentationCoreDescriptionInfoElements"/>
+			<element name="property" type="tns:Property" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="further-info" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="keywords" type="string" minOccurs="0" maxOccurs="1">
+					<annotation>
+						<documentation>
+							comma or space separated list of essential keywords for this operation.
+						</documentation>
+					</annotation>
+			</element>
+		</sequence>
+		<attribute name="mep" type="tns:MEP" use="required"/>
+		<attribute name="access" type="tns:OperationAccessCategory" use="required"/>
+	</complexType>
+	<element name="operation" type="tns:OperationDocumentation"/>
+	<!-- ****************************************************************** -->
+	<complexType name="CallbackOperationDocumentation"> <!--  final="#all" -->
+		<annotation>
+			<documentation>
+				The type for documentations for the callback-operations in the abstract wsdl - consumer portType.
+				Note:
+				This type must just be used in case the naming-conventions for callback-operations of the standard
+				are softened from a *must* to a *should* in the future for some reasons.
+			</documentation>
+		</annotation>
+		<attribute name="for" type="string" use="required">
+			<annotation>
+				<documentation>
+					This attribute must be set to the name of an *existing* operation of the provider-portType this callback operation belongs to.
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="ofProviderPortType" type="string" use="optional">
+			<annotation>
+				<documentation>
+					This attribute must be set to the name of an *existing* provider portType the callback operation defined by "for" belongs to.
+					If the attribute is NOT set it defaults to the one and only provider-portType's' name of the wsdl.
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="inNamespace" type="anyURI" use="optional">
+			<annotation>
+				<documentation>
+					This attribute must be set to the targetNamespace the "ofProviderPortType" - portType belongs to.
+					If the attribute is NOT set it defaults to targetNamespace of the wsdl.
+				</documentation>
+			</annotation>
+		</attribute>
+	</complexType>
+	<element name="callback-operation" type="tns:CallbackOperationDocumentation"/>
+	<element name="faultcallback-operation" type="tns:CallbackOperationDocumentation"/>
+	<!-- ****************************************************************** -->
+</schema>

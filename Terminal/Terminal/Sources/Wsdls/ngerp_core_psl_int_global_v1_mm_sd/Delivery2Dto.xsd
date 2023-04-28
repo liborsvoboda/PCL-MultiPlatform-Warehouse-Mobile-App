@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			      xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:complexType name="Delivery2Dto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Delivery get by filter/get changes response</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+				<xsd:annotation>
+					<xsd:documentation>Action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Id">
+				<xsd:annotation>
+					<xsd:documentation>Delivery Id</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Header" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Delivery header</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TypeId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Type id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="CategoryId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Category</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="1"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="PriorityId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Priority</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="2"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="CreatedAt" type="xsd:dateTime" minOccurs="0"/>
+						<xsd:element name="ChangedAt" type="bomtypesCommon:NullableDateTime" minOccurs="0"/>
+						<xsd:element name="ShippingConditionId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shipping condition</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="2"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ExternalNumber" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>External number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="35"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ShippingOrReceiveingPointId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shipping or receiving point</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="IncotermsPart1Id" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Incoterms part 1 id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="SidsAll" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shows that all SIDs are provided</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Sids" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>SIDs.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Sid">
+										<xsd:annotation>
+											<xsd:documentation>SID.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="30"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PartnersAll" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shows that all partners provided.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Partners" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Partners</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action for particular partner</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="RoleId">
+										<xsd:annotation>
+											<xsd:documentation>Partner role</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="PartnerNumber">
+										<xsd:annotation>
+											<xsd:documentation>Partner Id</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="12"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Address" type="bomtypesMasterData:AddressDto" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Partner address.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="DeliveryDate" type="bomtypesCommon:NullableDateTime" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Deliveyr</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ItemsAll" type="xsd:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Shows that items node contains all existing items of delivery</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Items" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Delivery item</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+							<xsd:annotation>
+								<xsd:documentation>Action</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Number">
+							<xsd:annotation>
+								<xsd:documentation>Item number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ParentNumber">
+							<xsd:annotation>
+								<xsd:documentation>Parent item number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="CategoryId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Item category</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="MaterialId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Material id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="18"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Description" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Description</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Quantity" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Quantity</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:decimal">
+									<xsd:totalDigits value="13"/>
+									<xsd:fractionDigits value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="UnitId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Measure unit</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="StorageLocationCode" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Storage location</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="PlantId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Plant</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="NetWeight" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>NetWeight</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:decimal">
+									<xsd:totalDigits value="15"/>
+									<xsd:fractionDigits value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="GrossWeight" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>GrossWeight</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:decimal">
+									<xsd:totalDigits value="15"/>
+									<xsd:fractionDigits value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="WeightUnitId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Weight measure unit</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Volume" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Volume</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:decimal">
+									<xsd:totalDigits value="15"/>
+									<xsd:fractionDigits value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="VolumeUnitId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Volume measure unit</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="AvailabilityDate" type="xsd:date" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Material staging/ availability date</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="BatchNumber" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Batch number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ValuationTypeId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Valuation type</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="StockTypeId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Stock type id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="1"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="SerialNumbersAll" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shows that serial numbers node contains all existing serial numbers of delivery</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="SerialNumbers" minOccurs="0" maxOccurs="unbounded" >
+							<xsd:annotation>
+								<xsd:documentation>Serial numbers</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="UniqueItemId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Unique item identifier. UII</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="72"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="SidsAll" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shows that all SIDs are provided</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Sids" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>SIDs.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Sid">
+										<xsd:annotation>
+											<xsd:documentation>SID.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="30"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ReferenceDocumentId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Reference document id.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ReferenceDocumentItemNumber" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Reference document item number.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="HandlingUnitsAll" type="xsd:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Shows that items node contains all existing items of delivery</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HandlingUnits" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="EN">Handling units</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+							<xsd:annotation>
+								<xsd:documentation>Action</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Id">
+							<xsd:annotation>
+								<xsd:documentation>Id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Header" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Handling unit header.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ExternalNumber" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>External Handling Unit Identification</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="20"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="ShippingOrReceivingPointId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Shipping Point/Receiving Point</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="LoadingPoint" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Loading Point</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="PackagingMaterialId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Packaging material</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="18"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="CreatedAt" type="xsd:dateTime" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Created at</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="ChangedAt" type="bomtypesCommon:NullableDateTime" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Changed at</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="NetWeight" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>NetWeight</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:decimal">
+												<xsd:totalDigits value="15"/>
+												<xsd:fractionDigits value="3"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="GrossWeight" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>GrossWeight</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:decimal">
+												<xsd:totalDigits value="15"/>
+												<xsd:fractionDigits value="3"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="TareWeight" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>TareWeight</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:decimal">
+												<xsd:totalDigits value="15"/>
+												<xsd:fractionDigits value="3"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="WeightUnitId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Weight measure unit</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="3"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ItemsAll" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Shows that items node contains all existing items handling unit</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Items" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="EN">Delivery item</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+										<xsd:annotation>
+											<xsd:documentation>Action</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Number">
+										<xsd:annotation>
+											<xsd:documentation>External Handling Unit Identification</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="6"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="ContentTypeId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Type of Handling-unit Item Content</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="1"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="DeliveryId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Delivery id</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="10"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="DeliveryItemNumber" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Delivery item number</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="6"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="LowerLevelHandlingUnitId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Lower-level handling unit</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="10"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Quantity" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Packed quantity.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:decimal">
+												<xsd:totalDigits value="15"/>
+												<xsd:fractionDigits value="3"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="UnitId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Packed quantity unit</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="3"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

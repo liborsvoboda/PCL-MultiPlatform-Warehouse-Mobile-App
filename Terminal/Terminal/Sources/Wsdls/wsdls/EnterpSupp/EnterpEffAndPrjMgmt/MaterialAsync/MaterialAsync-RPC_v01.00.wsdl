@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MaterialAsync" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00">
+	<documentation>
+		<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+		<doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-17" isLogicalService="true">
+			<doc:description>
+Updated on 04.11.2017 12:24:49, UTC
+15694	26.09.2017 11:52:08	Minor impreovements
+15486	07.09.2017 15:34:33	No more extensibility
+14990	07.08.2017 10:14:56	&lt;xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/&gt;
+
+Updated on 01.06.2017 10:45:52, UTC
+14117	01.06.2017 10:04:33	Version fix. MOM deleted
+
+Updated on 17.05.2017 14:24:44, UTC
+13939	17.05.2017 14:22:20	Dto suffix for bussiness types
+13924	17.05.2017 08:05:23	Renaming
+13923	17.05.2017 07:44:29	Dto suffix
+
+Updated on 10.05.2017 08:59:11, UTC
+13608	12.04.2017 13:52:54	Minor correction
+13607	12.04.2017 11:58:27	Structure fix
+13606	12.04.2017 11:09:34	Replenishment dates
+13605	12.04.2017 09:17:18	Missing operation
+13600	12.04.2017 08:31:54	MaterialAsync wsdl
+			</doc:description>
+			<doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+			<doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+			<doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2014-11-25" doc:lang="en">15694</doc:change>
+		</doc:service>
+	</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00/types">
+			<!-- ****************************************************************** -->
+			<xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+			<xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00/types" schemaLocation="MaterialAsync_v01.00.xsd" />
+			<!-- ****************************************************************** -->
+			<xsd:element name="getByFilterAsync" type="types:GetByFilterAsyncRequestType" />
+			<xsd:element name="getByFilterAsyncCallback" type="types:GetByFilterAsyncResponseType" />
+			<xsd:element name="getByFilterAsyncFault" type="types:GetByFilterAsyncFaultType" />
+			<xsd:element name="getChangesAsync" type="types:GetChangesAsyncRequestType" />
+			<xsd:element name="getChangesAsyncCallback" type="types:GetChangesAsyncResponseType" />
+			<xsd:element name="getChangesAsyncFault" type="types:GetChangesAsyncFaultType" />
+			<xsd:element name="checkAvailabilityAsync" type="types:CheckAvailabilityAsyncRequestType" />
+			<xsd:element name="checkAvailabilityAsyncCallback" type="types:CheckAvailabilityAsyncResponseType" />
+			<xsd:element name="checkAvailabilityAsyncFault" type="types:CheckAvailabilityAsyncFaultType" />
+			<xsd:element name="getStockByVendorAsync" type="types:GetStockByVendorAsyncRequestType" />
+			<xsd:element name="getStockByVendorAsyncCallback" type="types:GetStockByVendorAsyncResponseType" />
+			<xsd:element name="getStockByVendorAsyncFault" type="types:GetStockByVendorAsyncFaultType" />
+			<xsd:element name="getBomStructureSimplifiedAsync" type="types:GetBomStructureSimplifiedAsyncRequestType" />
+			<xsd:element name="getBomStructureSimplifiedAsyncCallback" type="types:GetBomStructureSimplifiedAsyncResponseType" />
+			<xsd:element name="getBomStructureSimplifiedAsyncFault" type="types:GetBomStructureSimplifiedAsyncFaultType" />
+			<xsd:element name="getStockLevelsAsync" type="types:GetStockLevelsAsyncRequestType" />
+			<xsd:element name="getStockLevelsAsyncCallback" type="types:GetStockLevelsAsyncResponseType" />
+			<xsd:element name="getStockLevelsAsyncFault" type="types:GetStockLevelsAsyncFaultType" />
+		</xsd:schema>
+	</types>
+	<!-- ****************************************************************** -->
+	<!-- Messages : -->
+	<!-- ****************************************************************** -->
+	<message name="GetByFilterAsyncRequest">
+		<part name="parameters" element="tns:getByFilterAsync" />
+	</message>
+	<message name="GetByFilterAsyncResponse">
+		<part name="parameters" element="tns:getByFilterAsyncCallback" />
+	</message>
+	<message name="GetByFilterAsyncFault">
+		<part name="parameters" element="tns:getByFilterAsyncFault" />
+	</message>
+	<message name="CheckAvailabilityAsyncRequest">
+		<part name="parameters" element="tns:checkAvailabilityAsync" />
+	</message>
+	<message name="CheckAvailabilityAsyncResponse">
+		<part name="parameters" element="tns:checkAvailabilityAsyncCallback" />
+	</message>
+	<message name="CheckAvailabilityAsyncFault">
+		<part name="parameters" element="tns:checkAvailabilityAsyncFault" />
+	</message>
+	<message name="GetChangesAsyncRequest">
+		<part name="parameters" element="tns:getChangesAsync" />
+	</message>
+	<message name="GetChangesAsyncResponse">
+		<part name="parameters" element="tns:getChangesAsyncCallback" />
+	</message>
+	<message name="GetChangesAsyncFault">
+		<part name="parameters" element="tns:getChangesAsyncFault" />
+	</message>
+	<message name="GetStockByVendorAsyncRequest">
+		<part name="parameters" element="tns:getStockByVendorAsync" />
+	</message>
+	<message name="GetStockByVendorAsyncResponse">
+		<part name="parameters" element="tns:getStockByVendorAsyncCallback" />
+	</message>
+	<message name="GetStockByVendorAsyncFault">
+		<part name="parameters" element="tns:getStockByVendorAsyncFault" />
+	</message>
+	<message name="GetBomStructureSimplifiedAsyncRequest">
+		<part name="parameters" element="tns:getBomStructureSimplifiedAsync" />
+	</message>
+	<message name="GetBomStructureSimplifiedAsyncResponse">
+		<part name="parameters" element="tns:getBomStructureSimplifiedAsyncCallback" />
+	</message>
+	<message name="GetBomStructureSimplifiedAsyncFault">
+		<part name="parameters" element="tns:getBomStructureSimplifiedAsyncFault" />
+	</message>
+	<message name="GetStockLevelsAsyncRequest">
+		<part name="parameters" element="tns:getStockLevelsAsync" />
+	</message>
+	<message name="GetStockLevelsAsyncResponse">
+		<part name="parameters" element="tns:getStockLevelsAsyncCallback" />
+	</message>
+	<message name="GetStockLevelsAsyncFault">
+		<part name="parameters" element="tns:getStockLevelsAsyncFault" />
+	</message>  
+	<message name="EmptyTechnicalResponse">
+		<part name="parameters" element="csdg:empty" />
+	</message>
+	<message name="TechnicalFault">
+		<part name="parameters" element="csdg:technicalFault" />
+	</message>
+	<!-- ****************************************************************** -->
+	<!-- PortTypes : -->
+	<!-- ****************************************************************** -->
+	<!-- Provider: -->
+	<portType name="MaterialAsync">
+		<operation name="getByFilterAsync">
+			<documentation>
+				<doc:operation mep="RequestCallback" access="ReadOnly">
+					<doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "getByFilterAsync" -----------------------------
+					</doc:description>
+				</doc:operation>
+			</documentation>
+			<input message="tns:GetByFilterAsyncRequest" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="checkAvailabilityAsync">
+			<documentation>
+				<doc:operation mep="RequestCallback" access="ReadOnly">
+					<doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "checkAvailabilityDocumentAsync" -----------------------------
+					</doc:description>
+				</doc:operation>
+			</documentation>
+			<input message="tns:CheckAvailabilityAsyncRequest" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getChangesAsync">
+			<documentation>
+				<doc:operation mep="RequestCallback" access="ReadOnly">
+					<doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "getChangesAsync" -----------------------------
+					</doc:description>
+				</doc:operation>
+			</documentation>
+			<input message="tns:GetChangesAsyncRequest" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getStockByVendorAsync">
+			<documentation>
+				<doc:operation mep="RequestCallback" access="ReadOnly">
+					<doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "getStockByVendorAsync" -----------------------------
+					</doc:description>
+				</doc:operation>
+			</documentation>
+			<input message="tns:GetStockByVendorAsyncRequest" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getBomStructureSimplifiedAsync">
+			<documentation>
+				<doc:operation mep="RequestCallback" access="ReadOnly">
+					<doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "GetBomStructureSimplified" -----------------------------
+					</doc:description>
+				</doc:operation>
+			</documentation>
+			<input message="tns:GetBomStructureSimplifiedAsyncRequest" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getStockLevelsAsync">
+			<documentation>
+				<doc:operation mep="RequestCallback" access="ReadOnly">
+					<doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "getStockByVendorAsync" -----------------------------
+					</doc:description>
+				</doc:operation>
+			</documentation>
+			<input message="tns:GetStockLevelsAsyncRequest" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+	</portType>
+	<!-- ****************************************************************** -->
+	<!-- Consumer : -->
+	<portType name="MaterialAsyncConsumer">
+		<operation name="getByFilterAsyncCallback">
+			<input message="tns:GetByFilterAsyncResponse" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getByFilterAsyncFault">
+			<input message="tns:GetByFilterAsyncFault" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="checkAvailabilityAsyncCallback">
+			<input message="tns:CheckAvailabilityAsyncResponse" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="checkAvailabilityAsyncFault">
+			<input message="tns:CheckAvailabilityAsyncFault" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getChangesAsyncCallback">
+			<input message="tns:GetChangesAsyncResponse" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getChangesAsyncFault">
+			<input message="tns:GetChangesAsyncFault" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getStockByVendorAsyncCallback">
+			<input message="tns:GetStockByVendorAsyncResponse" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getStockByVendorAsyncFault">
+			<input message="tns:GetStockByVendorAsyncFault" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getBomStructureSimplifiedAsyncCallback">
+			<input message="tns:GetBomStructureSimplifiedAsyncResponse" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getBomStructureSimplifiedAsyncFault">
+			<input message="tns:GetBomStructureSimplifiedAsyncFault" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getStockLevelsAsyncCallback">
+			<input message="tns:GetStockLevelsAsyncResponse" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+		<operation name="getStockLevelsAsyncFault">
+			<input message="tns:GetStockLevelsAsyncFault" />
+			<output message="tns:EmptyTechnicalResponse" />
+			<fault message="tns:TechnicalFault" name="TechnicalFault" />
+		</operation>
+	</portType>
+</definitions>

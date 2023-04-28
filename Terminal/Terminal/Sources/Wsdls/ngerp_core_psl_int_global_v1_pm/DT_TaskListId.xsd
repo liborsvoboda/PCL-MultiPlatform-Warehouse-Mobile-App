@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:complexType name="DT_TaskListId">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Task list id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TypeId">
+        <xsd:annotation>
+          <xsd:documentation>Type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Group">
+        <xsd:annotation>
+          <xsd:documentation>Group</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="GroupCounter">
+        <xsd:annotation>
+          <xsd:documentation>Counter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+	  <!-- It seems like that this field is required for some internal SAP versionin and as reference to task list is never used -->
+      <!--<xsd:element name="InternalCounter" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Internal counter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>-->
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

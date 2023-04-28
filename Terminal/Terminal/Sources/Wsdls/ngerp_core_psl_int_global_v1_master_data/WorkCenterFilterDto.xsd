@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+			xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM">
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:complexType name="WorkCenterFilterDto">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Filter for work centers</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Criterions" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Search criterions.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PlantAndCodes" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Ids.</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="PlantId" minOccurs="0">
+                    <xsd:annotation>
+                      <xsd:documentation>Plants</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="4"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="Code" minOccurs="0">
+                    <xsd:annotation>
+                      <xsd:documentation>COde</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="10"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReturnData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Which parts of work center to return. If not provided - return everything</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Header" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return header data</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CostCenterAssignments" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return cost center assignments</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

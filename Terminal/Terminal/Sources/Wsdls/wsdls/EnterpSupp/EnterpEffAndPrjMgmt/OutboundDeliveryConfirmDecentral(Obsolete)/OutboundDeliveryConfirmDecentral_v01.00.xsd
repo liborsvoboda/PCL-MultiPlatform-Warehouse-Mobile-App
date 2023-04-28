@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/OutboundDeliveryConfirmDecentral_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/OutboundDeliveryConfirmDecentral_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+  xmlns:bomtypesSD="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD"
+  xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+		contains datatype-definitions specific for the OutboundDeliveryConfirmDecentral-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<!-- Place your imports here, if required -->
+  <import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD" schemaLocation="../../../../ngerp_core_psl_int_global_v1_sd/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../../../../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<!-- ****************************************************************** -->
+	<complexType name="ConfirmDecentralAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data" type="bomtypesSD:DT_OutboundDeliveryConfirmDecentralRequest"/>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="ConfirmDecentralAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data" type="bomtypesCommon:DT_Response"/>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="ConfirmDecentralAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/> <!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="DT_OutboundDeliveryDistributionData.xsd"></include>
+  <include schemaLocation="DT_OutboundDelivery.xsd"></include>
+  <include schemaLocation="DT_Shipment.xsd"></include>
+  <include schemaLocation="DT_ShipmentDistributionData.xsd"></include>
+  <include schemaLocation="DT_OutboundDeliveryConfirmDecentralRequest.xsd"></include>
+  <include schemaLocation="SalesOrderDto.xsd"></include>
+  <include schemaLocation="SalesOrderChangeDto.xsd"></include>
+  <include schemaLocation="SalesOrderFilterDto.xsd"></include>
+  <include schemaLocation="DeliveryDto.xsd"></include>
+  <include schemaLocation="DeliveryFilterDto.xsd"></include>
+  <include schemaLocation="DeliveryChangeDto.xsd"></include>
+</schema>

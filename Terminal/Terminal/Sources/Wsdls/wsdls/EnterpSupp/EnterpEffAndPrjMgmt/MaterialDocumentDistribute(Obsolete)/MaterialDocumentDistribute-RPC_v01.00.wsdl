@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MaterialDocumentDistribute" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentDistribute_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentDistribute_v01.00">
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-17" isLogicalService="true">
+      <doc:description>
+Updated on 01.06.2017 10:45:52, UTC
+14117	01.06.2017 10:04:33	Version fix. MOM deleted
+
+Updated on 17.05.2017 14:24:44, UTC
+13939	17.05.2017 14:22:20	Dto suffix for bussiness types
+
+Updated on 10.05.2017 08:59:11, UTC
+13855	10.05.2017 08:58:13	Corrections for CSDG validator
+13550	06.04.2017 11:54:40	Minor corrections
+
+Updated on 21.07.2016 16:40:48, UTC
+9582	21.07.2016 16:40:04	New fields added(defect):
+-	ReceivingIssuingPlantId
+-	ReceivingIssuingStorageLocation
+-	ReceivingIssuingBatchNumber
+-	DebitCreditIndicator
+
+Updated on 04.03.2016 09:06:52, UTC
+7259	20.02.2016 15:36:53	Changes for material documents
+6987	12.02.2016 15:07:06	Manufacturer serial number deleted
+6982	12.02.2016 14:27:16	UII
+
+Updated on 09.09.2015 17:21:37, UTC
+6080	09.09.2015 17:21:05	Occurrence changed from 0..1 to 1..1 for base xsd types. Pattern \d+ removed
+
+Updated on 14.07.2015 13:34:39, UTC
+5814	14.07.2015 13:33:51	New fields added
+
+Updated on 27.05.2015 18:40:28, UTC
+5493	27.05.2015 18:40:19	Dummy change to test wsdl versioning
+
+Updated on 27.05.2015 18:36:12, UTC
+5480	27.05.2015 09:20:32	Backward compatible changes. New structure extracted
+5442	20.05.2015 16:01:55	Byte order mark deleted. utf-8 -&gt; UTF-8
+5437	20.05.2015 09:35:37	Version updated for wsdls for 15C
+5412	15.05.2015 19:53:07	Serial number fields renamed
+5402	14.05.2015 10:35:31	Serial numbers added for material documents
+5372	11.05.2015 13:47:22	Serial numbers
+4509	04.12.2014 13:10:40	Changes to material document interfaces and to material interfaces
+4500	03.12.2014 17:14:29	Minor fixes + new TD
+4272	12.11.2014 16:39:27	New services were added
+3961	16.10.2014 16:05:56	Moving toward csdg compliance
+3693	24.09.2014 15:13:12	SoaBP wsdls
+
+				-------------------------- @TODO:DESCRIBE_ME - Service "MaterialDistribute" -----------------------------
+			</doc:description>
+      <doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+      <doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2014-10-20" doc:lang="en">14117</doc:change>
+    </doc:service>
+  </documentation>
+  <types>
+    <xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentDistribute_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentDistribute_v01.00/types">
+      <!-- ****************************************************************** -->
+      <xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+      <xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentDistribute_v01.00/types" schemaLocation="MaterialDocumentDistribute_v01.00.xsd" />
+      <!-- ****************************************************************** -->
+      <xsd:element name="distributeChangesAsync" type="types:DistributeChangesAsyncType" />
+    </xsd:schema>
+  </types>
+  <!-- ****************************************************************** -->
+  <!-- Messages : -->
+  <!-- ****************************************************************** -->
+  <message name="DistributeChangesAsync">
+    <part name="parameters" element="tns:distributeChangesAsync" />
+  </message>
+  <message name="EmptyTechnicalResponse">
+    <part name="parameters" element="csdg:empty" />
+  </message>
+  <message name="TechnicalFault">
+    <part name="parameters" element="csdg:technicalFault" />
+  </message>
+  <!-- ****************************************************************** -->
+  <!-- PortTypes : -->
+  <!-- ****************************************************************** -->
+  <!-- Consumer : -->
+  <portType name="MaterialDocumentDistributeConsumer">
+    <operation name="distributeChangesAsync">
+      <documentation>
+        <doc:operation mep="Notification" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "distributeChangesAsync" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:DistributeChangesAsync" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+</definitions>

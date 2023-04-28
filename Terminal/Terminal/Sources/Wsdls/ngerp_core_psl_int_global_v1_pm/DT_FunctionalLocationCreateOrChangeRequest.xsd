@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" 
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+            xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+>  
+    <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+    <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+    <xsd:complexType name="DT_FunctionalLocationCreateOrChangeRequest">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="EN">Functional location create and change request</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="FunctionalLocations" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Functional location data</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Action" type="bomtypesCommon:DT_Action">
+                            <xsd:annotation>
+                                <xsd:documentation>Action</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="Id">
+                            <xsd:annotation>
+                                <xsd:documentation>Functional Location</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="30"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Header" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Functional location data</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="CategoryId" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Functional location category</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="1"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="StructureIndicator" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Structure indicator</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="5"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="MaintenancePlanningPlantId" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Maintenance Planning Plant</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="4"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="MaintenancePlantId" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Maintenance Plant</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="4"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="CompanyId" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Company</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="4"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="Room" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Room</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="8"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="Descriptions" minOccurs="0" maxOccurs="unbounded">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Description</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="Action" type="bomtypesCommon:DT_Action">
+                                                    <xsd:annotation>
+                                                        <xsd:documentation>Action</xsd:documentation>
+                                                    </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="Language">
+                                                    <xsd:annotation>
+                                                        <xsd:documentation>Language</xsd:documentation>
+                                                    </xsd:annotation>
+                                                    <xsd:simpleType>
+                                                        <xsd:restriction base="xsd:string">
+                                                            <xsd:maxLength value="2"/>
+                                                        </xsd:restriction>
+                                                    </xsd:simpleType>
+                                                </xsd:element>
+                                                <xsd:element name="Text" minOccurs="0">
+                                                    <xsd:annotation>
+                                                        <xsd:documentation>Description of functional location</xsd:documentation>
+                                                    </xsd:annotation>
+                                                    <xsd:simpleType>
+                                                        <xsd:restriction base="xsd:string">
+                                                            <xsd:maxLength value="40"/>
+                                                        </xsd:restriction>
+                                                    </xsd:simpleType>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="SuperiorFuncationalLocationId" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Superior functional location id</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="30"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="OwnershipIndicatorId" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Ownership indicator id</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="1"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="AOFunction" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>AO function</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:simpleType>
+                                            <xsd:restriction base="xsd:string">
+                                                <xsd:maxLength value="30"/>
+                                            </xsd:restriction>
+                                        </xsd:simpleType>
+                                    </xsd:element>
+                                    <xsd:element name="EquipmentAllowed" type="xsd:boolean" minOccurs="0">
+                                        <xsd:annotation>
+                                            <xsd:documentation>Installation of equipment is allowed</xsd:documentation>
+                                        </xsd:annotation>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>              
+                        </xsd:element>
+                        <xsd:element name="Address" minOccurs="0" type="bomtypesMasterData:AddressCreateOrChangeData">
+                            <xsd:annotation>
+                                <xsd:documentation>Address</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

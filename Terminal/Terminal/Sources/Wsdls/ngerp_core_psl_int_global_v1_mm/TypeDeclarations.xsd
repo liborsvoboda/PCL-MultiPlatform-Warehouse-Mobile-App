@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+  xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="TBatchNumber">
+		<xsd:annotation> 
+			<xsd:documentation>
+				Batch number
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TReservationHeaderId">
+		<xsd:annotation> 
+			<xsd:documentation>
+				Reservation header id
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TReservationItemNumber">
+		<xsd:annotation> 
+			<xsd:documentation>
+				Reservation item number
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TReservationRecordType">
+		<xsd:annotation> 
+			<xsd:documentation>
+				Reservation record type
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+</xsd:schema>

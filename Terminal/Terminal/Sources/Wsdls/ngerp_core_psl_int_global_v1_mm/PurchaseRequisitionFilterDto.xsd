@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+			xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM">
+	<xsd:complexType name="PurchaseRequisitionFilterDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Filter for purchase requisition</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Criterions" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Search criterions.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Ids" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Ids.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReturnData" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Which parts of order data to return. If not provided - return only id</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Header" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return header</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Items" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return items</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>				
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"			
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM">
+  <xsd:complexType name="MaterialGetByFilterRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Request to get materials by filter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="MaterialIds" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Material ids</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="18"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element> 
+      <xsd:element name="ReturnData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Which parts of order data to return. If not provided - return everything</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Compatibility" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return compatibility data</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

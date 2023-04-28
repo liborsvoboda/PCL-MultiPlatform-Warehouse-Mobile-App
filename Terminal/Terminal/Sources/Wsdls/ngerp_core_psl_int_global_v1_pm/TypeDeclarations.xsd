@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+  xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="TOrderId">
+    <xsd:annotation>
+      <xsd:documentation>
+        Order id.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="12"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

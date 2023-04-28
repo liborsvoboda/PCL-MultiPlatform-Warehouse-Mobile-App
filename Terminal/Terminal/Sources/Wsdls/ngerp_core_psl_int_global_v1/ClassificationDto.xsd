@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:include schemaLocation="DT_Action.xsd"/>
+  <xsd:complexType name="ClassificationDto">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Classification value</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Action" type="DT_Action">
+        <xsd:annotation>
+          <xsd:documentation>Action</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Selector">
+        <xsd:annotation>
+          <xsd:documentation>Concatenated string  - "ClassType/ClassNmae/CharacteristicName".</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="53"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Value" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+            External system should already know the type of each characteristic.
+            Values formatted according to following rules:
+            Date - like xsd date in xml messages with UTC timezone,
+            Integer - as string,
+            Numerics - like xsd numeric,
+          </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

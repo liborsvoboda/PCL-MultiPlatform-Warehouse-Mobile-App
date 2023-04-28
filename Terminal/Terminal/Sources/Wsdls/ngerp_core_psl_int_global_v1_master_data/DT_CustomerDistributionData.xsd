@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:include schemaLocation="DT_Address.xsd"/>
+  <xsd:complexType name="DT_CustomerDistributionData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Customer distribution data</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CreatedOrUpdated" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Created or update records</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Id">
+              <xsd:annotation>
+                <xsd:documentation>Customer id</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Header" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Header</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Name">
+                    <xsd:annotation>
+                      <xsd:documentation>Name</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="160"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="Address" minOccurs="0" type="DT_Address">
+                    <xsd:annotation>
+                      <xsd:documentation>Customer address</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="IsDeleted" type="xsd:boolean">
+                    <xsd:annotation>
+                      <xsd:documentation>Is deleted</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="PartnerFunctions" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Partner functions</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="SalesOrganizationId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Sales organization id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="4"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="DistributionChannelId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Distribution channel id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="DivisionId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Division id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="RoleId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Role id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="Counter">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Partner counter</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="\d+"/>
+                        <xsd:maxLength value="3"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="SalesData" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Sales data</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="SalesOrganizationId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Sales organization id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="4"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="DistributionChannelId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Distribution channel id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="DivisionId">
+                    <xsd:annotation>
+                      <xsd:documentation>Key field + customer id. Division id</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="DeliveryPriority">
+                    <xsd:annotation>
+                      <xsd:documentation>The delivery priority assigned to an item</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="\d+"/>
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="ShippingConditionsId">
+                    <xsd:annotation>
+                      <xsd:documentation>General shipping strategy for the delivery of goods from the vendor to the customer.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="2"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="PartialDeliveryAtItemLevel">
+                    <xsd:annotation>
+                      <xsd:documentation>Specifies whether the customer requires full or partial delivery for the item.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="1"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="MaximumPartialDeliveries">
+                    <xsd:annotation>
+                      <xsd:documentation>The maximum number of partial deliveries you can make (including the first delivery) to satisfy the order quantity for an item.</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:integer">
+                        <xsd:minInclusive value="0"/>
+                        <xsd:maxInclusive value="9"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="CompleteDeliveryRequiredByLaw" type="xsd:boolean">
+                    <xsd:annotation>
+                      <xsd:documentation>Complete delivery defined for each sales order</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="IsDeleted" type="xsd:boolean">
+                    <xsd:annotation>
+                      <xsd:documentation>Is deleted</xsd:documentation>
+                    </xsd:annotation>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

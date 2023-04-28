@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" 
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>  
+  <xsd:include schemaLocation="DT_MaterialDocumentHeader.xsd"/>
+  <xsd:include schemaLocation="DT_MaterialDocumentItem.xsd"/>
+  <xsd:include schemaLocation="DT_MaterialDocumentId.xsd"/>
+  <xsd:include schemaLocation="MaterialDocumentSerialNumber.xsd"/>
+  <xsd:complexType name="DT_MaterialDocumentGetByFilterResponse">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Response to getting material documents by filter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Processing message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MaterialDocuments" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Material documents</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Id" type="DT_MaterialDocumentId">
+              <xsd:annotation>
+                <xsd:documentation>Document id</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Header" type="DT_MaterialDocumentHeader" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Header</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Items" type="DT_MaterialDocumentItem" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Items</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="SerialNumbers" minOccurs="0" maxOccurs="unbounded" type="MaterialDocumentSerialNumber">
+              <xsd:annotation>
+                <xsd:documentation>Serial numbers.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

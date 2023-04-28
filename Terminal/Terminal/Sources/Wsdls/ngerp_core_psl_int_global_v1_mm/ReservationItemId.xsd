@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="ReservationItemId">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Reservation item id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="HeaderId">
+        <xsd:annotation>
+          <xsd:documentation>Reservation header id</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ItemNumber">
+        <xsd:annotation>
+          <xsd:documentation>Item number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4"/>
+          </xsd:restriction>
+        </xsd:simpleType>        
+      </xsd:element>
+      <xsd:element name="RecordType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Record type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">            
+            <xsd:maxLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

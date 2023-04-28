@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/test"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:complexType name="GenericResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Response</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:integer">
+				<xsd:annotation>
+					<xsd:documentation>Id</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Messages</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ResponseData" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Response data</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

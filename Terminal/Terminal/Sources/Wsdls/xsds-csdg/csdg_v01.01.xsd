@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://schemas.telekom.net/csdg_v01.01"
+	xmlns:tns="http://schemas.telekom.net/csdg_v01.01"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.01.004">
+	<!--
+		!! @AUTHORS:
+		- CHANGES HERE WILL POSSIBLY BREAK A LOT OF AGREEMENTS
+		- INCREMENT VERSION NUMBER AFTER CHANGES
+		!!
+	-->
+	<annotation>
+		<documentation>
+			contains data type definitions used in all wsdl-files which are created according to CSDG rules
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCMessageId"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				An unique message-id; a UUID should be used for this.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="5"/>
+			<maxLength value="256"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCSystem"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				Describes any system or subsystem; it may be the tcp-address or any other string describing a node.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="5"/>
+			<maxLength value="256"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCTimestampUTC"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				UTC -timestamp - example: "2010-12-31T23:45:58.123Z" - note the "Z"
+			</documentation>
+		</annotation>
+		<restriction base="dateTime">
+			<pattern value="\d{4}-[0-1]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-6]\d.\d{3}Z"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCTimestampOffset"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The Offset for a timestamp
+			</documentation>
+		</annotation>
+		<restriction base="integer">
+			<xsd:minInclusive value="0"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCReplyState"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The technically required state to be transported especially in case of message exchange pattern Request/Callback.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="20000"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TCMessagePriority">
+		<annotation>
+			<documentation>
+			Priority of the Message (0 = lowest; 9 = highest).
+			This element is optional and of type TCMessagePriority, which is an enumeration of xsd:short with values 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+			If used, it MUST be set to one of the enumeration values. As the ESB is built upon a product that is compliant to the JMS standard,
+			priority is supported as described by this standard. JMS defines a ten-level priority value, with 0 as the lowest priority and 9 as the
+			highest. In addition clients should consider priorities 0 to 4 as gradations of normal priority and priorities 5 to 9 as gradations of
+			expedited priority. JMS does not require a product implementing the standard to strictly implement a priority ordering of messages;
+			however, it should do its best to deliver expedited messages ahead of normal messages. Internally ESB defaults to 4 in case no priority
+			is explicitly set. A server MAY honour priority.
+			</documentation>
+		</annotation>
+		<restriction base="short">
+			<!-- enumeration value="0">
+				<annotation>
+					<documentation>lowest</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+			<enumeration value="7"/>
+			<enumeration value="8"/>
+			<enumeration value="9">
+				<annotation>
+					<documentation>highest</documentation>
+				</annotation>
+			</enumeration-->
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCSeverity"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The error severity.
+				Business or message-activity monitoring-concepts may define precisely which severities should
+				be logged and evaluated in the middleware but the current expectation is the following:
+				Severity-levels 6 to 9 should be considered being observed by monitoring middleware-components.
+				Severity-levels 0 to 2 should be considered NOT being observed by monitoring middleware-components and
+				should be used to signal the calling application that the error-reason may be some wrong
+				input-data which can easily be corrected by the caller.
+				Severity-level 9 should just be used in cases the providing application encounters very severe errors
+				which will for shure have the effect that any further call will be unsuccessfull regardless which input-data is given
+				by the caller.
+				The main intention for the severity is to enable a differentiated view on the kind of faults.
+				For example a "ContractNotFound" fault which is provoked by a consumer-applications UI when
+				entering a wrong contract-number can be considered as a fault for which it is not required to enable
+				middleware-tracking or logging and therefore should have max. level 2.
+				- severity-levels 0 to 2 are meant to be of lower (informal) priority
+				- severity-levels 3 to 5 are meant to be of medium (warning) priority
+				- severity-levels 6 to 8 are meant to be of high (error) priority
+				- severity-level 9 is meant to be of highest (severe error) priority
+			</documentation>
+		</annotation>
+		<restriction base="int">
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="9"></maxInclusive>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCBusinessProcessId"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The id of the business process (-instance) to enable business activity monitoring (BAM).
+				We need this to be able to find out which *instance* of running business process a message is related to.
+				(Semantically this is the same as the SOABP correlation-id.)
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<minLength value="1"/>
+			<maxLength value="256"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCMessageGroupId"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The id that groups messages for a business process (-instance) to enable business activity monitoring (BAM).
+				This enables the grouping of messages under a business process (-instance)
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<minLength value="1"/>
+			<maxLength value="256"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCBusinessProcessTypeId"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The id of the business process (-type) to enable business activity monitoring (BAM).
+				We need this to be able to find out which *type* of business process a message is related to.
+				Business process types have to be categorized telekom-wide but required architectural activities usually lead to nothing.
+				Therefore we softly enforce the client applications to think about categories which may be useful for BAM and use this.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<pattern value="#UNSPECIFIED#|.*"/> <!-- just to make clear that we want either "#UNSPECIFIED#" or any other descriptive string -->
+			<minLength value="5"/>
+			<maxLength value="256"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCBusinessProcessStepTypeId"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The id of the business process step (-type) within the business-process.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<pattern value="#UNSPECIFIED#|.*"/> <!-- just to make clear that we want either "#UNSPECIFIED#" or any other descriptive string -->
+			<minLength value="2"/>
+			<maxLength value="256"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCFromInfo"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The information describing the sending/calling application.
+				Note: pattern equals to first part of the pattern of TCRoutingInfo
+				(Hint for updates: pattern tested with SoapUI 4.0.1 and http://myregexp.com/signedJar.html)
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<minLength value="5"/>
+			<maxLength value="255"/>
+			<pattern value="[a-z][\.a-z]{0,63}([A-Za-z][\-a-zA-Z_0-9]{0,15}):([A-Za-z][\-a-zA-Z_0-9]{0,31})"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCRoutingInfo"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The information required for routing.
+				Note: first part of the pattern equal to pattern of TCFromInfo
+				(Hint for updates: pattern tested with SoapUI 4.0.1 and http://myregexp.com/signedJar.html)
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<minLength value="7"/>
+			<maxLength value="255"/>
+			<pattern value="[a-z][\.a-z]{0,63}([A-Za-z][\-a-zA-Z_0-9]{0,15}):([A-Za-z][\-a-zA-Z_0-9]{0,31}):([A-Za-z][\-a-zA-Z_0-9/\.]{0,63})"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCEmpty"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				An empty type definition
+			</documentation>
+		</annotation>
+		<sequence>
+			<!-- Note: INTENTIONALLY EMPTY SEQUENCE ! -->
+		</sequence>
+	</complexType>
+	<element name="empty" type="tns:TCEmpty"/>
+	<!-- ****************************************************************** -->
+	<complexType name="TCContext"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The context-information to be transported for each call.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="technicalContext" type="tns:TCTechnicalContext" minOccurs="1" maxOccurs="1" nillable="false"/>
+			<element name="businessContext" type="tns:TCBusinessContext" minOccurs="1" maxOccurs="1" nillable="false"/>
+		</sequence>
+	</complexType>
+	<element name="context" type="tns:TCContext"/>
+	<!-- ****************************************************************** -->
+	<complexType name="TCBusinessContext"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The business cross-functional context data to be transported in each call.
+				Any provider receiving a request with a certain TCBusinessContext has to LOOP IT THROUGH meaning that
+				every further call in the context of this instance must contain the originally set TCBusinessContext.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="processId" type="tns:TCBusinessProcessId" minOccurs="1" maxOccurs="1" nillable="false">
+				<annotation>
+					<documentation>
+						The id of the running process (instance) from the customer front-side application.
+						Example: "123456"
+						Important: If some provider implements a subprocess and wants to set a new "processId" it must copy the
+						           received "processId" into the "parentProcessId" !
+					</documentation>
+				</annotation>
+			</element>
+			<element name="processTypeId" type="tns:TCBusinessProcessTypeId" minOccurs="1" maxOccurs="1" nillable="false">
+				<annotation>
+					<documentation>
+						The id of the process-type (class) from the customer front-side application.
+						Example: "New DSL 16000 FixedLine"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="messageGroupId" type="tns:TCMessageGroupId" minOccurs="0" maxOccurs="1" nillable="false">
+				<annotation>
+					<documentation>
+						The id of a message group to group messages below the running process (instance).
+						"messageGroupId" is defined as a string but should be considered as a short or nonNegativeInteger to result in a "natural" order.
+						It should be seen as a counter for message groups below the "processId".
+						Example: "0001","0002"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="processStepTypeId" type="tns:TCBusinessProcessStepTypeId" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The id of the processstep-type (class of the step) from the customer front-side application.
+					</documentation>
+				</annotation>
+			</element>
+			<element name="parentProcessId" type="tns:TCBusinessProcessId" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The id of the running parent process (instance) in case this request belongs to some kind of child-process.
+						Important: If some provider implements a subprocess and wants to set a new "processId" it must copy the
+						           received "processId" into the "parentProcessId" !
+					</documentation>
+				</annotation>
+			</element>
+			<element name="property" type="tns:TCProperty" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>
+						A list of additional business informations which may be relevant for the middleware or the receiver.
+						Properties starting with the name "csdg.", "soabp." and "timb." should not be used by a consumer or provider-application.
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCTechnicalContext"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The technical cross-functional context data to be transported in each call.
+				It contains all relevant data for the transport and routing aspect.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="from" type="tns:TCFromInfo" minOccurs="1" maxOccurs="1" nillable="false">
+				<annotation>
+					<documentation>
+						The (logical) name of the application/component sending the request or message;
+						it identifies the sending application/component.
+						This value will be used by all buses for their routing. Therefore it will not change once it has been set by the sender.
+						The syntax of element "from" follows the same rules in each communication pattern as shown in examples:
+						Request/Oneway:
+						[APPLICATION_NAME_CONSUMER]:[COMPONENT]
+
+						Response/Callback/Notification:
+						[APPLICATION_NAME_PROVIDER]:[COMPONENT]
+
+						Examples:
+						namespace.namespace.SimpleApplicatio:ComponentName
+						de.fixed.crmt.DataStore:WritingComponent
+						tmxx.domainxxx.orgunitxxx.architecture.AIATestApp:NL
+						de.telekom.PESA:default
+						de.telekom.CRM-T:default
+
+						syntax definition:
+						[APPLICATION_NAME_xxx] = [NAMESPACE].[SIMPLE_APPLICATION_NAME]
+						The combination [NAMESPACE].[SIMPLE_APPLICATION_NAME] is unique in the whole Telekom world.
+						Therefore the names must be managed in a central robust repository, or in decentralized ones which performs an (online) sync
+
+						[NAMESPACE] = several layers can be used, default parameter for T-Deutschland = 'de.telekom'
+						Syntax: [a-z][\.a-z]{0,63} - see TCFromInfo pattern !
+						Instances / Examples:
+						tmd.cprm.acheck.architecture
+						de.telekom
+
+						[SIMPLE_APPLICATION_NAME ] = a short and simple name.
+						Syntax: [A-Za-z][-a-zA-Z_0-9]{0,15} - see TCFromInfo pattern !
+						Instances / Examples:
+						SMSPlattform
+						SMS_Gateway-03
+						T-IVU
+
+						[COMPONENT] = finer technical classification, default parameter for T-Deutschland = 'default'
+						Syntax: [A-Za-z][-a-zA-Z_0-9]{0,31} - see TCFromInfo pattern !
+						Instances / Examples:
+						In SOABP the simple CEISeR ComponentName will be used
+						"WritingComponent", "readOnly", "UsingComponent", "EarbComponent-User", "FreeUnits_web_TMA", "default"
+
+						For queuing based communication the value of  the "from" element must also be set into the JMS property "from"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="routingInfo" type="tns:TCRoutingInfo" minOccurs="1" maxOccurs="1" nillable="false">
+				<annotation>
+					<documentation>
+						The main routing information needed by federated buses to route the message.
+						Based on this information the federated bus can evaluate the destination.
+						A destination can be the direct route to the target system/service or a forward to another federated bus, which then evaluates the route to the target system/service.
+						So it is a logical name describing a port for the current service call and not directly the name of the called target.
+						Request and the related response/callback have the same "routingInfo" thus provider must simple copy the value from the request into the response/callback.
+						This value will be used by all buses for their routing. Therefore it will not change once it has been set by the sender.
+						The syntax of element "routingInfo" follows the same rules in each communication pattern, except 'Notification' as shown in examples:
+						Request/Response/Callback/Oneway:
+						[APPLICATION_NAME_CONSUMER]:[COMPONENT]:[UsingPort]
+
+						Notification:
+						[APPLICATION_NAME_PROVIDER]:[COMPONENT]:[ProvidingPort]
+
+						Examples:
+						namespace.namespace.SimpleApplicatio:ComponentName:UsingPort
+						de.fixed.crmt.DataStore:WritingComponent:writeCustomerIntoDataBase
+						tmxx.domainxxx.orgunitxxx.architecture.AIATestApp:NL:CommunicationsAccountBalanceAdjustmentEBS_L2C
+						de.telekom.Pesa:default:MyServiceName
+						de.telekom.mobile.MyApp:MyComponent:Servicename/Serviceversion/Operation
+
+						For syntax definition of [APPLICATION_NAME_CONSUMER]:[COMPONENT] see documentation of 'tns:from' field.
+
+						[xxxPort] = simple name representation of the called routing
+						Syntax: [A-Za-z][-a-zA-Z_0-9/\.]{0,63} - see TCRoutingInfo pattern (last part)!
+						Instances / Examples:
+						"UsingPort", "writingService", "readingService"
+						In T-Deutschland the name may be defined in a more restriktive way following the pattern:
+						[Servicename]/[Serviceversion]/[Operation]
+						Application-Developer and Solution-Designer: consult CEISeR and/or TDSRR for the actual value of the routingInfo-element.
+
+						Attached provider applications have to copy the element "routingInfo" from request messages to corresponding responses or callback messages.
+
+						For queuing based communication the value of  the "routingInfo" element must also be set into the JMS property "routingInfo"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="messageId" type="tns:TCMessageId" minOccurs="1" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The id to uniquely identify the message - should be a UUID provided by the sender.
+						(independent of the JMS-Message-ID)
+						The "messageId" - field of a request-message HAS TO BE COPIED into the "relatesToMessageId" - field of the response-message by the provider!
+						Example:
+						A.) Request-message : 2345234523434563456
+						B.) Response-message : 76767896786786768997
+
+						The "messageId" element will not be set as JMS property
+					</documentation>
+				</annotation>
+			</element>
+			<element name="relatesToMessageId" type="tns:TCMessageId" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The messageId this message is an answer for - should be a (new) UUID.
+						The "messageId" - field of a request-message HAS TO BE COPIED into the "relatesToMessageId" - field of the response-message by the provider!
+						The "relatesToMessageId" - field should not be set for a request-message.
+						Example:
+						A.) Request-message : EMPTY
+						B.) Response-message : 2345234523434563456  (Note: equal to the "messageId" of the corresponding request-message)
+
+						The "relatesToMessageId" element will not be set as JMS property
+					</documentation>
+				</annotation>
+			</element>
+			<element name="currentSenderTimestampUTC" type="tns:TCTimestampUTC" minOccurs="1" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The date/time-value this message is sent by the sender in UTC incl. milliseconds.
+						(The current date/time of the callers/senders machine)
+
+						For queuing based communication the value of  the "currentSenderTimestampUTC" element must also be set into the JMS property "currentSenderTimestampUTC"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="expiryOffsetInMillis" type="tns:TCTimestampOffset" minOccurs="1" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The offset in millis to be added to the "currentSenderTimestampUTC"; The result defines the latest UTC-point in time
+						the sent message is of interest from the sender perspective based on his timebase.
+						Middleware-components are allowed to throw away the message after this time.
+						The value "0" denotes an infinite expiry as such it must not be used for synchronous calls; middleware components may
+						reject messages with the value "0" for synchronous calls!
+						In general a value of "0" and values higher than 86400000 (a day) should be considered as very special cases choosen
+						with care together with the middelware-owners because of potential resource-issues.
+
+						For queuing based communication the value of  the "expiryOffsetInMillis" element must also be set into the JMS property "expiryOffsetInMillis"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="priority" type="tns:TCMessagePriority" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The "priority" element will not be set as JMS property
+					</documentation>
+				</annotation>
+			</element>
+			<element name="replyState" type="tns:TCReplyState" minOccurs="0" maxOccurs="1">
+				<annotation>
+					<documentation>
+						The technically required state to be transported especially in case of message exchange pattern Request/Callback.
+						This field is purely for usage by the middleware-components and MUST NOT be used by the consumer.
+						The "replyState" - field of a request-message HAS TO BE COPIED into the "replyState" - field of the response-message by the provider!
+
+						For queuing based communication the value of  the "replyState" element must also be set into the JMS property "replyState"
+					</documentation>
+				</annotation>
+			</element>
+			<element name="property" type="tns:TCProperty" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation>
+						A list of additional technical informations which may be relevant for the middleware or the receiver.
+						Properties starting with the name "csdg.", "soabp." and "timb." should not be used by a consumer or provider-application.
+
+						AdditionalProperties will not be set as JMS property
+					</documentation>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<attribute name="lang" type="string"/> <!-- default="en" -->
+	<!-- ****************************************************************** -->
+	<complexType name="TCDescription"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+       			If used it contains a plain text description of the fault. This description is expected to be
+				helpful in explaining the fault to users. There MAY be any number of description elements.
+				SOA BP components will always issue their error messages in English.
+		        If support for multilingual error messages if desired one may define a description id to
+		        enable a lookup for the description text in another language.
+		        One may also use placeholders within the text to indicate that a certain variable is used.
+		        These placeholder can be inserted in the translatetd text again. The syntax using placeholders
+		        in XML style is favored against the printf style placeholders as the internal application
+		        syntax for replacing fragments must not be defined.
+		    </documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="string">
+				<attribute ref="tns:lang" use="optional"/> <!-- default="en" -->
+				<attribute name="descId" type="string" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCPropertyType"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				The type-name of a property
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="string"/>
+			<enumeration value="int"/>
+			<enumeration value="boolean"/>
+			<enumeration value="float"/>
+			<enumeration value="date"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCProperty"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				Defines variables which can be used in the placeholders of the description elements. Simplifies
+				the translation process of error messages. Be aware that the names of the values are not globally
+				unique, that means when you want to merge different description elements where placeholders refer
+				to the same placeholder name but coming from different exceptions you have the responsibility to
+				rename one of the variables.
+				Values must contain a name attribute (name of the placeholder) and are of a certain type.
+				Please note that you should usually chose the stringValue just when different formattings for
+				the localization could be required a extra datatype is offered, namely for time, date, dateTime
+				and floats.
+			</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="string">
+				<attribute name="name" type="string"/> <!-- use="required" -->
+				<attribute name="type" type="tns:TCPropertyType" use="optional"/> <!-- default="string" -->
+				<attribute name="policy" type="string" use="optional">
+					<annotation>
+						<documentation>
+							Describes the filtering behaviour for middleware components;
+							This is required to define if the property should be used as search criteria.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCFaultTimeStamp" > <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				It MUST be set to the time at which the fault occurred. There MUST be only one timestamp
+				element in BaseFault. In the absence of the time zone designation, the value MUST be
+				interpreted as universal time (UTC) time.
+				Please note that machines within the T-Mobile universe do not have synchronized clocks.
+				Therefore the timestamp should be considered as a reference to the service provider agents log files.
+			</documentation>
+		</annotation>
+		<restriction base="dateTime"/>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCFaultErrorCode" > <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				A code to describe an error.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCFaultInfo" > <!-- abstract="true" -->
+		<annotation>
+			<documentation>
+				The FaultInfo is the abstract base type for all exception-data.
+				All technical error-infos are delivered by this error structure.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="context" type="tns:TCContext" minOccurs="1" maxOccurs="1"/>
+			<element name="timestamp" type="tns:TCFaultTimeStamp" minOccurs="1" maxOccurs="1"/>
+			<element name="errorCode" type="tns:TCFaultErrorCode" minOccurs="0" maxOccurs="1"/>
+			<element name="errorLocation" type="tns:TCSystem" minOccurs="1" maxOccurs="1"/>
+			<element name="severity" type="tns:TCSeverity" minOccurs="1" maxOccurs="1"/>
+			<element name="description" type="tns:TCDescription" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="property" type="tns:TCProperty" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<group name="TCAsynchronousFaultHeader">
+		<annotation>
+			<documentation>
+				The AsynchronousFaultHeader contains elements to be used for all asynchronous answers.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="faultcode" type="QName"/>
+			<element name="faultstring" type="string"/>
+			<element name="faultactor" type="anyURI" minOccurs="0"/>
+		</sequence>
+	</group>
+	<!-- ****************************************************************** -->
+	<complexType name="TCTechnicalFaultInfo"> <!-- final="#all" -->
+		<annotation>
+			<documentation>
+				TechnicalFaultInfo is the designed default technical exception data.
+				All technical errors should be delivered using this type.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="tns:TCFaultInfo"/>
+		</complexContent>
+	</complexType>
+	<element name="technicalFault" type="tns:TCTechnicalFaultInfo"/>
+	<!-- ****************************************************************** -->
+	<complexType name="TCBusinessFaultInfo">
+		<annotation>
+			<documentation>
+				BusinessFaultInfo is the designed default business exception data.
+				All business errors should be delivered using this type or a subtype of it.
+			</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="tns:TCFaultInfo"/>
+		</complexContent>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCTraceTarget">
+		<annotation>
+			<documentation>
+				The Target-component type to be traced to.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<annotation>
+				<documentation>
+					The WebService Gateway which is next to the calling Application.
+				</documentation>
+			</annotation>
+			<enumeration value="ClientSideGateway">
+				<annotation>
+					<documentation>
+						The WebService Gateway which is next to the calling Application.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="GatewayNextToProvider">
+				<annotation>
+					<documentation>
+						The WebService Gateway which is next to the provider Application.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="Provider">
+				<annotation>
+					<documentation>
+						The provider Application.
+					</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<simpleType name="TCTraceDistance">
+		<annotation>
+			<documentation>
+				The Target-component type to be traced to.
+			</documentation>
+		</annotation>
+		<restriction base="short">
+			<annotation>
+				<documentation>
+					0 - 99 : The distance (0 = "ClientSideGateway"; 99 = "Provider")
+					Important: The distance has to be incremented by 1 by each Gateway in the middle !
+					If received distance is 0 the component has to answer the trace-request.
+				</documentation>
+			</annotation>
+			<minInclusive value="0"></minInclusive>
+			<maxInclusive value="99"></maxInclusive>
+		</restriction>
+	</simpleType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCTraceChoice">
+		<choice>
+			<element name="traceTarget" type="tns:TCTraceTarget" minOccurs="1" maxOccurs="1"/>
+			<element name="traceDistance" type="tns:TCTraceDistance" minOccurs="1" maxOccurs="1"/>
+		</choice>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCTraceRequest">
+		<sequence>
+			<element name="traceChoice" type="tns:TCTraceChoice" minOccurs="1" maxOccurs="1"/>
+			<element name="sendingComponent" type="tns:TCTraceComponentInfo" minOccurs="1" maxOccurs="1"/>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCTraceResponse">
+		<sequence>
+			<element name="answeringComponents" type="tns:TCTraceComponentInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="TCTraceComponentInfo">
+		<sequence>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1"/>
+			<element name="hostAddress" type="string" minOccurs="1" maxOccurs="1"/>
+			<element name="description" type="string" minOccurs="0" maxOccurs="1"/>
+			<element name="currentUTCTime" type="dateTime" minOccurs="1" maxOccurs="1"/>
+			<element name="version" type="string" minOccurs="1" maxOccurs="1"/>
+		</sequence>
+	</complexType>
+</schema>

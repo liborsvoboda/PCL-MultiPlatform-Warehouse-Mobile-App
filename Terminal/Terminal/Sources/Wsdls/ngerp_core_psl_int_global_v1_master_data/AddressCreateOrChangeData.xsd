@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+    <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+    <xsd:complexType name="AddressCreateOrChangeData">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="EN">Data to create or change address</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Action" type="bomtypesCommon:DT_Action">
+                <xsd:annotation>
+                    <xsd:documentation>Action</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Number">
+                <xsd:annotation>
+                    <xsd:documentation>Key field. Address number</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="10"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+		    <xsd:element name="ValidFrom" type="xsd:date" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Key field. Valid from.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Nation" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>Key field. Nation.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="1"/>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Header" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>Main address data</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Name" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Name</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="160"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CountryId" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>CountryId</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="3"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="City" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>City</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="40"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="PostalCode" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Postal code</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Street" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Street</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="60"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="HouseNumber" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>House number</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="20"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="RegionCode" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Region code</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="3"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="TimeZoneId" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Time zone</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="6"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Floor" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Floor in building</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="RoomNumber" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Room or Appartment Number</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                      <xsd:element name="StreetSupplimentary" minOccurs="0">
+                        <xsd:annotation>
+                          <xsd:documentation>Street supplimentary</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                          <xsd:restriction base="xsd:string">
+                            <xsd:maxLength value="120"/>
+                          </xsd:restriction>
+                        </xsd:simpleType>
+                      </xsd:element>
+                      <xsd:element name="Location" minOccurs="0">
+                        <xsd:annotation>
+                          <xsd:documentation>Location</xsd:documentation>
+                        </xsd:annotation>
+                        <xsd:simpleType>
+                          <xsd:restriction base="xsd:string">
+                            <xsd:maxLength value="40"/>
+                          </xsd:restriction>
+                        </xsd:simpleType>
+                      </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="PhoneNumbers" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Phone numbers</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Action" type="bomtypesCommon:DT_Action">
+                            <xsd:annotation>
+                                <xsd:documentation>Action</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="Counter" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Counter</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="3"/>
+                                    <xsd:pattern value="\d+"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Number" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Telephone no.: dialling code+number</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="30"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Extension" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Telephone no.: Extension</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="TypeId" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Phone type. Mobile, landline.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="10"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Emails" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>Email addresses</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Action" type="bomtypesCommon:DT_Action">
+                            <xsd:annotation>
+                                <xsd:documentation>Action</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="Counter" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Counter</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="3"/>
+                                    <xsd:pattern value="\d+"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Value" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation>Email address</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:maxLength value="241"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>      
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

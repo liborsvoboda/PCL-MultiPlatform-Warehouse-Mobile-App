@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/ActionQueue"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/ActionQueue"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			xmlns:bomtypesPM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+			xmlns:bomtypesMM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" >
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" schemaLocation="../ngerp_core_psl_int_global_v1_pm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" schemaLocation="../ngerp_core_psl_int_global_v1_mm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:complexType name="ActionQueueChangeDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Action queue to change.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+				<xsd:annotation>
+					<xsd:documentation>Action</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExternalId" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>External id</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="64"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Steps" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Steps</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Action" type="bomtypesCommon:DT_Action">
+							<xsd:annotation>
+								<xsd:documentation>Action</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ExternalId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>External id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="64"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Data" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Data</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="CSOrderChanges" minOccurs="0" type="bomtypesPM:CSOrderChangeDto">
+										<xsd:annotation>
+											<xsd:documentation>CS order changes</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="MaterialDocumentChanges" minOccurs="0" type="bomtypesMM:MaterialDocumentChangeDto">
+										<xsd:annotation>
+											<xsd:documentation>Material document changes</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="ServiceNotificationChanges" minOccurs="0" type="bomtypesPM:ServiceNotificationChangeDto">
+										<xsd:annotation>
+											<xsd:documentation>Service notification changes</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="WaitForCSOrderStatus" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Wait for CS order status</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="OrderId">
+													<xsd:annotation>
+														<xsd:documentation>Order id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:complexType>
+														<xsd:simpleContent>
+															<xsd:extension base="bomtypesPM:TOrderId">
+																<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+															</xsd:extension>
+														</xsd:simpleContent>
+													</xsd:complexType>
+												</xsd:element>											
+												<xsd:element name="Status">
+													<xsd:annotation>
+														<xsd:documentation>Status</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="5"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="DeriveBatchFromValuationType" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Derives batch from valuation type</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="PlantId">
+													<xsd:annotation>
+														<xsd:documentation>Plant id</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MaterialId">
+													<xsd:annotation>
+														<xsd:documentation>Material id</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="ValuationTypeId">
+													<xsd:annotation>
+														<xsd:documentation>Valuation type id</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="10"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="ContextVariable">
+													<xsd:annotation>
+														<xsd:documentation>Context variable</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="64"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>												
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

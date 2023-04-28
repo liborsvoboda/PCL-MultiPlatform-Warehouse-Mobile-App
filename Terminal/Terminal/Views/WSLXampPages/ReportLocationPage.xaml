@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.Views.ReportLocationPage"
+             xmlns:local="clr-namespace:Terminal.Singleton"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             xmlns:images="clr-namespace:Terminal.Images"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             Title="">
+    <NavigationPage.TitleView>
+        <StackLayout HeightRequest="48" Padding="0,0,0,0">
+            <Grid HeightRequest="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="BackLabel" Grid.Column="0" Margin="0,8,0,0" HorizontalOptions="CenterAndExpand" Text="{x:Static language:LangResources.ReportLocation}" LineBreakMode="NoWrap" FontSize="Medium" TextColor="{StaticResource NavigationTextColor}" />
+                <Image Grid.Column="1" Source="{Binding OnlineStatusImage, Source={x:Static local:GlobalResources.Current}}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0,5,0,0" HorizontalOptions="Center" />
+            </Grid>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <ScrollView.Content>
+                <StackLayout Spacing="0" Padding="15,15,15,65">
+                    <Frame x:Name="goodsInformationRequest">
+                        <StackLayout>
+                            <Grid x:Name="scanArea" RowSpacing="0" Padding="0" HeightRequest="264" ColumnSpacing="0" BackgroundColor="Transparent" IsVisible="false">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="140"/>
+                                <RowDefinition Height="26"/>
+                                <RowDefinition Height="4"/>
+                                <RowDefinition Height="64"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <zxing:ZXingScannerView x:Name="_scanView" OnScanResult="Handle_OnScanResult" Grid.RowSpan="4" Grid.ColumnSpan="3" 
+                                    IsScanning="True" IsEnabled="True" IsVisible="True" IsAnalyzing="true"
+                                    WidthRequest="200" HeightRequest="200" />
+
+                            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+                            <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+                            <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="4"/>
+                            <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="4"/>
+
+                            <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="End" HorizontalOptions="Start" WidthRequest="4"/>
+                            <BoxView Grid.Row="2" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" WidthRequest="4"/>
+                            <BoxView Grid.Row="3" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+                            <BoxView Grid.Row="3" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+
+                            <ImageButton Source="{Binding FlashImage, Source={x:Static local:GlobalResources.Current}}" BackgroundColor="Transparent" Clicked="ButtonFlashlight" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit"  HorizontalOptions="Center" />
+                            </Grid>
+
+                            <Label x:Name="insertLabel" Text="{x:Static language:LangResources.InsertPnMnOrDescription}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+                        
+                            <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Grid.Column="0" x:Name="PnMnUiid" MaxLength="72" FontSize="Small" Keyboard="Plain" VerticalOptions="Start" TextChanged="PnMnUiiDList_TextChanged"></Entry>
+                                <ImageButton Grid.Column="1" CornerRadius="8" Source="{x:Static images:Images.cancelImage}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0" HorizontalOptions="Center" BackgroundColor="{StaticResource RedBackground}" Clicked="Clear_Clicked" />
+                            </Grid>
+                            <ListView x:Name="searchResults" HeightRequest="60" RowHeight="30" Margin="0,5,0,5" ItemTapped="searchResults_ItemSelected" IsVisible="false" />
+
+                            <ListView x:Name="materialListView" HeightRequest="60" RowHeight="30" Margin="0,5,0,5" ItemTapped="materialItemSelected" IsVisible="false" />
+                            <Label x:Name="res" IsVisible="false"></Label>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="areasRequest" IsVisible="false">
+                        <StackLayout>
+                            <Label Text="{x:Static language:LangResources.SelectArea}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+
+                            <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ImageButton Grid.Column="0" Source="{x:Static images:Images.Checked}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Center" Clicked="SelectAllClicked" ></ImageButton>
+                                <Entry Grid.Column="2" x:Name="selectArea" MaxLength="9" FontSize="Small" Keyboard="Plain" VerticalOptions="Start" TextChanged="selectArea_TextChanged"></Entry>
+                                <ImageButton Grid.Column="4" CornerRadius="8" Source="{x:Static images:Images.cancelImage}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0" HorizontalOptions="Center" BackgroundColor="{StaticResource RedBackground}" Clicked="ClearSelectAreaClicked" />
+                            </Grid>
+                            <ListView x:Name="searchAreasResults" HeightRequest="150" RowHeight="30" Margin="0,5,0,5" ItemTapped="searchAreas_ItemSelected" IsVisible="false" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="areaItemList" Padding="0,5,0,0" IsVisible="false">
+                        <StackLayout >
+                            <Grid x:Name="gridAreaItemList">
+                                <Grid.RowDefinitions >
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="300" />
+                                </Grid.ColumnDefinitions>
+
+                                <ImageButton Grid.Row="0" Grid.Column="0" Source="{x:Static images:Images.CancelImage}" VerticalOptions="Center" HeightRequest="30" Aspect="AspectFit" HorizontalOptions="Center" Clicked="UnselectAllClicked" BackgroundColor="{StaticResource RedBackground}" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static language:LangResources.Area}" LineBreakMode="NoWrap" FontSize="Small" HorizontalTextAlignment="Start" VerticalOptions="Center" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="{x:Static language:LangResources.ItemDescription}" LineBreakMode="NoWrap" FontSize="Small" HorizontalTextAlignment="Start" VerticalOptions="Center" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                    <Grid x:Name="listButtons" IsVisible="false" HeightRequest="48" Padding="15,15,15,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <ImageButton x:Name="PreviousBtn" Padding="10,0,0,0" IsVisible="False" Grid.Column="0" Source="{x:Static images:Images.Previous}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Center" Clicked="PreviousClicked" />
+                        <Label Grid.Column="1" Text="{x:Static language:LangResources.WarehouseStocks}" LineBreakMode="NoWrap" HorizontalOptions="Center" HeightRequest="48" FontSize="Medium" HorizontalTextAlignment="Center" />
+                        <ImageButton x:Name="NextBtn" Grid.Column="2" Source="{x:Static images:Images.Next}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Center" Clicked="NextClicked" />
+                    </Grid>
+
+                    <Frame x:Name="goodsInformationResponse" IsVisible="false">
+                        <StackLayout>
+                            <Label x:Name="responseLabel" Text="{x:Static language:LangResources.WarehouseStocks}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+                            <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/>
+                                    <RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static language:LangResources.Area}"></Label><Label Grid.Row="0" Grid.Column="1" Text="{Binding Path=ResponseSelected.Area }"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{x:Static language:LangResources.ItemDescription}"></Label><Label Grid.Row="1" Grid.Column="1" Text="{Binding Path=ResponseSelected.ItemName }"></Label>
+                                <Label Grid.Row="2" Grid.Column="0" Text="{x:Static language:LangResources.MN}"></Label><Label Grid.Row="2" Grid.Column="1" Text="{Binding Path=ResponseSelected.Mn }"></Label>
+                                <Label Grid.Row="3" Grid.Column="0" Text="{x:Static language:LangResources.PN}"></Label><Label Grid.Row="3" Grid.Column="1" Text="{Binding Path=ResponseSelected.Pn }"></Label>
+
+                                <Label Grid.Row="4" Margin="0,20,0,0" Grid.Column="0" Text="{x:Static language:LangResources.WarehouseNumber}"></Label><Label Margin="0,20,0,0" Grid.Row="4" Grid.Column="1" Text="{Binding Path=ResponseSelected.WarehouseNumber }"></Label>
+                                <Label Grid.Row="5" Grid.Column="0" Text="{x:Static language:LangResources.WarehouseName}"></Label><Label Grid.Row="5" Grid.Column="1" Text="{Binding Path=ResponseSelected.WarehouseName }"></Label>
+                                <Label Grid.Row="6" Grid.Column="0" Text="{x:Static language:LangResources.QuantityFree}"></Label><Label Grid.Row="6" Grid.Column="1" Text="{Binding Path=ResponseSelected.QuantityFree }"></Label>
+                                <Label Grid.Row="7" Grid.Column="0" Text="{x:Static language:LangResources.QuantityBlocked}"></Label><Label Grid.Row="7" Grid.Column="1" Text="{Binding Path=ResponseSelected.QuantityBlocked }"></Label>
+                                <Label Grid.Row="8" Grid.Column="0" Text="{x:Static language:LangResources.QuantityInTransfer}"></Label><Label Grid.Row="8" Grid.Column="1" Text="{Binding Path=ResponseSelected.QuantityInTransfer }"></Label>
+
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout>
+            </ScrollView.Content>
+        </ScrollView>
+        
+        <Grid x:Name="requestButtons" HeightRequest="48" Grid.Row="1" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="scannerBtn" Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource ButtonBackground}" Clicked="ScanCodeButton" Text="{x:Static language:LangResources.Scaner}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+            <Button x:Name="saveBtn" Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="SendMaterialRequestIds" Text="{x:Static language:LangResources.Load}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+        </Grid>
+
+        <Grid x:Name="responseButtons" IsVisible="false" HeightRequest="48" Grid.Row="1" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backBtn" Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource ButtonBackground}" Clicked="BackClicked" Text="{x:Static language:LangResources.Back}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+            <Button x:Name="saveBtn1" Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="SendMaterialRequestIds" Text="{x:Static language:LangResources.Load}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+        </Grid>
+
+    </AbsoluteLayout>
+</ContentPage>
+    

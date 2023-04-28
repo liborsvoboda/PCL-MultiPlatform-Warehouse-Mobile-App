@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" 
+            xmlns:bomtypesMM_SD="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD" 
+            xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD">
+  <xsd:include schemaLocation="DT_Shipment.xsd"/>
+  <xsd:complexType name="DT_ShipmentDistributionData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Outbound delivery distribution data</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CreatedOrUpdated" minOccurs="0" maxOccurs="unbounded" type="DT_Shipment">
+        <xsd:annotation>
+          <xsd:documentation>Created or updated deliveries</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="DT_AddressDistributionData.xsd"/>
+  <include schemaLocation="DT_CustomerDistributionData.xsd"/>
+  <include schemaLocation="DT_WorkCenterDistributionData.xsd"/>
+  <include schemaLocation="DT_Address.xsd"/>
+  <include schemaLocation="AddressDto.xsd"/>
+  <include schemaLocation="AddressChangeDto.xsd"/>
+  <include schemaLocation="DT_ServiceDistributionData.xsd"/>
+  <include schemaLocation="AddressCreateOrChangeData.xsd"/>
+  <include schemaLocation="ServiceDto.xsd"/>
+  <include schemaLocation="ServiceFilterDto.xsd"/>
+  <include schemaLocation="WorkCenterDto.xsd"/>
+  <include schemaLocation="WorkCenterFilterDto.xsd"/>
+  <include schemaLocation="PriceConditionDto.xsd"/>
+</schema>

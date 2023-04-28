@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:include schemaLocation="DT_MaterialDocumentId.xsd"/>
+  <xsd:complexType name="DT_MaterialDocumentGetByFilterRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Get material document get by filter request</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Ids" type="DT_MaterialDocumentId" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Document document ids</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ReturnData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Shows wich data to return. If not specified - all data is returned</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Header" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return header</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Items" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return items</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ItemSerialNumbers" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Item serial numbers</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

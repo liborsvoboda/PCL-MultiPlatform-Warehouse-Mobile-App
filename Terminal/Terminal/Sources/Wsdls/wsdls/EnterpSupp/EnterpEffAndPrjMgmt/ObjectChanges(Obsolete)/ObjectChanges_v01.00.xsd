@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ObjectChanges_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ObjectChanges_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+		contains datatype-definitions specific for the CustomerDistribute-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<!-- Place your imports here, if required -->
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../../../../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<!-- ****************************************************************** -->
+	<complexType name="DistributeAsyncType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ChangeMarkers" type="bomtypesCommon:ObjectChangeMarkerDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Change markers.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

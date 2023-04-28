@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+
+            <!--<Color x:Key="NavigationBackgroundColor">white</Color>-->
+            <Color x:Key="NavigationTextColor">#1E1916</Color>
+            <Color x:Key="NavigationBackgroundColor">#d7dadd</Color>
+            <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
+                <Setter Property="HasNavigationBar" Value="True" />
+                <Setter Property="BarTextColor" Value="{StaticResource NavigationTextColor}"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationBackgroundColor}" />
+            </Style>
+
+            <!-- Colors -->
+            <Color x:Key="AppBackgroundColor">White</Color>
+            <Color x:Key="PrimaryColor">Black</Color>
+
+            <Color x:Key="Transparent">Transparent</Color>
+            <Color x:Key="PlaceHolderColor">Gray</Color>
+            <Color x:Key="AppPrimaryColor">#1463c2</Color>
+            <Color x:Key="EntryTextColor">#1e1916</Color>
+            <Color x:Key="EntryBackgroundColor">#f0f0f0</Color>
+            <Color x:Key="ButtonTextColor">White</Color>
+            <Color x:Key="ButtonBackground">#131d29</Color>
+            <Color x:Key="RedBackground">#9d3434</Color>
+            <Color x:Key="GreenBackground">#FF3FC431</Color>
+            <Color x:Key="ErrorBackground">#ffaba8</Color>
+            <Color x:Key="IconColor">#1463c2</Color>
+            <Color x:Key="LightColor">#e7e0dc</Color>
+
+            <Style TargetType="Button">
+                <Setter Property="FontSize"
+                    Value="16" />
+                <Setter Property="HeightRequest"
+                    Value="48" />
+                <Setter Property="FontFamily"
+                    Value="Roboto" />
+                <Setter Property="VerticalOptions"
+                    Value="Center" />
+                <Setter Property="TextColor"
+                    Value="{StaticResource ButtonTextColor}" />
+                <Setter Property="BackgroundColor"
+                    Value="{StaticResource ButtonBackground}" />
+                <Setter Property="CornerRadius"
+                    Value="15" />
+                <Setter Property="IsTabStop"
+                    Value="True" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="FontSize"
+                    Value="20" />
+                <Setter Property="HeightRequest"
+                    Value="48" />
+                <Setter Property="FontFamily"
+                    Value="Roboto" />
+                <Setter Property="VerticalOptions"
+                    Value="CenterAndExpand" />
+                <Setter Property="TextColor"
+                    Value="{StaticResource EntryTextColor}" />
+                <Setter Property="BackgroundColor"
+                    Value="{StaticResource EntryBackgroundColor}" />
+                <Setter Property="IsTabStop"
+                    Value="True" />
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor"
+                    Value="{StaticResource Transparent}" />
+                <Setter Property="Padding"
+                    Value="0" />
+                <Setter Property="Margin"
+                    Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

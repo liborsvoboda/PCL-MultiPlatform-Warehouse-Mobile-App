@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.Views.TransferReceiptPage"
+             xmlns:local="clr-namespace:Terminal.Singleton"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             xmlns:images="clr-namespace:Terminal.Images"
+             xmlns:addOn="clr-namespace:Terminal"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             Title="">
+    <NavigationPage.TitleView>
+        <StackLayout HeightRequest="48" Padding="0,0,0,0">
+            <Grid HeightRequest="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="BackLabel" Grid.Column="0" Margin="0,8,0,0" HorizontalOptions="CenterAndExpand" Text="{x:Static language:LangResources.TransferReceipt}" LineBreakMode="NoWrap" FontSize="Medium" TextColor="{StaticResource NavigationTextColor}" />
+                <Image Grid.Column="1" Source="{Binding OnlineStatusImage, Source={x:Static local:GlobalResources.Current}}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0,5,0,0" HorizontalOptions="Center" />
+            </Grid>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" HorizontalOptions="Fill">
+            <ScrollView.Content>
+                <StackLayout Spacing="0" Padding="15,15,15,65">
+                    <Frame x:Name="warehouseRequest">
+                        <StackLayout>
+                            <Label Text="{x:Static language:LangResources.SelectSourceLocation}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+
+                            <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Grid.Column="0" x:Name="sourceLocation" MaxLength="9" FontSize="Small" Keyboard="Plain" VerticalOptions="Start" TextChanged="sourceLocation_TextChanged"></Entry>
+                                <ImageButton Grid.Column="2" CornerRadius="8" Source="{x:Static images:Images.cancelImage}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0" HorizontalOptions="Center" BackgroundColor="{StaticResource RedBackground}" Clicked="ClearSourceLocationClicked" />
+                            </Grid>
+                            <ListView x:Name="searchSourceLocationResults" HeightRequest="120" RowHeight="30" Margin="0,5,0,5" ItemTapped="searchSourceLocation_ItemSelected" IsVisible="false" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame x:Name="TransferReceiptRequest" Padding="0,5,0,0" IsVisible="true">
+                        <StackLayout>
+                           
+                            <Grid x:Name="scanArea" RowSpacing="0" Padding="0" HeightRequest="264" ColumnSpacing="0" BackgroundColor="Transparent" IsVisible="true">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="140"/>
+                                    <RowDefinition Height="26"/>
+                                    <RowDefinition Height="4"/>
+                                    <RowDefinition Height="64"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+
+                                <zxing:ZXingScannerView x:Name="_scanView" OnScanResult="Handle_OnScanResult" Grid.RowSpan="4" Grid.ColumnSpan="3" 
+                                        IsScanning="True" IsEnabled="True" IsVisible="True" IsAnalyzing="true"
+                                        WidthRequest="200" HeightRequest="200" />
+
+                                <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+                                <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+                                <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="4"/>
+                                <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="4"/>
+
+                                <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="End" HorizontalOptions="Start" WidthRequest="4"/>
+                                <BoxView Grid.Row="2" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="30" VerticalOptions="End" HorizontalOptions="End" WidthRequest="4"/>
+                                <BoxView Grid.Row="3" Grid.Column="0" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+                                <BoxView Grid.Row="3" Grid.Column="2" BackgroundColor="{StaticResource AppPrimaryColor}" HeightRequest="4" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="30"/>
+
+                                <ImageButton Source="{Binding FlashImage, Source={x:Static local:GlobalResources.Current}}" BackgroundColor="Transparent" Clicked="ButtonFlashlight" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit"  HorizontalOptions="Center" />
+                            </Grid>
+
+                            <Label x:Name="insertLabel" Text="{x:Static language:LangResources.InsertPnMnUiid}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+                        
+                            <Grid RowSpacing="0" Padding="0,0,0,5" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Entry Grid.Column="0" x:Name="PnMnUiid" MaxLength="72" FontSize="Small" Keyboard="Plain" VerticalOptions="Start" TextChanged="PnMnUiiDList_TextChanged">
+                                </Entry>
+                                <ImageButton Grid.Column="2" CornerRadius="8" Source="{x:Static images:Images.cancelImage}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Center" BackgroundColor="{StaticResource RedBackground}" Clicked="Clear_Clicked" />
+                            </Grid>
+                            <ListView x:Name="searchResults" HeightRequest="120" RowHeight="30" Margin="0,5,0,5" ItemTapped="searchResults_ItemSelected" IsVisible="false" />
+                            <ListView x:Name="materialListView" HeightRequest="60" RowHeight="30" Margin="0,5,0,5" ItemTapped="materialItemSelected" IsVisible="false" />
+                            
+                            <Label x:Name="pnMnLoaded" IsVisible="false"></Label>
+                        </StackLayout>
+
+                    </Frame>
+                    <Frame x:Name="quantityRequest" Padding="0,5,0,0" IsVisible="false">
+                        <StackLayout>
+                            <Label Text="{x:Static language:LangResources.InsertQuantity}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+                            <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Entry Grid.Column="0" x:Name="quantity" MaxLength="17" FontSize="Small" Keyboard="Numeric" VerticalOptions="Start" TextChanged="sourceLocation_TextChanged"></Entry>
+                                <ImageButton Grid.Column="2" CornerRadius="8" Source="{x:Static images:Images.cancelImage}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0" HorizontalOptions="Center" BackgroundColor="{StaticResource RedBackground}" Clicked="ClearQuantityClicked" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="transferReceiptItemList" Padding="0,5,0,0" IsVisible="false">
+                        <StackLayout >
+                            <Grid x:Name="gridTransferReceiptItemList">
+                                <Grid.RowDefinitions >
+                                    <RowDefinition Height="40" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="300" />
+                                        <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static language:LangResources.Location}" LineBreakMode="NoWrap" FontSize="Small" HorizontalTextAlignment="Start" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{x:Static language:LangResources.ItemDescription}" LineBreakMode="NoWrap" FontSize="Small" HorizontalTextAlignment="Start" />
+                                <Button Grid.Row="0" Grid.Column="2" CornerRadius="8" FontSize="Small" BackgroundColor="{StaticResource IconColor}" Clicked="IssueClicked" Text="{x:Static language:LangResources.Issue}" VerticalOptions="StartAndExpand" HeightRequest="30" HorizontalOptions="End"  />
+                              </Grid>  
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="TransferReceiptResponse" Padding="0,15,0,0" IsVisible="false">
+                        <StackLayout>
+                            <Label Text="{x:Static language:LangResources.Details}" LineBreakMode="NoWrap" FontSize="Medium" HorizontalTextAlignment="Center" />
+                            <Grid RowSpacing="0" Padding="0" ColumnSpacing="0" BackgroundColor="Transparent">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/>
+                                    <RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/><RowDefinition Height="AUTO"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static language:LangResources.UIID}"></Label><Label Grid.Row="0" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.UiidRequest }"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{x:Static language:LangResources.PN}"></Label><Label Grid.Row="1" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.pnInserted }"></Label>
+                                <Label Grid.Row="2" Grid.Column="0" Text="{x:Static language:LangResources.MN}"></Label><Label Grid.Row="2" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.mnInserted }"></Label>
+                                <Label Grid.Row="3" Grid.Column="0" Text="{x:Static language:LangResources.SN}"></Label><Label Grid.Row="3" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.snInserted }"></Label>
+                                <Label Grid.Row="4" Grid.Column="0" Text="{x:Static language:LangResources.ItemDescription}"></Label><Label Grid.Row="4" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.Text }"></Label>
+
+                                <Label Grid.Row="5" Margin="0,20,0,0" Grid.Column="0" Text="{x:Static language:LangResources.EquipmentNumber}"></Label><Label Margin="0,20,0,0" Grid.Row="5" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.EquipmentNumber }"></Label>
+                                <Label Grid.Row="6" Grid.Column="0" Text="{x:Static language:LangResources.WarehouseNumber}"></Label><Label Grid.Row="6" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.FunctionalLocationId }"></Label>
+                                <Label Grid.Row="7" Grid.Column="0" Text="{x:Static language:LangResources.Status}"></Label><Label Grid.Row="7" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.Status }"></Label>
+                                <Label Grid.Row="8" Grid.Column="0" Text="{x:Static language:LangResources.TargetLocation}"></Label><Label Grid.Row="8" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.targetLocation }"></Label>
+                                <Label Grid.Row="9" Grid.Column="0" Text="{x:Static language:LangResources.Quantity}"></Label><Label Grid.Row="9" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.Quantity }"></Label>
+
+                                <Label x:Name="ErrorLabel" Grid.Row="10" Grid.Column="0" Margin="0,20,0,0"  Text="{x:Static language:LangResources.Error}"></Label><Label x:Name="ErrorValue" Grid.Row="10" Grid.Column="1" Text="{Binding Path=SapUIIDGeneratedSelected.SapError }"></Label>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout>
+            </ScrollView.Content>
+        </ScrollView>
+        
+        <Grid x:Name="requestButtons" IsVisible="false" HeightRequest="48" Grid.Row="1" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource ButtonBackground}" Clicked="ScanCodeButton" Text="{x:Static language:LangResources.Scaner}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+            <Button x:Name="loadBtn" Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="SendMaterialRequestIds" Text="{x:Static language:LangResources.Load}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+        </Grid>
+
+        <Grid x:Name="responseButtons" IsVisible="false" HeightRequest="48" Grid.Row="1" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource ButtonBackground}" Clicked="BackClicked" Text="{x:Static language:LangResources.Back}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+            <Button x:Name="placeBtn" IsVisible="true" Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="PlaceClicked" Text="{x:Static language:LangResources.Place}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+            <Button x:Name="issueBtn" IsVisible="false" Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="IssueClicked" Text="{x:Static language:LangResources.Issue}" VerticalOptions="CenterAndExpand" HeightRequest="48" HorizontalOptions="Fill"/>
+        </Grid>
+
+    </AbsoluteLayout>
+</ContentPage>
+    

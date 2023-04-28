@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.Views.MenuItemsPage"
+             xmlns:local="clr-namespace:Terminal.Singleton"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             xmlns:images="clr-namespace:Terminal.Images"
+             x:Name="MenuItems"
+             Title="">
+    <NavigationPage.TitleView>
+        <StackLayout HeightRequest="48" Padding="0,0,0,0">
+            <Grid HeightRequest="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="BackLabel" VerticalOptions="Center" Grid.Column="0" HorizontalOptions="CenterAndExpand" Text="{x:Static language:LangResources.MenuItems}" LineBreakMode="NoWrap" FontSize="Medium" TextColor="{StaticResource NavigationTextColor}" />
+                <Image Grid.Column="1" Source="{Binding OnlineStatusImage, Source={x:Static local:GlobalResources.Current}}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0,5,0,0" HorizontalOptions="Center" />
+            </Grid>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" BackgroundColor="{Binding BackgroundColor}" IsVisible="{Binding isEnabled}" >
+                            <Grid HeightRequest="30" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="33" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="{Binding Image}" VerticalOptions="Center" HeightRequest="30" Aspect="AspectFit" HorizontalOptions="Start"></Image>
+                                <Label Text="{Binding Sequence}" Grid.Column="0" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="Roboto Medium" FontAttributes="Bold"></Label>
+                                <Label Text="{Binding Text}" Grid.Column="1" VerticalOptions="Center" LineBreakMode="NoWrap" FontFamily="Roboto" FontSize="16" />
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

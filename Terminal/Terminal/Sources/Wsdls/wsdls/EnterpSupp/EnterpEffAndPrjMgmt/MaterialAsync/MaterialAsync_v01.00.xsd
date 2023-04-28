@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialAsync_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+    xmlns:bomtypesMM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+    xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+		contains datatype-definitions specific for the Material-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<!-- Place your imports here, if required -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" schemaLocation="../../../../ngerp_core_psl_int_global_v1_mm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../../../../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<!-- ****************************************************************** -->
+	<complexType name="GetByFilterAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filter" type="bomtypesMM:MaterialFilterDto" minOccurs="0" maxOccurs="1">
+							<xsd:annotation>
+								<xsd:documentation>Filter.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetByFilterAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Materials" type="bomtypesMM:MaterialDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>CS orders.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>    
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetByFilterAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetChangesAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filters" type="bomtypesCommon:ObjectChangeFilterDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Filters.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetChangesAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Materials" type="bomtypesMM:MaterialDto" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>CS orders.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetChangesAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- ****************************************************************** -->
+	<complexType name="CheckAvailabilityAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filters"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Filters.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id"  minOccurs="0" maxOccurs="1">
+										<xsd:annotation>
+											<xsd:documentation>Id of data set. Copied to response.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="64"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="MaterialId">
+										<xsd:annotation>
+											<xsd:documentation>Material id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="18"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="CheckRuleId">
+										<xsd:annotation>
+											<xsd:documentation>Check rule id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="AtpSegmentTypeIds"  minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Atp segment type ids.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="MrpAreaId">
+										<xsd:annotation>
+											<xsd:documentation>Mrp area.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="10"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="CheckCompatibleMaterials"  minOccurs="0" type="xsd:boolean">
+										<xsd:annotation>
+											<xsd:documentation>Check compatible materials.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="CheckInsideBoms"  minOccurs="0" type="xsd:boolean">
+										<xsd:annotation>
+											<xsd:documentation>Check inside BOMs.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="CheckAvailabilityAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Availability"  minOccurs="0" maxOccurs="unbounded">					
+							<xsd:annotation>
+								<xsd:documentation>Availability.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id"  minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Id of data set. Copied to response.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="64"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Messages raised during execution.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="ReplenishmentDates" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Nearest material replenishment date</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="MaterialId">
+													<xsd:annotation>
+														<xsd:documentation>Material id</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:length value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="Date" type="xsd:date">
+													<xsd:annotation>
+														<xsd:documentation>Replenishement date</xsd:documentation>
+													</xsd:annotation>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="Items"  minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Availability items.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="AvailabilityDate" type="xsd:date">
+													<xsd:annotation>
+														<xsd:documentation>Availability date.</xsd:documentation>
+													</xsd:annotation>
+
+												</xsd:element>
+												<xsd:element name="AtpSegmentTypeId">
+													<xsd:annotation>
+														<xsd:documentation>Atp segment type.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="2"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="AtpSegment">
+													<xsd:annotation>
+														<xsd:documentation>Atp segment.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="34"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MrpElementTypeId">
+													<xsd:annotation>
+														<xsd:documentation>Mrp element type id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="2"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MrpElement">
+													<xsd:annotation>
+														<xsd:documentation>Mrp element.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="32"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="BomMaterialId" minOccurs="0">
+													<xsd:annotation>
+														<xsd:documentation>BOM material id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MaterialId">
+													<xsd:annotation>
+														<xsd:documentation>Material id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="Quantity">
+													<xsd:annotation>
+														<xsd:documentation>Quantity.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:totalDigits value="13"/>
+															<xsd:fractionDigits value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="UnitId">
+													<xsd:annotation>
+														<xsd:documentation>Unit id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="CheckAvailabilityAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetStockByVendorAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filters"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Filters.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id"  minOccurs="0" maxOccurs="1">
+										<xsd:annotation>
+											<xsd:documentation>Id of data set. Copied to response.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="64"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="MaterialId">
+										<xsd:annotation>
+											<xsd:documentation>Material id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="18"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="PlantId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Plant.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="VendorId" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Check rule id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="10"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="BatchNumber"  minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Batch number.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="10"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="CheckCompatibleMaterials"  minOccurs="0" type="xsd:boolean">
+										<xsd:annotation>
+											<xsd:documentation>Check compatible materials.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="CheckInsideBoms"  minOccurs="0" type="xsd:boolean">
+										<xsd:annotation>
+											<xsd:documentation>Check inside BOMs.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetStockByVendorAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Availability"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Availability.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id"  minOccurs="0" maxOccurs="1">
+										<xsd:annotation>
+											<xsd:documentation>Id of data set. Copied to response.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="64"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Messages raised during execution.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Items"  minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Availability items.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="PlantId">
+													<xsd:annotation>
+														<xsd:documentation>Plant.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="VendorId">
+													<xsd:annotation>
+														<xsd:documentation>Vendor id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="10"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="BomMaterialId" minOccurs="0">
+													<xsd:annotation>
+														<xsd:documentation>BOM material id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MaterialId">
+													<xsd:annotation>
+														<xsd:documentation>Material id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="Quantity">
+													<xsd:annotation>
+														<xsd:documentation>Quantity.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:totalDigits value="13"/>
+															<xsd:fractionDigits value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="UnitId">
+													<xsd:annotation>
+														<xsd:documentation>Unit id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetStockByVendorAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetBomStructureSimplifiedAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filters"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Filters.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="BomMaterialId">
+										<xsd:annotation>
+											<xsd:documentation>Material id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="18"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="PlantId">
+										<xsd:annotation>
+											<xsd:documentation>Plant.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>	
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetBomStructureSimplifiedAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Boms"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Availability.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="MaterialId">
+										<xsd:annotation>
+											<xsd:documentation>Bom material id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="18"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="PlantId">
+										<xsd:annotation>
+											<xsd:documentation>Plant id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="4"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Components"  minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Components.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="MaterialId">
+													<xsd:annotation>
+														<xsd:documentation>Plant.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="Quantity">
+													<xsd:annotation>
+														<xsd:documentation>Quantity.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:totalDigits value="13"/>
+															<xsd:fractionDigits value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Messages raised during execution.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetBomStructureSimplifiedAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetStockLevelsAsyncRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Filters"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Filters.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id"  minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Id of data set. Copied to response.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="64"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Criterions"  minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Filters.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="PlantId" minOccurs="0">
+													<xsd:annotation>
+														<xsd:documentation>Plant id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="StorageLocationCode" minOccurs="0">
+													<xsd:annotation>
+														<xsd:documentation>Storage location.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MaterialId" minOccurs="0">
+													<xsd:annotation>
+														<xsd:documentation>Material id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="ValuationTypeIds" minOccurs="0" maxOccurs="unbounded">
+													<xsd:annotation>
+														<xsd:documentation>Valuation type ids.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="10"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="ReturnData" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Which parts of order data to return. If not provided - return everything</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="SerialNumbers" type="xsd:boolean" minOccurs="0">
+													<xsd:annotation>
+														<xsd:documentation>Return serial numbers</xsd:documentation>
+													</xsd:annotation>
+												</xsd:element>	
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetStockLevelsAsyncResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Results"  minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Stock level results.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id">
+										<xsd:annotation>
+											<xsd:documentation>Id of data set.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="64"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Messages raised during execution.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>									
+									<xsd:element name="ItemsAll" type="xsd:boolean">
+										<xsd:annotation>
+											<xsd:documentation>Shows that complete list of items provided</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>	
+									<xsd:element name="Items"  maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Stock level items.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="PlantId">
+													<xsd:annotation>
+														<xsd:documentation>Plant.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="StorageLocationCode">
+													<xsd:annotation>
+														<xsd:documentation>Storate location code.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="MaterialId">
+													<xsd:annotation>
+														<xsd:documentation>Material id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="18"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="Quantity">
+													<xsd:annotation>
+														<xsd:documentation>Quantity.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:totalDigits value="13"/>
+															<xsd:fractionDigits value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="UnitId">
+													<xsd:annotation>
+														<xsd:documentation>Unit id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="BatchNumber">
+													<xsd:annotation>
+														<xsd:documentation>Batch number.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="10"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="ValuationTypeId">
+													<xsd:annotation>
+														<xsd:documentation>Valuation type id.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="10"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="SerialNumbersAll" type="xsd:boolean">
+													<xsd:annotation>
+														<xsd:documentation>Shows that complete list of serial numbers is provided.</xsd:documentation>
+													</xsd:annotation>
+												</xsd:element>	
+												<xsd:element name="SerialNumbers" minOccurs="0" maxOccurs="unbounded">
+													<xsd:annotation>
+														<xsd:documentation>Serial numbers</xsd:documentation>
+													</xsd:annotation>
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="SerialNumber">
+																<xsd:annotation>
+																	<xsd:documentation>SAP serial number</xsd:documentation>
+																</xsd:annotation>
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="18"/>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:element>
+															<xsd:element name="UniqueItemId">
+																<xsd:annotation>
+																	<xsd:documentation>Unique item indetifier</xsd:documentation>
+																</xsd:annotation>
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="72"/>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:element>
+															<xsd:element name="ManufacturerSerialNumber">
+																<xsd:annotation>
+																	<xsd:documentation>Manufacturer serial number</xsd:documentation>
+																</xsd:annotation>
+																<xsd:simpleType>
+																	<xsd:restriction base="xsd:string">
+																		<xsd:maxLength value="30"/>
+																	</xsd:restriction>
+																</xsd:simpleType>
+															</xsd:element>									
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+												<xsd:element name="StockType">
+													<xsd:annotation>
+														<xsd:documentation>Stock type: (U)nrestricted, (B)locked.</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="3"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="GetStockLevelsAsyncFaultType">
+		<sequence>
+			<group ref="csdg:TCAsynchronousFaultHeader"/>
+			<element name="detail">
+				<complexType>
+					<choice>
+						<element ref="csdg:technicalFault"/>
+						<!-- mandatory ref -->
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+            xmlns:bomtypesMM_SD="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD"
+            xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns:bomtypesPM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/SD">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD" schemaLocation="../ngerp_core_psl_int_global_v1_mm_sd/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" schemaLocation="../ngerp_core_psl_int_global_v1_pm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:complexType name="DT_OutboundDelivery">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Outbound delivery</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id">
+				<xsd:annotation>
+					<xsd:documentation>Delivery Id</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Header" type="bomtypesMM_SD:DT_DeliveryHeader" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Header</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ShipToPartyAdditionalData" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Additional data for ship to party costumer.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Address" type="bomtypesMasterData:DT_Address" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Address</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Contacts" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Contact data</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="RoleId">
+										<xsd:annotation>
+											<xsd:documentation>Contanct person role id</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="FullName">
+										<xsd:annotation>
+											<xsd:documentation>Full person name</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="80"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="TelephoneNumbers" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Telephone numbers</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="30"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="EmailAddresses" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Email addresses</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType> 
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="241"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Items" type="bomtypesMM_SD:DT_DeliveryItem" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Items</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HandlingUnits" type="bomtypesMM_SD:DT_HandlingUnit" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Handling units for delivery. Packing.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IsDeleted" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Is deleted</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SerialNumbers" minOccurs="0" maxOccurs="unbounded" >
+				<xsd:annotation>
+					<xsd:documentation>Serial numbers</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ItemNumber">
+							<xsd:annotation>
+								<xsd:documentation>Delivery item number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:pattern value="\d+"/>
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="SerialNumber">
+							<xsd:annotation>
+								<xsd:documentation>SAP serial number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="18"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ManufacturerSerialNumber">
+							<xsd:annotation>
+								<xsd:documentation>Manufacturer serial number</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="30"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="UniqueItemId">
+							<xsd:annotation>
+								<xsd:documentation>Unique item identifier. UII</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="72"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="DT_Status">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Status</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="5"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

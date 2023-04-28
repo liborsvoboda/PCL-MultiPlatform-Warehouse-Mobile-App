@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="DT_MaterialDocumentId">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Material document id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Year">
+        <xsd:annotation>
+          <xsd:documentation>Year</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DocumentNumber">
+        <xsd:annotation>
+          <xsd:documentation>Document number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

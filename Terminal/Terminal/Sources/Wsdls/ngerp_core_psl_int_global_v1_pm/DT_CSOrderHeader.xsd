@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1">
+  <xsd:complexType name="DT_CSOrderHeader">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">CS order header</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrderTypeId">
+        <xsd:annotation>
+          <xsd:documentation>Order type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MainWorkCenter">
+        <xsd:annotation>
+          <xsd:documentation>Main work center</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MaintenanceActivityTypeId">
+        <xsd:annotation>
+          <xsd:documentation>Maintenance activity type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="3"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FunctionalLocationId">
+        <xsd:annotation>
+          <xsd:documentation>Functional location</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="30"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ResponsibleCostCenter">
+        <xsd:annotation>
+          <xsd:documentation>Responsible cost ccenter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="WbsElementId">
+        <xsd:annotation>
+          <xsd:documentation>Wbs element</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="StartAt" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Start date and time</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FinishAt" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Finish date and time</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Description" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PlannerGroup">
+        <xsd:annotation>
+          <xsd:documentation>Planner group</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="3"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ProfitCenter">
+        <xsd:annotation>
+          <xsd:documentation>Profit center</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MaintenancePlanningPlantId">
+        <xsd:annotation>
+          <xsd:documentation>Maintenance planning plant</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ExternalId">
+        <xsd:annotation>
+          <xsd:documentation>External order number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ExternalDate" type="xsd:date" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>External order date</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="StatusProfileId">
+        <xsd:annotation>
+          <xsd:documentation>Status profile</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="IsDeleted" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Is deleted</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EquipmentId">
+        <xsd:annotation>
+          <xsd:documentation>Equipment id.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="18"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

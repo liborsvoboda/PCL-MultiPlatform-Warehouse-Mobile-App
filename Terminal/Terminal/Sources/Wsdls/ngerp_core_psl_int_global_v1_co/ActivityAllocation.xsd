@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/CO" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" 
+	xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/CO"
+	xmlns:bomtypesPM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM">
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM" schemaLocation="../ngerp_core_psl_int_global_v1_pm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<xsd:include schemaLocation="TypeDeclarations.xsd"/>
+	<xsd:complexType name="ActivityAllocation">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">CO document activity allocation</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Id.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="TCODocumentId">
+							<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Header">
+				<xsd:annotation>
+					<xsd:documentation>Header.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ControllingAreaId">
+							<xsd:annotation>
+								<xsd:documentation>Controlling area</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="4"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Date" type="xsd:date">
+							<xsd:annotation>
+								<xsd:documentation>Document date</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Description" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Description</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="50"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Items" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Items</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Quantity" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Activity quantity</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:decimal">
+									<xsd:totalDigits value="15"/>
+									<xsd:fractionDigits value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="QuantityUnitId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Activity quantity unit id</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="ReceiverOrderId" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Receiver order id.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="bomtypesPM:TOrderId">
+										<xsd:attribute name="Variable" type="bomtypesCommon:TVariableAttribute"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ActivityType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Activity type</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="6"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="SenderCostCenter" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Sender cost center</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sk="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
+             xmlns:language="clr-namespace:Terminal.Languages"
+             x:Class="Terminal.SKReports.Report" 
+             Title="SkiaSharp Forms Example" Padding="10">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{x:Static language:LangResources.Cancel}" Clicked="Cancel_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="cancel.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="{x:Static language:LangResources.Save}" Clicked="Save_Clicked">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="UWP" Value="save.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <sk:SKCanvasView x:Name="canvasView" 
+                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                     PaintSurface="OnCanvasViewPaintSurface" />
+</ContentPage>  

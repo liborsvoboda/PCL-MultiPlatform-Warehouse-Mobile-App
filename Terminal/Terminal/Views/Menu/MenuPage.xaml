@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.Views.MenuPage"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             Title="{x:Static language:LangResources.Menu}">
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <ListView x:Name="ListViewMenu" 
+                    HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Image Source="{Binding Image}" Margin="0,3,0,0" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Start"></Image>
+                            <Label Text="{Binding Title}" FontSize="20" Margin="30,0,0,0" VerticalOptions="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

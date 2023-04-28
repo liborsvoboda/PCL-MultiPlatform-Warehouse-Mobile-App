@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="DT_MaterialDocumentHeader">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Material document header</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TypeId">
+        <xsd:annotation>
+          <xsd:documentation>Document type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Date" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Document date</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PostingDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Posting date</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ReferenceDocumentNumber">
+        <xsd:annotation>
+          <xsd:documentation>Reference document</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="16"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Description">
+        <xsd:annotation>
+          <xsd:documentation>Description</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="25"/>
+          </xsd:restriction>
+        </xsd:simpleType>        
+      </xsd:element>
+      <xsd:element name="EventTypeId">
+        <xsd:annotation>
+          <xsd:documentation>Event/transaction type</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

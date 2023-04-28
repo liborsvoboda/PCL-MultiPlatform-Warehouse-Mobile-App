@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="ObjectChangeMarkerDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Object changes distribution.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id">
+				<xsd:annotation>
+					<xsd:documentation>Id.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="32"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="TypeId">
+				<xsd:annotation>
+					<xsd:documentation>Object type.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="2"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="VersionTimestamp">
+				<xsd:annotation>
+					<xsd:documentation>Version timestamp.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:fractionDigits value="7"/>
+						<xsd:totalDigits value="21"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>	
+			<xsd:element name="FullObject" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Marker that full object should be queried.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>	
+			<xsd:element name="Size" type="xsd:int">
+				<xsd:annotation>
+					<xsd:documentation>Object size.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

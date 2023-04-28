@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ServiceNotification" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceNotification_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceNotification_v01.00">
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-17">
+      <doc:description>
+Updated on 04.11.2017 12:24:49, UTC
+15486	07.09.2017 15:34:33	No more extensibility
+14990	07.08.2017 10:14:56	&lt;xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/&gt;
+
+Updated on 01.06.2017 10:45:52, UTC
+14117	01.06.2017 10:04:33	Version fix. MOM deleted
+
+Updated on 17.05.2017 14:24:44, UTC
+13939	17.05.2017 14:22:20	Dto suffix for bussiness types
+13924	17.05.2017 08:05:23	Renaming
+13923	17.05.2017 07:44:29	Dto suffix
+
+Updated on 10.05.2017 08:59:12, UTC
+13579	10.04.2017 14:12:40	Material document + service wsdl
+13556	06.04.2017 15:18:15	Additional criteria
+13546	06.04.2017 10:01:53	Minor update
+
+				-------------------------- @TODO:DESCRIBE_ME - Service "ServiceNotification" -----------------------------
+			</doc:description>
+      <doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+      <doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2016-08-05" doc:lang="en">15486</doc:change>
+    </doc:service>
+  </documentation>
+  <types>
+    <xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceNotification_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceNotification_v01.00/types">
+      <!-- ****************************************************************** -->
+      <xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+      <xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/ServiceNotification_v01.00/types" schemaLocation="ServiceNotification_v01.00.xsd" />
+      <!-- ****************************************************************** -->
+      <xsd:element name="createOrChange" type="types:CreateOrChangeRequestType" />
+      <xsd:element name="createOrChangeResponse" type="types:CreateOrChangeResponseType" />
+      <xsd:element name="getByFilter" type="types:GetByFilterRequestType" />
+      <xsd:element name="getByFilterResponse" type="types:GetByFilterResponseType" />
+      <xsd:element name="getChanges" type="types:GetChangesRequestType" />
+      <xsd:element name="getChangesResponse" type="types:GetChangesResponseType" />
+    </xsd:schema>
+  </types>
+  <!-- ****************************************************************** -->
+  <!-- Messages : -->
+  <!-- ****************************************************************** -->
+  <message name="CreateOrChangeRequest">
+    <part name="parameters" element="tns:createOrChange" />
+  </message>
+  <message name="CreateOrChangeResponse">
+    <part name="parameters" element="tns:createOrChangeResponse" />
+  </message>
+  <message name="GetByFilterRequest">
+    <part name="parameters" element="tns:getByFilter" />
+  </message>
+  <message name="GetByFilterResponse">
+    <part name="parameters" element="tns:getByFilterResponse" />
+  </message>
+  <message name="GetChangesRequest">
+    <part name="parameters" element="tns:getChanges" />
+  </message>
+  <message name="GetChangesResponse">
+    <part name="parameters" element="tns:getChangesResponse" />
+  </message>
+  <message name="EmptyTechnicalResponse">
+    <part name="parameters" element="csdg:empty" />
+  </message>
+  <message name="TechnicalFault">
+    <part name="parameters" element="csdg:technicalFault" />
+  </message>
+  <!-- ****************************************************************** -->
+  <!-- PortTypes : -->
+  <!-- ****************************************************************** -->
+  <!-- Provider: -->
+  <portType name="ServiceNotification">
+    <operation name="createOrChange">
+      <documentation>
+        <doc:operation mep="RequestResponse" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "createOrChange" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:CreateOrChangeRequest" />
+      <output message="tns:CreateOrChangeResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+    <operation name="getByFilter">
+      <documentation>
+        <doc:operation mep="RequestResponse" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "getByFilter" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:GetByFilterRequest" />
+      <output message="tns:GetByFilterResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+    <operation name="getChanges">
+      <documentation>
+        <doc:operation mep="RequestResponse" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "getChanges" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:GetChangesRequest" />
+      <output message="tns:GetChangesResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+</definitions>

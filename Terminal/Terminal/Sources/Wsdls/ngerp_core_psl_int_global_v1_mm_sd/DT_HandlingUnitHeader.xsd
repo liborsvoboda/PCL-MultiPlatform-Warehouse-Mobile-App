@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD">
+  <xsd:complexType name="DT_HandlingUnitHeader">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Header of handling unit document</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ExternalId" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>External Handling Unit Identification</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ShippingOrReceivingPointId">
+        <xsd:annotation>
+          <xsd:documentation>Shipping Point/Receiving Point</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="4"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LoadingPoint">
+        <xsd:annotation>
+          <xsd:documentation>Loading Point</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="PackagingMaterialId">
+        <xsd:annotation>
+          <xsd:documentation>Packaging material</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="18"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CreatedAt" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Created at</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ChangedAt" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Changed at</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+	  <xsd:element name="NetWeight">
+        <xsd:annotation>
+					<xsd:documentation>NetWeight</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:totalDigits value="15"/>
+						<xsd:fractionDigits value="3"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+      </xsd:element>
+	  <xsd:element name="GrossWeight">
+				<xsd:annotation>
+					<xsd:documentation>GrossWeight</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:totalDigits value="15"/>
+						<xsd:fractionDigits value="3"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+      </xsd:element>
+	  <xsd:element name="TareWeight">
+				<xsd:annotation>
+					<xsd:documentation>TareWeight</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:decimal">
+						<xsd:totalDigits value="15"/>
+						<xsd:fractionDigits value="3"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+      </xsd:element>
+	  <xsd:element name="WeightUnitId">
+				<xsd:annotation>
+					<xsd:documentation>Weight measure unit</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="3"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
+
+

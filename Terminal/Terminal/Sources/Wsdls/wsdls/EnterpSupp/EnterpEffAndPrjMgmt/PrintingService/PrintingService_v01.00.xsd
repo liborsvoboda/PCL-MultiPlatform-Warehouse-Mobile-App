@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/PrintingService_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/PrintingService_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+    xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+      contains datatype-definitions specific for the PrintingService-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<!-- Place your imports here, if required -->
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../../../../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<!-- ****************************************************************** -->
+	<complexType name="PrintRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Meta" type="bomtypesCommon:RequestExecutionMeta" minOccurs="0" maxOccurs="1">
+							<xsd:annotation>
+								<xsd:documentation>Execution meta.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Requests" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Activity allocations</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Id</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="128"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Language" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Language. ISO 2 letter code</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Layout" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Layout</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="128"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Object" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Object</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2048"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="PrintResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Meta" type="bomtypesCommon:ResponseExecutionMeta">
+							<xsd:annotation>
+								<xsd:documentation>Execution meta.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>					
+						<xsd:element name="Results" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Activity allocations</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Id</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="128"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Outputs" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Activity allocations</xsd:documentation>
+										</xsd:annotation>
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="Type">
+													<xsd:annotation>
+														<xsd:documentation>Output type</xsd:documentation>
+													</xsd:annotation>
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:maxLength value="4"/>
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="Content" type="xsd:base64Binary">
+													<xsd:annotation>
+														<xsd:documentation>Content</xsd:documentation>
+													</xsd:annotation>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="Messages" type="bomtypesCommon:DT_ProcessingMessage" minOccurs="0" maxOccurs="unbounded">
+										<xsd:annotation>
+											<xsd:documentation>Messages</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>			
+		</sequence>
+	</complexType>
+</schema>

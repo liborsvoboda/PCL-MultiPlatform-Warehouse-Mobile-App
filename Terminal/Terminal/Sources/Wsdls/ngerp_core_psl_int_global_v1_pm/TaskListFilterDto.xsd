@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+			xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM">
+	<xsd:complexType name="TaskListFilterDto">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="EN">Filter for task list</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Criterions" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Search criterions.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Ids" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Ids.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="TypeId">
+										<xsd:annotation>
+											<xsd:documentation>Type id.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="1"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Group">
+										<xsd:annotation>
+											<xsd:documentation>Group.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="8"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="GroupCounter" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>Group counter.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="2"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ClassificationFiltersJoin" minOccurs="0" type="xsd:boolean">
+							<xsd:annotation>
+								<xsd:documentation>If true - "AND" condition is applied for selection by classifications, if false - "OR"</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Classification" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Classification.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Selector">
+										<xsd:annotation>
+											<xsd:documentation>Selector.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="53"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element name="Value">
+										<xsd:annotation>
+											<xsd:documentation>Value.</xsd:documentation>
+										</xsd:annotation>
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:maxLength value="255"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReturnData" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Which parts of order data to return. If not provided - return everything</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Header" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return header data</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Operations" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return oeprations</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Components" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return components</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Services" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return operation services</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Classifications" type="xsd:boolean" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Return classifications</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

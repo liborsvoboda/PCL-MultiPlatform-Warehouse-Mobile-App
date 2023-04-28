@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MaterialDocumentCreate" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" xmlns:csdg="http://schemas.telekom.net/csdg_v01.01" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentCreate_v01.00" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentCreate_v01.00">
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:service governance-area="tint" domain="EnterpSupp" functional-component="EnterpEffAndPrjMgmt" version="01.00.000" version-date="2017-05-17" isLogicalService="true">
+      <doc:description>
+Updated on 04.11.2017 12:24:49, UTC
+15486	07.09.2017 15:34:33	No more extensibility
+14990	07.08.2017 10:14:56	&lt;xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/&gt;
+
+Updated on 01.06.2017 10:45:52, UTC
+14117	01.06.2017 10:04:33	Version fix. MOM deleted
+
+Updated on 17.05.2017 14:24:44, UTC
+13939	17.05.2017 14:22:20	Dto suffix for bussiness types
+
+Updated on 10.05.2017 08:59:11, UTC
+13855	10.05.2017 08:58:13	Corrections for CSDG validator
+13550	06.04.2017 11:54:40	Minor corrections
+
+Updated on 30.03.2017 09:32:06, UTC
+12404	04.01.2017 11:32:02	Typo fix in describtion
+
+Updated on 09.03.2016 10:14:09, UTC
+7847	09.03.2016 10:12:57	Manufacturer serial number field restored
+
+Updated on 04.03.2016 09:06:52, UTC
+7259	20.02.2016 15:36:53	Changes for material documents
+6987	12.02.2016 15:07:06	Manufacturer serial number deleted
+6982	12.02.2016 14:27:16	UII
+
+Updated on 16.09.2015 14:11:21, UTC
+6109	16.09.2015 14:11:05	Cancellation for material document
+New fields for material
+
+Updated on 22.07.2015 08:03:37, UTC
+5840	21.07.2015 12:58:42	Canceled item id element added
+
+Updated on 27.05.2015 18:36:12, UTC
+5442	20.05.2015 16:01:55	Byte order mark deleted. utf-8 -&gt; UTF-8
+5437	20.05.2015 09:35:37	Version updated for wsdls for 15C
+5412	15.05.2015 19:53:07	Serial number fields renamed
+5402	14.05.2015 10:35:31	Serial numbers added for material documents
+5393	13.05.2015 09:16:09	References fixed
+5372	11.05.2015 13:47:22	Serial numbers
+5140	13.03.2015 15:15:59	Upload documents interface
+4509	04.12.2014 13:10:40	Changes to material document interfaces and to material interfaces
+4500	03.12.2014 17:14:29	Minor fixes + new TD
+4413	25.11.2014 11:59:17	CSDG. One operation = one service.
+4362	21.11.2014 12:28:50	New TDs to CSDG
+4272	12.11.2014 16:39:27	New services were added
+4108	30.10.2014 17:36:14	Multioperation services
+3829	03.10.2014 12:52:05	Changes
+3693	24.09.2014 15:13:12	SoaBP wsdls
+
+				-------------------------- @TODO:DESCRIBE_ME - Service "MaterialDocumentCreate" -----------------------------
+			</doc:description>
+      <doc:designer>mailto:Augustinus.Deimel@telekom.de</doc:designer>
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+      <doc:change predecessorVersion="01.00.000" by="A.Deimel" date="2014-11-25" doc:lang="en">15486</doc:change>
+    </doc:service>
+  </documentation>
+  <types>
+    <xsd:schema targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentCreate_v01.00" elementFormDefault="qualified" attributeFormDefault="unqualified" version="01.00" xmlns:types="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentCreate_v01.00/types">
+      <!-- ****************************************************************** -->
+      <xsd:import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd" />
+      <xsd:import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/MaterialDocumentCreate_v01.00/types" schemaLocation="MaterialDocumentCreate_v01.00.xsd" />
+      <!-- ****************************************************************** -->
+      <xsd:element name="createAsync" type="types:CreateAsyncRequestType" />
+      <xsd:element name="createAsyncCallback" type="types:CreateAsyncResponseType" />
+      <xsd:element name="createAsyncFault" type="types:CreateAsyncFaultType" />
+    </xsd:schema>
+  </types>
+  <!-- ****************************************************************** -->
+  <!-- Messages : -->
+  <!-- ****************************************************************** -->
+  <message name="CreateAsyncRequest">
+    <part name="parameters" element="tns:createAsync" />
+  </message>
+  <message name="CreateAsyncResponse">
+    <part name="parameters" element="tns:createAsyncCallback" />
+  </message>
+  <message name="CreateAsyncFault">
+    <part name="parameters" element="tns:createAsyncFault" />
+  </message>
+  <message name="EmptyTechnicalResponse">
+    <part name="parameters" element="csdg:empty" />
+  </message>
+  <message name="TechnicalFault">
+    <part name="parameters" element="csdg:technicalFault" />
+  </message>
+  <!-- ****************************************************************** -->
+  <!-- PortTypes : -->
+  <!-- ****************************************************************** -->
+  <!-- Provider: -->
+  <portType name="MaterialDocumentCreate">
+    <operation name="createAsync">
+      <documentation>
+        <doc:operation mep="RequestCallback" access="ReadOnly">
+          <doc:description>
+						-------------------------- @TODO:DESCRIBE_ME - Operation "createAsync" -----------------------------
+					</doc:description>
+        </doc:operation>
+      </documentation>
+      <input message="tns:CreateAsyncRequest" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+  <!-- ****************************************************************** -->
+  <!-- Consumer : -->
+  <portType name="MaterialDocumentCreateConsumer">
+    <operation name="createAsyncCallback">
+      <input message="tns:CreateAsyncResponse" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+    <operation name="createAsyncFault">
+      <input message="tns:CreateAsyncFault" />
+      <output message="tns:EmptyTechnicalResponse" />
+      <fault message="tns:TechnicalFault" name="TechnicalFault" />
+    </operation>
+  </portType>
+</definitions>

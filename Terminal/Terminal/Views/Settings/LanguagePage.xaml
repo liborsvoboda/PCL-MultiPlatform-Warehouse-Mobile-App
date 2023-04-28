@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Terminal.Views.LanguagePage"
+             xmlns:local="clr-namespace:Terminal.Singleton"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             xmlns:images="clr-namespace:Terminal.Images"
+             Title="">
+    <NavigationPage.TitleView>
+        <StackLayout HeightRequest="48" Padding="0,0,0,0">
+            <Grid HeightRequest="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="BackLabel" Grid.Column="0" Margin="0,8,0,0" HorizontalOptions="CenterAndExpand" Text="{x:Static language:LangResources.SelectLanguage}" LineBreakMode="NoWrap" FontSize="Medium" TextColor="{StaticResource NavigationTextColor}" />
+                <Image Grid.Column="1" Source="{Binding OnlineStatusImage, Source={x:Static local:GlobalResources.Current}}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0,5,0,0" HorizontalOptions="Center" />
+            </Grid>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <ScrollView.Content>
+                <StackLayout Spacing="20" Padding="15">
+                    <Label Text="{x:Static language:LangResources.Language}" 
+                    LineBreakMode="NoWrap" 
+                    FontSize="Medium" />
+                    <Picker x:Name="picker"
+                    HorizontalOptions="FillAndExpand"
+                    >
+                        <Picker.Items>
+                            <x:String>English</x:String>
+                            <x:String>Česky</x:String>
+                            <x:String>Slovensky</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>  
+            </ScrollView.Content>
+        </ScrollView>
+        <Grid HeightRequest="48" Grid.Row="1" Padding="15,15,15,5"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  AbsoluteLayout.LayoutBounds="0,1,1,Autosize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" CornerRadius="8" BackgroundColor="{StaticResource ButtonBackground}" WidthRequest="48" Clicked="Cancel_Clicked" Source="{x:Static images:Images.cancelImage}" VerticalOptions="StartAndExpand" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Fill"/>
+
+            <ImageButton Grid.Column="1" CornerRadius="8" BackgroundColor="{StaticResource IconColor}" Clicked="Save_Clicked" Source="{x:Static images:Images.saveImage}" VerticalOptions="CenterAndExpand" HeightRequest="48" Aspect="AspectFit" HorizontalOptions="Fill"/>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>
+    

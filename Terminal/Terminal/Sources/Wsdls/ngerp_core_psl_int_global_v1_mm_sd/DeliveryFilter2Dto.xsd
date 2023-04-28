@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM_SD">
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:complexType name="DeliveryFilter2Dto">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Delivery get by filter request</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Criterions" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Criterions for selection.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Ids" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Delivery number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReturnData" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Which parts of delivery data to return. If not provided - only Ids will be returned</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Header" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return header data</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Items" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return item data</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="HandlingUnits" type="xsd:boolean" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Return partners</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

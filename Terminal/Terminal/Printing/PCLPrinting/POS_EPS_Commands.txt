@@ -1,0 +1,250 @@
+﻿Commands in Code Order - https://reference.epson-biz.com/modules/ref_escpos/index.php?content_id=72
+Command Description Category
+HT	Horizontal tab	Print Position
+LF	Print and line feed	Print
+FF (in Page mode)	Print and return to Standard mode (in Page mode)	Print
+CR	Print and carriage return	Print
+DLE EOT	Transmit real-time status	Status
+DLE ENQ	Send real-time request to printer	Miscellaneous
+DLE DC4 (fn=1)	Generate pulse in real-time	Miscellaneous
+DLE DC4 (fn=2)	Execute power-off sequence	Miscellaneous
+DLE DC4 (fn=3)	Sound buzzer in real-time	Miscellaneous
+DLE DC4 (fn=7)	Transmit specified status in real time	Miscellaneous
+DLE DC4 (fn=8)	Clear buffer(s)	Miscellaneous
+CAN	Cancel print data in Page mode	Character
+ESC FF	Print data in Page mode	Print
+ESC SP	Set right-side character spacing	Character
+ESC !	Select print mode(s)	Character
+ESC $	Set absolute print position	Print Position
+ESC %	Select/cancel user-defined character set	Character
+ESC &	Define user-defined characters	Character
+ESC ( A	Control beeper tones	Miscellaneous
+ESC ( A <fn=48>	Beep the buzzer	Miscellaneous
+ESC ( A <fn=97>	Model specific buzzer control (fn=97)	Miscellaneous
+ESC ( A <fn=98>	Model specific buzzer control (fn=98)	Miscellaneous
+ESC ( A <fn=99>	Model specific buzzer control (fn=99)	Miscellaneous
+ESC ( Y	Specify batch print	Miscellaneous
+ESC *	Select bit-image mode	Bit Image
+ESC -	Turn underline mode on/off	Character
+ESC 2	Select default line spacing	Line Spacing
+ESC 3	Set line spacing	Line Spacing
+ESC <	Return home	Mech. Control
+ESC =	Select peripheral device	Miscellaneous
+ESC ?	Cancel user-defined characters	Character
+ESC @	Initialize printer	Miscellaneous
+ESC D	Set horizontal tab positions	Print Position
+ESC E	Turn emphasized mode on/off	Character
+ESC G	Turn double-strike mode on/off	Character
+ESC J	Print and feed paper	Print
+ESC K	Print and reverse feed	Print
+ESC L	Select Page mode	Miscellaneous
+ESC M	Select character font	Character
+ESC R	Select an international character set	Character
+ESC S	Select Standard mode	Miscellaneous
+ESC T	Select print direction in Page mode	Print Position
+ESC U	Turn unidirectional print mode on/off	Mech. Control
+ESC V	Turn 90° clockwise rotation mode on/off	Character
+ESC W	Set print area in Page mode	Print Position
+ESC \	Set relative print position	Print Position
+ESC a	Select justification	Print Position
+ESC c 3	Select paper sensor(s) to output paper-end signals	Paper Sensor
+ESC c 4	Select paper sensor(s) to stop printing	Paper Sensor
+ESC c 5	Enable/disable panel buttons	Panel Button
+ESC d	Print and feed n lines	Print
+ESC e	Print and reverse feed n lines	Print
+ESC i (∗)	Partial cut (one point left uncut)	Mech. Control
+ESC m (∗)	Partial cut (three points left uncut)	Mech. Control
+ESC p	Generate pulse	Miscellaneous
+ESC r	Select print color	Character
+ESC t	Select character code table	Character
+ESC u (∗)	Transmit peripheral device status	Status
+ESC v (∗)	Transmit paper sensor status	Status
+ESC {	Turn upside-down print mode on/off	Character
+FS !	Select print mode(s) for Kanji characters	Kanji
+FS &	Select Kanji character mode	Kanji
+FS ( A	Select Kanji character style(s)	Kanji
+FS ( A <fn=48>	Select Kanji character font	Kanji
+FS ( C	Select code conversion method	Character
+FS ( C <fn=48>	Select character encode system	Character
+FS ( C <fn=60>	Set font priority	Character
+FS ( E	Group of commands for receipt enhancement control	Miscellaneous
+FS ( E <fn=60>	Cancel set values for top/bottom logo printing	Miscellaneous
+FS ( E <fn=61>	Transmit set values for top/bottom logo printing	Miscellaneous
+FS ( E <fn=62>	Set top logo printing	Miscellaneous
+FS ( E <fn=63>	Set bottom logo printing	Miscellaneous
+FS ( E <fn=64>	Make extended settings for top/bottom logo printing	Miscellaneous
+FS ( E <fn=65>	Enable/disable top/bottom logo printing	Miscellaneous
+FS ( L	Select label and black mark control function(s)	Printing Paper
+FS ( L <fn=33>	Paper layout setting	Printing Paper
+FS ( L <fn=34>	Paper layout information transmission	Printing Paper
+FS ( L <fn=48>	Transmit the positioning information	Printing Paper
+FS ( L <fn=65>	Feed paper to the label peeling position	Printing Paper
+FS ( L <fn=66>	Feed paper to the cutting position	Printing Paper
+FS ( L <fn=67>	Feed paper to the print starting position	Printing Paper
+FS ( L <fn=80>	Paper layout error special margin setting	Printing Paper
+FS ( e	Enable/disable Automatic Status Back (ASB) for optional functions (extended status)	Status
+FS -	Turn underline mode on/off for Kanji characters	Kanji
+FS .	Cancel Kanji character mode	Kanji
+FS 2	Define user-defined Kanji characters	Kanji
+FS ?	Cancel user-defined Kanji characters	Kanji
+FS C	Select Kanji character code system	Kanji
+FS S	Set Kanji character spacing	Kanji
+FS W	Turn quadruple-size mode on/off for Kanji characters	Kanji
+FS g 1 (∗)	Write to NV user memory	Customize
+FS g 2 (∗)	Read from NV user memory	Customize
+FS p (∗)	Print NV bit image	Bit Image
+FS q (∗)	Define NV bit image	Bit Image
+GS !	Select character size	Character
+GS $	Set absolute vertical print position in Page mode	Print Position
+GS ( A	Execute test print	Miscellaneous
+GS ( C	Edit NV user memory	Customize
+GS ( C <fn=0>	Delete the specified record	Customize
+GS ( C <fn=1>	Store the data in the specified record	Customize
+GS ( C <fn=2>	Transmit the data in the specified record	Customize
+GS ( C <fn=3>	Transmit capacity of the NV user memory currently being used	Customize
+GS ( C <fn=4>	Transmit the remaining capacity of the NV user memory	Customize
+GS ( C <fn=5>	Transmit the key code list	Customize
+GS ( C <fn=6>	Delete all data in the NV user memory	Customize
+GS ( D	Enable/disable real-time command	Miscellaneous
+GS ( E	Set user setup commands	Customize
+GS ( E <fn=1>	Change into the user setting mode	Customize
+GS ( E <fn=2>	End the user setting mode session	Customize
+GS ( E <fn=3>	Change the memory switch	Customize
+GS ( E <fn=4>	Transmit the settings of the memory switch	Customize
+GS ( E <fn=5>	Set the customized setting values	Customize
+GS ( E <fn=6>	Transmit the customized setting values	Customize
+GS ( E <fn=7>	Copy the user-defined page	Customize
+GS ( E <fn=8>	Define the data (column format) for the character code page	Customize
+GS ( E <fn=9>	Define the data (raster format) for the character code page	Customize
+GS ( E <fn=10>	Delete the data for the character code page	Customize
+GS ( E <fn=11>	Set the configuration item for the serial interface	Customize
+GS ( E <fn=12>	Transmit the configuration item for the serial interface	Customize
+GS ( E <fn=13>	Set the configuration item for the Bluetooth interface	Customize
+GS ( E <fn=14>	Transmit the configuration item for the Bluetooth interface	Customize
+GS ( E <fn=15>	Set conditions for USB interface communication	Customize
+GS ( E <fn=16>	Transmit conditions for USB interface communication	Customize
+GS ( E <fn=48>	Delete the paper layout	Customize
+GS ( E <fn=49>	Set the paper layout	Customize
+GS ( E <fn=50>	Transmit the paper layout information	Customize
+GS ( E <fn=51>	Set the control for label paper and paper with black marks	Customize
+GS ( E <fn=52>	Transmit the control settings for label paper and paper with black marks	Customize
+GS ( E <fn=99>	Set internal buzzer patterns	Customize
+GS ( E <fn=100>	Transmit internal buzzer patterns	Customize
+GS ( H	Request transmission of response or status	Customize
+GS ( H <fn=48>	Specifies the process ID response	Customize
+GS ( H <fn=49>	Specifies the offline response	Miscellaneous
+GS ( K	Select print control method(s)	Miscellaneous
+GS ( K <fn=48>	Select the print control mode	2D Code
+GS ( K <fn=49>	Select the print density	2D Code
+GS ( K <fn=50>	Select the print speed	2D Code
+GS ( K <fn=97>	Select the number of parts for the thermal head energizing	2D Code
+GS ( L / GS 8 L	Set graphics data	2D Code
+GS ( L <fn=48>	Transmit the NV graphics memory capacity	Bit Image
+GS ( L <fn=49>	Set the reference dot density for graphics	Bit Image
+GS ( L <fn=50>	Print the graphics data in the print buffer	Bit Image
+GS ( L <fn=51>	Transmit the remaining capacity of the NV graphics memory	Bit Image
+GS ( L <fn=52>	Transmit the remaining capacity of the download graphics memory	Bit Image
+GS ( L <fn=64>	Transmit the key code list for defined NV graphics	Bit Image
+GS ( L <fn=65>	Delete all NV graphics data	Bit Image
+GS ( L <fn=66>	Delete the specified NV graphics data	Bit Image
+GS ( L / GS 8 L <fn=67>	Define the NV graphics data (raster format)	Bit Image
+GS ( L / GS 8 L <fn=68>	Define the NV graphics data (column format)	Bit Image
+GS ( L <fn=69>	Print the specified NV graphics data	Bit Image
+GS ( L <fn=80>	Transmit the key code list for defined download graphics	Bit Image
+GS ( L <fn=81>	Delete all download graphics data	Bit Image
+GS ( L <fn=82>	Delete the specified download graphics data	Bit Image
+GS ( L / GS 8 L <fn=83>	Define the download graphics data (raster format)	Bit Image
+GS ( L / GS 8 L <fn=84>	Define the download graphics data (column format)	Bit Image
+GS ( L <fn=85>	Print the specified download graphics data	Bit Image
+GS ( L / GS 8 L <fn=112>	Store the graphics data in the print buffer (raster format)	Miscellaneous
+GS ( L / GS 8 L <fn=113>	Store the graphics data in the print buffer (column format)	Bit Image
+GS ( M	Customize printer control value(s)	Bit Image
+GS ( M <fn=1>	Save the setting values from the work area into the storage area	Bit Image
+GS ( M <fn=2>	Load the setting values stored in the storage area to the work area	Customize
+GS ( M <fn=3>	Select the setting values loaded to the work area after the initialization process	Customize
+GS ( N	Select character effects	Customize
+GS ( N <fn=48>	Select character color	Customize
+GS ( N <fn=49>	Select background color	Character
+GS ( N <fn=50>	Turn shading mode on/off	Character
+GS ( P	Page mode control	Character
+GS ( P <fn=48>	Set the printable area in Page mode	Character
+GS ( Q	Commands for drawing graphics	Miscellaneous
+GS ( Q <fn=48>	Draw line	Miscellaneous
+GS ( Q <fn=49>	Draw rectangle	Miscellaneous
+GS ( k	Set up and print the symbol	Miscellaneous
+GS ( k <fn=065>	PDF417: Set the number of columns in the data region	Miscellaneous
+GS ( k <fn=066>	PDF417: Set the number of rows	2D Code
+GS ( k <fn=067>	PDF417: Set the width of the module	2D Code
+GS ( k <fn=068>	PDF417: Set the row height	2D Code
+GS ( k <fn=069>	PDF417: Set the error correction level	2D Code
+GS ( k <fn=070>	PDF417: Select the options	2D Code
+GS ( k <fn=080>	PDF417: Store the data in the symbol storage area	2D Code
+GS ( k <fn=081>	PDF417: Print the symbol data in the symbol storage area	2D Code
+GS ( k <fn=082>	PDF417: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS ( k <fn=165>	QR Code: Select the model	2D Code
+GS ( k <fn=167>	QR Code: Set the size of module	2D Code
+GS ( k <fn=169>	QR Code: Select the error correction level	2D Code
+GS ( k <fn=180>	QR Code: Store the data in the symbol storage area	2D Code
+GS ( k <fn=181>	QR Code: Print the symbol data in the symbol storage area	2D Code
+GS ( k <fn=182>	QR Code: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS ( k <fn=265>	MaxiCode: Select the mode	2D Code
+GS ( k <fn=280>	MaxiCode: Store the data in the symbol storage area	2D Code
+GS ( k <fn=281>	MaxiCode: Print the symbol data in the symbol storage area	2D Code
+GS ( k <fn=282>	MaxiCode: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS ( k <fn=367>	2-dimensional GS1 DataBar: Set the width of the module	2D Code
+GS ( k <fn=371>	2-dimensional GS1 DataBar: GS1 DataBar Expanded Stacked maximum width setting	2D Code
+GS ( k <fn=380>	2-dimensional GS1 DataBar: Store data in the symbol storage area	2D Code
+GS ( k <fn=381>	2-dimensional GS1 DataBar: Print the symbol data in the symbol storage area	2D Code
+GS ( k <fn=382>	2-dimensional GS1 DataBar: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS ( k <fn=467>	Composite Symbology: Set the width of the module	2D Code
+GS ( k <fn=471>	Composite Symbology: GS1 DataBar Expanded Stacked maximum width setting	2D Code
+GS ( k <fn=472>	Composite Symbology: Select HRI character font	2D Code
+GS ( k <fn=480>	Composite Symbology: Store the data in the symbol storage area	2D Code
+GS ( k <fn=481>	Composite Symbology: Print the symbol data in the symbol storage area	Miscellaneous
+GS ( k <fn=482>	Composite Symbology: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS ( k <fn=566>	Aztec Code: Set the number of mode types and data layers	Miscellaneous
+GS ( k <fn=567>	Aztec Code: Set the size of the module	Miscellaneous
+GS ( k <fn=569>	Aztec Code: Set the error correction level	2D Code
+GS ( k <fn=580>	Aztec Code: Store the data in the symbol storage area	2D Code
+GS ( k <fn=581>	Aztec Code: Print the symbol data in the symbol storage area	2D Code
+GS ( k <fn=582>	Aztec Code: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS ( k <fn=666>	DataMatrix: Set the symbol type, number of columns, number of rows	2D Code
+GS ( k <fn=667>	DataMatrix: Set the size of the module	2D Code
+GS ( k <fn=680>	DataMatrix: Store the data in the symbol storage area	2D Code
+GS ( k <fn=681>	DataMatrix: Print the symbol data in the symbol storage area	2D Code
+GS ( k <fn=682>	DataMatrix: Transmit the size information of the symbol data in the symbol storage area	2D Code
+GS * (∗)	Define downloaded bit image	Bit Image
+GS / (∗)	Print downloaded bit image	Bit Image
+GS :	Start/end macro definition	Macro Function
+GS B	Turn white/black reverse print mode on/off	Character
+GS C 0 (∗)	Select counter print mode	Counter Printing
+GS C 1 (∗)	Select count mode (A)	Counter Printing
+GS C 2 (∗)	Set counter	Counter Printing
+GS C ; (∗)	Select count mode (B)	Counter Printing
+GS D	Specify Windows BMP graphics data	Bit Image
+GS D <fn=67>	Define Windows BMP NV graphics data	Bit Image
+GS D <fn=83>	Define Windows BMP download graphics data	Bit Image
+GS H	Select print position of HRI characters	Barcode
+GS I	Transmit printer ID	Miscellaneous
+GS L	Set left margin	Print Position
+GS P	Set horizontal and vertical motion units	Miscellaneous
+GS Q 0 (∗)	Print variable vertical size bit image	Bit Image
+GS T	Set print position to the beginning of print line	Print Position
+GS V	Select cut mode and cut paper	Mech. Control
+GS W	Set print area width	Print Position
+GS \	Set relative vertical print position in Page mode	Print Position
+GS ^	Execute macro	Macro Function
+GS a	Enable/disable Automatic Status Back (ASB)	Status
+GS b	Turn smoothing mode on/off	Character
+GS c (∗)	Print counter	Counter Printing
+GS f	Select font for HRI characters	Barcode
+GS g 0	Initialize maintenance counter	Miscellaneous
+GS g 2	Transmit maintenance counter	Miscellaneous
+GS h	Set barcode height	Barcode
+GS j	Enable/disable Automatic Status Back (ASB) for ink	Status
+GS k	Print barcode	Barcode
+GS r	Transmit status	Status
+GS v 0 (∗)	Print raster bit image	Bit Image
+GS w	Set barcode width	Barcode
+GS z 0	Set online recovery wait time	Miscellaneous
+(∗): 	Obsolete Command

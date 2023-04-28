@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/AddressDistribute_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/AddressDistribute_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+		contains datatype-definitions specific for the AddressDistribute-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<!-- Place your imports here, if required -->
+  <import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../../../../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+	<!-- ****************************************************************** -->
+	<complexType name="DistributeChangesAsyncData">
+		<sequence> 
+			<!-- @TODO: place your elements here --> 
+		</sequence> 
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="DistributeChangesAsyncType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data" type="bomtypesMasterData:DT_AddressDistributionData"/>
+		</sequence>
+	</complexType>
+
+</schema>

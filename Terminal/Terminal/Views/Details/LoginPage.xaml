@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Terminal.Singleton"
+             xmlns:language="clr-namespace:Terminal.Languages"
+             xmlns:images="clr-namespace:Terminal.Images"
+             xmlns:CustomEntry="clr-namespace:Plugin.RoundedBorderControls;assembly=Plugin.RoundedBorderControls"
+             x:Class="Terminal.Views.LoginPage"
+             Title="">
+    <NavigationPage.TitleView>
+        <StackLayout HeightRequest="48" Padding="0,0,0,0">
+            <Grid HeightRequest="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="BackLabel" VerticalOptions="Center" Grid.Column="0" HorizontalOptions="CenterAndExpand" Text="{x:Static language:LangResources.Login}" LineBreakMode="NoWrap" FontSize="Medium" TextColor="{StaticResource NavigationTextColor}" />
+                <Image Grid.Column="1" Source="{Binding OnlineStatusImage, Source={x:Static local:GlobalResources.Current}}" VerticalOptions="Center" HeightRequest="48" Aspect="AspectFit" Margin="0,5,0,0" HorizontalOptions="Center" />
+            </Grid>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content >
+        <StackLayout Spacing="20" Padding="15" VerticalOptions="StartAndExpand">
+            <Label Text="{x:Static language:LangResources.UserName}" FontFamily="Roboto" />
+            <Entry x:Name="usernameEntry" Text="exsvobodal" MaxLength="256"  Keyboard="Default"/>
+            <Label Text="{x:Static language:LangResources.Password}" FontFamily="Roboto" />
+            <Entry x:Name="passwordEntry" IsPassword="true" MaxLength="256" Text="TerminalCore2021" Keyboard="Default" />
+            <Button Text="{x:Static language:LangResources.Logon}" Clicked="OnLoginButtonClicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM">
+  <xsd:complexType name="MaterialCheckAvailabilityRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">Check material availability request</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="AvailabilityRequest" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Availability calculation parameters</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Id" type="xsd:string" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Id. Will be copied to response</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="MaterialId">
+              <xsd:annotation>
+                <xsd:documentation>Material</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="18"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="PlantId">
+              <xsd:annotation>
+                <xsd:documentation>Plant</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="4"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="UnitId">
+              <xsd:annotation>
+                <xsd:documentation>Unit</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="3"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CheckRuleId" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Check rule</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="2"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="StorageLocation" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Storage location</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="4"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="BatchNumber" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Batch number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="VendorId" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Vendor id</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CheckCompatibleMaterials" minOccurs="0" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation>Checks also compatible materials.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CheckInsideBoms" minOccurs="0" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation>Check inside BOMs</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

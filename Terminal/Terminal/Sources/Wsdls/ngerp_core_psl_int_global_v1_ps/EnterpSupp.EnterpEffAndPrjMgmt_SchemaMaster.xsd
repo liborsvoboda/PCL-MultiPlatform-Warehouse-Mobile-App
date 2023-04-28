@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PS"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="DT_ProjectDistributionData.xsd"/>
+  <include schemaLocation="ProjectDto.xsd"/>
+  <include schemaLocation="ProjectFilterDto.xsd"/>
+</schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+  xmlns="http://www.w3.org/2001/XMLSchema">
+	<include schemaLocation="DT_CSOrderCreateOrChangeRequest.xsd"/>
+	<include schemaLocation="DT_CSOrderComponent.xsd"/>
+	<include schemaLocation="DT_CSOrderDistributionData.xsd"/>
+	<include schemaLocation="DT_CSOrderGetByFilterRequest.xsd"/>
+	<include schemaLocation="DT_CSOrderGetByFilterResponse.xsd"/>
+	<include schemaLocation="DT_CSOrderHeader.xsd"/>
+	<include schemaLocation="DT_CSOrderOperation.xsd"/>
+	<include schemaLocation="DT_CSOrderPartner.xsd"/>
+	<include schemaLocation="DT_TaskListId.xsd"/>
+	<include schemaLocation="DT_ServiceNotificationDistributionData.xsd"/>
+	<include schemaLocation="DT_ServiceNotificationCreateOrChangeRequest.xsd"/>
+	<include schemaLocation="DT_TaskListDistributionData.xsd"/>
+	<include schemaLocation="DT_EquipmentDistributionData.xsd"/>
+	<include schemaLocation="DT_FunctionalLocationDistributionData.xsd"/>
+	<include schemaLocation="DT_EquipmentCreateOrChangeRequest.xsd"/>
+	<include schemaLocation="DT_FunctionalLocationCreateOrChangeRequest.xsd"/>
+	<include schemaLocation="CSOrderDto.xsd"/>
+	<include schemaLocation="CSOrderChangeDto.xsd"/>
+	<include schemaLocation="CSOrderFilterDto.xsd"/>
+	<include schemaLocation="EquipmentDto.xsd"/>
+	<include schemaLocation="EquipmentChangeDto.xsd"/>
+	<include schemaLocation="EquipmentFilterDto.xsd"/>
+	<include schemaLocation="TaskListDto.xsd"/>
+	<include schemaLocation="FunctionalLocationChangeDto.xsd"/>
+	<include schemaLocation="FunctionalLocationDto.xsd"/>
+	<include schemaLocation="FunctionalLocationFilterDto.xsd"/>
+	<include schemaLocation="ServiceNotificationChangeDto.xsd"/>
+	<include schemaLocation="ServiceNotificationDto.xsd"/>
+	<include schemaLocation="ServiceNotificationFilterDto.xsd"/>
+	<include schemaLocation="TypeDeclarations.xsd"/>
+	<include schemaLocation="TaskListFilterDto.xsd"/>
+</schema>

@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>O programu</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Prochadzka</value>
+  </data>
+  <data name="cs" xml:space="preserve">
+    <value>Česky</value>
+  </data>
+  <data name="en" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="sk" xml:space="preserve">
+    <value>Slovensky</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Vitajte</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Výběr jazyka</value>
+  </data>
+  <data name="ldapServerIp" xml:space="preserve">
+    <value>IP serveru LDAP</value>
+  </data>
+  <data name="RefreshInterval" xml:space="preserve">
+    <value>Kontrola spojení</value>
+  </data>
+  <data name="ldapPort" xml:space="preserve">
+    <value>LDAP port</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Prihlásenie</value>
+  </data>
+  <data name="Logon" xml:space="preserve">
+    <value>PŘIHLÁSIT</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Uživatelské meno</value>
+  </data>
+  <data name="LoginFailed" xml:space="preserve">
+    <value>Prihlásenie sa nezdarilo</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Odhlásit</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ldapDN" xml:space="preserve">
+    <value>LDAP DN</value>
+  </data>
+  <data name="roleDN" xml:space="preserve">
+    <value>roleDN</value>
+  </data>
+  <data name="TransferRelease" xml:space="preserve">
+    <value>Výdej ze skladu</value>
+  </data>
+  <data name="LabelPrinting" xml:space="preserve">
+    <value>Tisk etiket</value>
+  </data>
+  <data name="TransferReceipt" xml:space="preserve">
+    <value>Příjem na sklad</value>
+  </data>
+  <data name="GoodsReceipt" xml:space="preserve">
+    <value>Příjem ze zakázky</value>
+  </data>
+  <data name="GoodReceiptFromPO" xml:space="preserve">
+    <value>Příjem z objednávky</value>
+  </data>
+  <data name="ReportLocation" xml:space="preserve">
+    <value>Report skladu</value>
+  </data>
+  <data name="ReportSite" xml:space="preserve">
+    <value>Report site</value>
+  </data>
+  <data name="StockTaking" xml:space="preserve">
+    <value>Inventura</value>
+  </data>
+  <data name="DataTransfer" xml:space="preserve">
+    <value>Přenos dat</value>
+  </data>
+  <data name="MenuItems" xml:space="preserve">
+    <value>Položky Menu</value>
+  </data>
+  <data name="Build" xml:space="preserve">
+    <value>Sestavení</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Verze</value>
+  </data>
+  <data name="Application" xml:space="preserve">
+    <value>Aplikace</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>TMH Terminal</value>
+  </data>
+  <data name="DeveloperContact" xml:space="preserve">
+    <value>Kontakt na vývojáře</value>
+  </data>
+  <data name="DeveloperEmail" xml:space="preserve">
+    <value>Libor.Svoboda@KlikneteZde.cz</value>
+  </data>
+  <data name="DeveloperName" xml:space="preserve">
+    <value>Libor Svoboda</value>
+  </data>
+  <data name="DeveloperPhone" xml:space="preserve">
+    <value>+420 724 986 873</value>
+  </data>
+  <data name="DistributorWeb" xml:space="preserve">
+    <value>Stránky dodavatele</value>
+  </data>
+  <data name="DistributorWebPage" xml:space="preserve">
+    <value>https://expedis.cz/</value>
+  </data>
+  <data name="InsertMaterialId" xml:space="preserve">
+    <value>Zadejte M/N nebo UIID dílu</value>
+  </data>
+  <data name="Load" xml:space="preserve">
+    <value>Načti</value>
+  </data>
+  <data name="GoodsIssue" xml:space="preserve">
+    <value>Výdej na zakázku</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Skenovat</value>
+  </data>
+  <data name="ScanCode" xml:space="preserve">
+    <value>Naskenujte kód</value>
+  </data>
+  <data name="SapSettings" xml:space="preserve">
+    <value>Nastavení SAP</value>
+  </data>
+  <data name="MaterialIsNotSerializable" xml:space="preserve">
+    <value>Materiál není serializovatelný</value>
+  </data>
+  <data name="InsertSerialNumber" xml:space="preserve">
+    <value>Zadejte sériové číslo</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="SerialNumberNotExist" xml:space="preserve">
+    <value>Seriové číslo neexistuje</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detaily</value>
+  </data>
+  <data name="EquipmentNumber" xml:space="preserve">
+    <value>Číslo vybavení</value>
+  </data>
+  <data name="MN" xml:space="preserve">
+    <value>M/N</value>
+  </data>
+  <data name="SN" xml:space="preserve">
+    <value>S/N</value>
+  </data>
+  <data name="UIID" xml:space="preserve">
+    <value>UIID</value>
+  </data>
+  <data name="WarehouseNumber" xml:space="preserve">
+    <value>Číslo Skladu</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="PN" xml:space="preserve">
+    <value>P/N</value>
+  </data>
+  <data name="InsertPnMnUiid" xml:space="preserve">
+    <value>Zadejte PN/MN/UIID</value>
+  </data>
+  <data name="Scaner" xml:space="preserve">
+    <value>Scanner</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Tisknout</value>
+  </data>
+  <data name="FastGoodsInfo" xml:space="preserve">
+    <value>Informace o dílu</value>
+  </data>
+  <data name="FaultReportPrint" xml:space="preserve">
+    <value>Tisk fault report</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Zpět</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Štítek</value>
+  </data>
+  <data name="SelectTargetLocation" xml:space="preserve">
+    <value>Vyberte cílovou lokaci</value>
+  </data>
+  <data name="InsertQuantity" xml:space="preserve">
+    <value>Zadejte množství</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Sklad</value>
+  </data>
+  <data name="ItemDescription" xml:space="preserve">
+    <value>Popis Položky</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Odebrat</value>
+  </data>
+  <data name="Issue" xml:space="preserve">
+    <value>Vydat</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="TargetLocation" xml:space="preserve">
+    <value>Cílová lokace</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Zařadit</value>
+  </data>
+  <data name="ItemNotExist" xml:space="preserve">
+    <value>Položka neexistuje</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Množství</value>
+  </data>
+  <data name="SelectSourceLocation" xml:space="preserve">
+    <value>Vyberte zdrojovou lokaci</value>
+  </data>
+  <data name="InsertPnMnOrDescription" xml:space="preserve">
+    <value>Zadejte PN/MN nebo část názvu zboží</value>
+  </data>
+  <data name="SelectArea" xml:space="preserve">
+    <value>Vyberte Oblast</value>
+  </data>
+  <data name="Area" xml:space="preserve">
+    <value>Oblast</value>
+  </data>
+  <data name="ItemNotFound" xml:space="preserve">
+    <value>Položka nebyla nalezena</value>
+  </data>
+  <data name="WarehouseName" xml:space="preserve">
+    <value>Název skladu</value>
+  </data>
+  <data name="QuantityBlocked" xml:space="preserve">
+    <value>Blokovaná zásoba</value>
+  </data>
+  <data name="QuantityFree" xml:space="preserve">
+    <value>Volná zásoba</value>
+  </data>
+  <data name="QuantityInTransfer" xml:space="preserve">
+    <value>V přeskladnění</value>
+  </data>
+  <data name="WarehouseStocks" xml:space="preserve">
+    <value>Skladové zásoby</value>
+  </data>
+  <data name="InsertPnMn" xml:space="preserve">
+    <value>Zadejte PN/MN</value>
+  </data>
+  <data name="InsertSiteNumber" xml:space="preserve">
+    <value>Zadejte číslo lokality</value>
+  </data>
+  <data name="SiteNumberNotExist" xml:space="preserve">
+    <value>Číslo lokality neexistuje</value>
+  </data>
+  <data name="InsertTicketNumber" xml:space="preserve">
+    <value>Zadejte číslo tiketu</value>
+  </data>
+  <data name="TaskNumberNotExist" xml:space="preserve">
+    <value>Task number not exist</value>
+  </data>
+  <data name="SelectOrCreateOrder" xml:space="preserve">
+    <value>Vyberte nebo založte objednávku</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Pokračuj</value>
+  </data>
+  <data name="CreateOrder" xml:space="preserve">
+    <value>Založit objednávku</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+  <data name="ReportPrinterIp" xml:space="preserve">
+    <value>IP report tiskárny</value>
+  </data>
+  <data name="ReportPrinterPort" xml:space="preserve">
+    <value>Port report tiskárny</value>
+  </data>
+  <data name="LabelPrinterIp" xml:space="preserve">
+    <value>IP tiskárny štítků</value>
+  </data>
+  <data name="LabelPrinterPort" xml:space="preserve">
+    <value>Port tiskárny štítků</value>
+  </data>
+</root>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="FunctionalLocationChangesConsumer" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:doc="http://schemas.telekom.net/csdg-service-documentation_v01.01" xsi:schemaLocation="http://schemas.telekom.net/csdg-service-documentation_v01.01 ../../../../xsds-csdg/csdg-service-documentation_v01.01.xsd" targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/FunctionalLocationChanges_v01.00/consumer" xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/FunctionalLocationChanges_v01.00/consumer" xmlns:service="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/FunctionalLocationChanges_v01.00">
+  <!--
+		This wsdl has to be implemented by the Consumer to enable him to receive responses asynchronously from a Provider.
+		It imports the abstract wsdl and adds the sections "binding" and "service".
+		(The Consumer is the TECHNICAL provider, i.e. Server; The Provider is the TECHNICAL consumer, i.e. Client)
+	-->
+  <documentation>
+    <!-- !! @AUTHORS: INCREMENT VERSION NUMBER AND ADAPT "kind-of-creation" AFTER CHANGES !! -->
+    <doc:transport version="01.01.000" version-date="2015-06-09">
+      <doc:kind-of-creation>GENERATED</doc:kind-of-creation>
+    </doc:transport>
+  </documentation>
+  <import namespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/FunctionalLocationChanges_v01.00" location="FunctionalLocationChanges-RPC_v01.00.wsdl" />
+  <binding name="FunctionalLocationChangesConsumerBinding" type="service:FunctionalLocationChangesConsumer">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="distributeAsync">
+      <soap:operation soapAction="distributeAsync" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="TechnicalFault">
+        <soap:fault name="TechnicalFault" use="literal" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="FunctionalLocationChangesConsumerService">
+    <port name="FunctionalLocationChangesConsumerPort" binding="tns:FunctionalLocationChangesConsumerBinding">
+      <soap:address location="http://REPLACE_WITH_ACTUAL_URL" />
+    </port>
+  </service>
+</definitions>

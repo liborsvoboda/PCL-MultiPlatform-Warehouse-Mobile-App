@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/PM"
+            xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+            xmlns:bomtypesMasterData="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData"
+            xmlns:bomtypesMM="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM">
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MasterData" schemaLocation="../ngerp_core_psl_int_global_v1_master_data/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1/MM" schemaLocation="../ngerp_core_psl_int_global_v1_mm/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+  <xsd:include schemaLocation="DT_CSOrderHeader.xsd"></xsd:include>
+  <xsd:include schemaLocation="DT_CSOrderPartner.xsd"></xsd:include>
+  <xsd:include schemaLocation="DT_CSOrderOperation.xsd"></xsd:include>
+  <xsd:include schemaLocation="DT_CSOrderComponent.xsd"></xsd:include>
+  <xsd:complexType name="DT_CSOrderDistributionData">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="EN">CS order distribution data</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CreatedOrUpdated" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Created or updated orders</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Id">
+              <xsd:annotation>
+                <xsd:documentation>Id</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="12"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Header" type="DT_CSOrderHeader" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>Header data</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PartnersSpecified" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation>Shows if partners are specified/changed</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Partners" type="DT_CSOrderPartner" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Partners</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Operations" type="DT_CSOrderOperation" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Operations</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Components" type="DT_CSOrderComponent" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Components</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="StatusesSpecified" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation>Shows if statuses are specified</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Statuses" type="bomtypesCommon:DT_Status" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Statuses</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="OperationServices" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Services of operation</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="OperationRoutingNumberInOrder">
+                    <xsd:annotation>
+                      <xsd:documentation>Routing number of operations in the order</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="10"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="GeneralCounterForOrder">
+                    <xsd:annotation>
+                      <xsd:documentation>General counter for order</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="8"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="Services" type="bomtypesMM:ServicePackageItem" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="OrderAddress" minOccurs="0" type="bomtypesMasterData:DT_Address">
+              <xsd:annotation>
+                <xsd:documentation>Order address</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PlanKeysClear" minOccurs="0" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation>If true - all current plankeys needs to be deleted and then node 'PlanKeys' processed as usual</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PlanKeys" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>Plankeys assigned to CS order</xsd:documentation>
+              </xsd:annotation>
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Action">
+                    <xsd:annotation>
+                      <xsd:documentation>Action</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="1"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="PlanKey">
+                    <xsd:annotation>
+                      <xsd:documentation>Plan key</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="30"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

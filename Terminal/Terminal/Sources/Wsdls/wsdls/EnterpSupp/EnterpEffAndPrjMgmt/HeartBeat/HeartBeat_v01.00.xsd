@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+	targetNamespace="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/HeartBeat_v01.00/types"
+	xmlns:tns="http://services.tint.telekom.net/EnterpSupp/EnterpEffAndPrjMgmt/HeartBeat_v01.00/types"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:csdg="http://schemas.telekom.net/csdg_v01.01"
+    xmlns:bomtypesCommon="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="01.00.000"
+	>
+	<!-- !! @AUTHORS: INCREMENT VERSION NUMBER AFTER CHANGES !! -->
+	<annotation>
+		<documentation>
+      contains datatype-definitions specific for the HeartBeat-service.
+		</documentation>
+	</annotation>
+	<!-- ****************************************************************** -->
+	<import namespace="http://schemas.telekom.net/csdg_v01.01" schemaLocation="../../../../xsds-csdg/csdg_v01.01.xsd"/>
+	<!-- Place your imports here, if required -->
+	<import namespace="http://telekom.de/xi/NGERP_CORE_PSLINT/global/v1" schemaLocation="../../../../ngerp_core_psl_int_global_v1/EnterpSupp.EnterpEffAndPrjMgmt_SchemaMaster.xsd"/>
+
+	<!-- ****************************************************************** -->
+	<complexType name="ReportMessagesReceivedRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="MessageIds" minOccurs="0" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Message ids.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="256"/>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="ReportMessagesReceivedResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="ReportIsAliveRequestType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+					</xsd:sequence>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ****************************************************************** -->
+	<complexType name="ReportIsAliveResponseType">
+		<sequence>
+			<element name="context" type="csdg:TCContext"/>
+			<element name="data">
+				<xsd:annotation>
+					<xsd:documentation>Data</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+				</xsd:complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
